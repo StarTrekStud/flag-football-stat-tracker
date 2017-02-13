@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 Book =require('./models/book');
 
 // Connect to Mongoose
-mongoose.connect('mongodb://readersparadise_ag:rpag@ds139655.mlab.com:39655/readersparadise-ag');
+mongoose.connect('mongodb://heroku_n5zsjf7c:heroku_n5zsjf7c@ds151289.mlab.com:51289/heroku_n5zsjf7c');
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
