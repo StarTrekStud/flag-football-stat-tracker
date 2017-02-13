@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 Book =require('./models/book');
 
 // Connect to Mongoose
-mongoose.connect('mongodb://readersparadise_ag:rpag@ds139655.mlab.com:39655/readersparadise-ag');
+mongoose.connect('mongodb://flagfootball:stattracker>@ds151279.mlab.com:51279/flag-football-stat-tracker');
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
