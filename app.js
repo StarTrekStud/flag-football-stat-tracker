@@ -2,129 +2,75 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var wwwhisper = require('connect-wwwhisper');
-// app holds a reference to express or connect framework, it
-// may be named differently in your source file.
-app.use(wwwhisper());
 
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
 
-Play =require('./models/play');
-Player =require('./models/player');
+Book =require('./models/book');
 
 // Connect to Mongoose
-mongoose.connect('mongodb://heroku:connect>@ds151279.mlab.com:51279/flag-football-stat-tracker');
+mongoose.connect('mongodb://heroku_n5zsjf7c:heroku_n5zsjf7c@ds151289.mlab.com:51289/heroku_n5zsjf7c');
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
-	res.send('Please use /api/plays');
+	res.send('Please use /api/books');
 });
 
-app.get('/api/plays', function(req, res){
-	Play.getPlays(function(err, plays){
+app.get('/api/books', function(req, res){
+	Book.getBooks(function(err, books){
 		if(err){
 			throw err;
 		}
-		res.json(plays);
+		res.json(books);
 	});
 });
 
-app.get('/api/players', function(req, res){
-	Player.getPlayers(function(err, players){
+app.get('/api/books/:_id', function(req, res){
+	Book.getBookById(req.params._id, function(err, book){
 		if(err){
 			throw err;
 		}
-		res.json(players);
+		res.json(book);
 	});
 });
 
-app.get('/api/plays/:_id', function(req, res){
-	Play.getPlayById(req.params._id, function(err, play){
+app.post('/api/books', function(req, res){
+	var book = req.body;
+	Book.addBook(book, function(err, book){
 		if(err){
 			throw err;
 		}
-		res.json(play);
+		res.json(book);
 	});
 });
 
-app.get('/api/players/:_id', function(req, res){
-	Player.getPlayerById(req.params._id, function(err, player){
-		if(err){
-			throw err;
-		}
-		res.json(player);
-	});
-});
-
-app.post('/api/plays', function(req, res){
-	var play = req.body;
-	Play.addPlay(play, function(err, play){
-		if(err){
-			throw err;
-		}
-		res.json(play);
-	});
-});
-
-app.post('/api/players', function(req, res){
-	var player = req.body;
-	Player.addPlayer(player, function(err, player){
-		if(err){
-			throw err;
-		}
-		res.json(player);
-	});
-});
-
-app.put('/api/plays/:_id', function(req, res){
+app.put('/api/books/:_id', function(req, res){
 	var id = req.params._id;
-	var play = req.body;
-	Play.updatePlay(id, play, {}, function(err, play){
+	var book = req.body;
+	Book.updateBook(id, book, {}, function(err, book){
 		if(err){
 			throw err;
 		}
-		res.json(play);
+		res.json(book);
 	});
 });
 
-app.put('/api/players/:_id', function(req, res){
+app.delete('/api/books/:_id', function(req, res){
 	var id = req.params._id;
-	var player = req.body;
-	Player.updatePlayer(id, player, {}, function(err, player){
+	Book.removeBook(id, function(err, book){
 		if(err){
 			throw err;
 		}
-		res.json(player);
-	});
-});
-
-app.delete('/api/plays/:_id', function(req, res){
-	var id = req.params._id;
-	Play.removePlay(id, function(err, play){
-		if(err){
-			throw err;
-		}
-		res.json(play);
-	});
-});
-
-app.delete('/api/players/:_id', function(req, res){
-	var id = req.params._id;
-	Player.removePlayer(id, function(err, player){
-		if(err){
-			throw err;
-		}
-		res.json(player);
+		res.json(book);
 	});
 });
 
 //app.listen(3000);
 //console.log('Running on port 3000...');
 
-//For avoiding Heroku $PORT error
+//For avoidong Heroku $PORT error
 app.get('/', function(request, response) {
     var result = 'App is running'
     response.send(result);
