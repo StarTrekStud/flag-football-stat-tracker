@@ -1,0 +1,15 @@
+{
+  "name": "flag-football-stat-tracker",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}

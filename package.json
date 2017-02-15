@@ -1,16 +1,17 @@
 {
-  "name": "readersparadise",
+  "name": "flag-football-stat-tracker",
   "version": "1.0.0",
-  "description": "One stop blog with latest best selling books",
+  "description": "flag-football-stat-tracker",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies":{
+    "connect-wwwhisper": "*",
   	"express":"*",
   	"body-parser":"*",
   	"mongoose":"*"
   },
-  "author": "Akhilesh Goud",
+  "author": "Dave Oji",
   "license": "MIT"
 }

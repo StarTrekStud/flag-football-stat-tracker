@@ -1,0 +1,13 @@
+<a href="#/plays">Go Back</a>
+<div class="panel panel-primary" ng-init="getPlay()">
+  <div class="panel-body">
+    <div class="col-1-1">
+      <div class="col-1-1">
+        <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.quarterbacks}} throws to {{play.receivers}} results in {{play.results}} </a>
+      </div>
+    </div>
+    <div class="pull-right">
+        <a href="#/plays/edit/{{play._id}}">Edit</a>  |  <a href="#" ng-click="removePlay(play._id)">Delete</a>
+    </div>
+  </div>
+</div>

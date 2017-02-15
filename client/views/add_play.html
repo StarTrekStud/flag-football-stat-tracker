@@ -1,0 +1,122 @@
+<a href="#/plays">Go Back</a>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Add Play</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <form ng-submit="addPlay()">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Quarterback</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Jeremiah Lopez" value="Jeremiah Lopez" ng-model="play.quarterbacks">
+                  Jeremiah Lopez
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Seth Van Grivansen" value="Seth Van Grivansen" ng-model="play.quarterbacks">
+                  Seth Van Grivansen
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Receiver</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Unknown" value="Unknown" ng-model="play.receivers">
+                  Unknown
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Dave Oji" value="Dave Oji" ng-model="play.receivers">
+                  Dave Oji
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Jeff Farley" value="Jeff Farley" ng-model="play.receivers">
+                  Jeff Farley
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Result</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Catch" value="Catch" ng-model="play.results">
+                  Catch
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Miss" value="Miss" ng-model="play.results">
+                  Miss
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Drop" value="Drop" ng-model="play.results">
+                  Drop
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Interception" value="Interception" ng-model="play.results">
+                  Interception
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Sack" value="Sack" ng-model="play.results">
+                  Sack
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Safety" value="Safety" ng-model="play.results">
+                  Safety
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="1 Point" value="1 Point" ng-model="play.results">
+                  1 Point
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="2 Point" value="2 Point" ng-model="play.results">
+                  2 Point
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Touchdown" value="Touchdown" ng-model="play.results">
+                  Touchdown
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="Tackle" value="Tackle" ng-model="play.results">
+                  Tackle
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <button type="submit" class="btn btn-default">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
