@@ -2,44 +2,40 @@ var myApp = angular.module('myApp',['ngRoute']);
 
 myApp.config(function($routeProvider){
 	$routeProvider.when('/', {
-		controller:'PlaysController',
-		templateUrl: 'views/plays.html'
+		controller:'BooksController',
+		templateUrl: 'views/books.html'
 	})
-	.when('/stats', {
-    	controller:'PlaysController',
-    	templateUrl: 'views/view_stats.html'
-    })
-	.when('/plays', {
-		controller:'PlaysController',
-		templateUrl: 'views/plays.html'
+	.when('/books', {
+		controller:'BooksController',
+		templateUrl: 'views/books.html'
 	})
-	.when('/players', {
-		controller:'PlaysController',
-		templateUrl: 'views/players.html'
+	.when('/books/details/:id',{
+		controller:'BooksController',
+		templateUrl: 'views/book_details.html'
 	})
-	.when('/plays/details/:id',{
-		controller:'PlaysController',
-		templateUrl: 'views/play_details.html'
+	.when('/books/add',{
+		controller:'BooksController',
+		templateUrl: 'views/add_book.html'
 	})
-	.when('/players/details/:id',{
-		controller:'PlaysController',
-		templateUrl: 'views/player_details.html'
+	.when('/books/edit/:id',{
+		controller:'BooksController',
+		templateUrl: 'views/edit_book.html'
 	})
-	.when('/plays/add',{
-		controller:'PlaysController',
-		templateUrl: 'views/add_play.html'
+	.when('/magazines', {
+		controller:'MagazinesController',
+		templateUrl: 'views/magazines.html'
 	})
-	.when('/players/add',{
-		controller:'PlaysController',
-		templateUrl: 'views/add_player.html'
+	.when('/magazines/details/:id',{
+		controller:'MagazinesController',
+		templateUrl: 'views/magazine_details.html'
 	})
-	.when('/plays/edit/:id',{
-		controller:'PlaysController',
-		templateUrl: 'views/edit_play.html'
+	.when('/magazines/add',{
+		controller:'MagazinesController',
+		templateUrl: 'views/add_magazine.html'
 	})
-	.when('/players/edit/:id',{
-		controller:'PlaysController',
-		templateUrl: 'views/edit_player.html'
+	.when('/magazines/edit/:id',{
+		controller:'MagazinesController',
+		templateUrl: 'views/edit_magazine.html'
 	})
 	.otherwise({
 		redirectTo: '/'

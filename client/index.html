@@ -1,6 +1,6 @@
 <html ng-app="myApp">
 <head>
-	<title>Flag Football Stat Tracker</title>
+	<title>Reader's Paradise | One stop blog with latest best selling books</title>
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -14,16 +14,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#/">Flag Football Stat Tracker</a>
+          <a class="navbar-brand" href="#/">Reader's Paradise</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-              <li><a href="#/stats">View Stats</a></li>
-              <li><a href="#/players/add">Add Players</a></li>
+              <li><a href="#/books/add">Add Book</a></li>
+              <li><a href="#/magazines/add">Add Magazine</a></li>
+              <li><a href="#/magazines">View Magazine</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
     <div class="container" id="content">
     	<div class="row">
     		<div class="col-md-12">
@@ -36,7 +38,8 @@
 	<script src="/bower_components/angular-route/angular-route.js"></script>
 	<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="/app.js"></script>
-	<script src="/controllers/plays.js"></script>
+	<script src="/controllers/books.js"></script>
+	<script src="/controllers/magazines.js"></script>
     <script>
         $(".navbar-nav li a").click(function(event) {
             $(".navbar-collapse").collapse('hide');
