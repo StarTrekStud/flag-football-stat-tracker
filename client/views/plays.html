@@ -1,6 +1,6 @@
-<div class="panel panel-default" ng-init="getMagazines()">
+<div class="panel panel-default" ng-init="getPlays()">
   <div class="panel-heading">
-    <h3 class="panel-title">Latest Magazines
+    <h3 class="panel-title">Latest Plays
       <span class="pull-right">Filter by genre: 
       <select ng-model="genre">
         <option value="" selected>All</option>
@@ -15,16 +15,16 @@
   </div>
   <div class="panel-body">
     <div class="row">
-    	<div ng-repeat="magazine in magazines | filter:genre">
+    	<div ng-repeat="play in plays | filter:genre">
     		<div class="col-md-6">
     			<div class="col-md-6">
-    				<a href="#/magazines/details/{{magazine._id}}"><h4>{{magazine.title}}</h4></a>
-    				<p>by <em>{{magazine.author}}</em></p>
-    				<p>{{magazine.description}}</p>
-    				<a class="btn btn-primary" href="#/magazines/details/{{magazine._id}}">View Details</a>
+    				<a href="#/plays/details/{{play._id}}"><h4>{{play.title}}</h4></a>
+    				<p>by <em>{{play.author}}</em></p>
+    				<p>{{play.description}}</p>
+    				<a class="btn btn-primary" href="#/plays/details/{{play._id}}">View Details</a>
     			</div>
     			<div class="col-md-6">
-    				<a href="#/magazines/details/{{magazine._id}}"><img class="thumbnail" src="{{magazine.image_url}}"></a>
+    				<a href="#/plays/details/{{play._id}}"><img class="thumbnail" src="{{play.image_url}}"></a>
     			</div>
     		</div>
     	</div>

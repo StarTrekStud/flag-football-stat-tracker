@@ -1,19 +1,19 @@
-<a href="#/magazines">Go Back</a>
+<a href="#/players">Go Back</a>
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">Add Magazine</h3>
+    <h3 class="panel-title">Add Player</h3>
   </div>
   <div class="panel-body">
     <div class="row">
       <div class="col-md-12">
-      <form ng-submit="addMagazine()">
+      <form ng-submit="addPlayer()">
         <div class="form-group">
           <label>Title</label>
-          <input type="text" class="form-control" ng-model="magazine.title" placeholder="Title">
+          <input type="text" class="form-control" ng-model="player.title" placeholder="Title">
         </div>
         <div class="form-group">
           <label>Genre</label>
-          <select ng-model="magazine.genre" class="form-control">
+          <select ng-model="player.genre" class="form-control">
             <option value="Suspense">Suspense</option>
             <option value="Litrature">Litrature</option>
             <option value="Romance">Romance</option>
@@ -25,27 +25,27 @@
         </div>
         <div class="form-group">
           <label>Author</label>
-          <input type="text" class="form-control" ng-model="magazine.author" placeholder="Author">
+          <input type="text" class="form-control" ng-model="player.author" placeholder="Author">
         </div>
         <div class="form-group">
           <label>Publisher</label>
-          <input type="text" class="form-control" ng-model="magazine.publisher" placeholder="Publisher">
+          <input type="text" class="form-control" ng-model="player.publisher" placeholder="Publisher">
         </div>
         <div class="form-group">
           <label>Pages</label>
-          <input type="text" class="form-control" ng-model="magazine.pages" placeholder="Pages">
+          <input type="text" class="form-control" ng-model="player.pages" placeholder="Pages">
         </div>
         <div class="form-group">
           <label>Description</label>
-          <textarea class="form-control" ng-model="magazine.description" placeholder="Description"></textarea>
+          <textarea class="form-control" ng-model="player.description" placeholder="Description"></textarea>
         </div>
         <div class="form-group">
           <label>Image URL</label>
-          <input type="text" class="form-control" ng-model="magazine.image_url" placeholder="Image URL">
+          <input type="text" class="form-control" ng-model="player.image_url" placeholder="Image URL">
         </div>
         <div class="form-group">
           <label>Buy URL</label>
-          <input type="text" class="form-control" ng-model="magazine.buy_url" placeholder="Buy URL">
+          <input type="text" class="form-control" ng-model="player.buy_url" placeholder="Buy URL">
         </div>
        
         <button type="submit" class="btn btn-default">Submit</button>

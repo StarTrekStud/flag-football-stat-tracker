@@ -1,6 +1,6 @@
-<div class="panel panel-default" ng-init="getBooks()">
+<div class="panel panel-default" ng-init="getPlayers()">
   <div class="panel-heading">
-    <h3 class="panel-title">Latest Books
+    <h3 class="panel-title">Latest Players
       <span class="pull-right">Filter by genre: 
       <select ng-model="genre">
         <option value="" selected>All</option>
@@ -15,16 +15,16 @@
   </div>
   <div class="panel-body">
     <div class="row">
-    	<div ng-repeat="book in books | filter:genre">
+    	<div ng-repeat="player in players | filter:genre">
     		<div class="col-md-6">
     			<div class="col-md-6">
-    				<a href="#/books/details/{{book._id}}"><h4>{{book.title}}</h4></a>
-    				<p>by <em>{{book.author}}</em></p>
-    				<p>{{book.description}}</p>
-    				<a class="btn btn-primary" href="#/books/details/{{book._id}}">View Details</a>
+    				<a href="#/players/details/{{player._id}}"><h4>{{player.title}}</h4></a>
+    				<p>by <em>{{player.author}}</em></p>
+    				<p>{{player.description}}</p>
+    				<a class="btn btn-primary" href="#/players/details/{{player._id}}">View Details</a>
     			</div>
     			<div class="col-md-6">
-    				<a href="#/books/details/{{book._id}}"><img class="thumbnail" src="{{book.image_url}}"></a>
+    				<a href="#/players/details/{{player._id}}"><img class="thumbnail" src="{{player.image_url}}"></a>
     			</div>
     		</div>
     	</div>

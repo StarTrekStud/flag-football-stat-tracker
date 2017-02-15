@@ -1,0 +1,26 @@
+<a href="#/players">Go Back</a>
+<div class="panel panel-primary" ng-init="getPlayer()">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{player.title}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{{player.image_url}}">
+      </div>
+      <div class="col-md-8">
+        <ul class="list-group">
+          <li class="list-group-item">Genre: {{player.genre}}</li>
+          <li class="list-group-item">Author: {{player.author}}</li>
+          <li class="list-group-item">Publisher: {{player.publisher}}</li>
+          <li class="list-group-item">Pages: {{player.pages}}</li>
+        </ul>
+        <p>{{player.description}}</p>
+        <a target="_blank" href="{{player.buy_url}}" class="btn btn-primary">Buy on Amazon</a>
+      </div>
+    </div>
+    <div class="pull-right">
+        <a href="#/players/edit/{{player._id}}">Edit</a>  |  <a href="#" ng-click="removePlayer(player._id)">Delete</a>
+    </div>
+  </div>
+</div>
