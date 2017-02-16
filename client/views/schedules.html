@@ -16,13 +16,13 @@
     	<div ng-repeat="schedule in schedules | filter:seasons">
     		<div class="col-md-6">
     			<div class="col-md-6">
-    				<p>{{schedule.seasons}}</p>
-    				<p>{{schedule.dates}}</p>
-                    <p>{{schedule.times}}</p>
-                    <p>{{schedule.locations}}</p>
-                    <p>{{schedule.weeks}}</p>
-                    <p>{{schedule.homes}}</p>
-                    <p>{{schedule.aways}}</p>
+                    <p>Season: <em>{{schedule.seasons}}</em></p>
+                    <p>Date: <em>{{schedule.dates}}</em></p>
+                    <p>Time: <em>{{schedule.times}}</em></p>
+                    <p>Location: <em>{{schedule.locations}}</em></p>
+                    <p>Week: <em>{{schedule.weeks}}</em></p>
+                    <p>Home Team: <em>{{schedule.homes}}</em></p>
+                    <p>Away Team: <em>{{schedule.aways}}</em></p>
     				<a class="btn btn-primary" href="#/schedules/details/{{schedule._id}}">View Details</a>
     			</div>
     		</div>
