@@ -8,8 +8,9 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
 
-Play =require('./models/play');
-Player =require('./models/player')
+Play = require('./models/play');
+Player = require('./models/player')
+Schedule = require('./models/schedule')
 
 // Connect to Mongoose
 mongoose.connect('mongodb://heroku_n5zsjf7c:heroku_n5zsjf7c@ds151289.mlab.com:51289/heroku_n5zsjf7c');
