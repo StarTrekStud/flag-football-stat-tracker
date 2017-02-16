@@ -2,32 +2,33 @@ var mongoose = require('mongoose');
 
 // Schedule Schema
 var scheduleSchema = mongoose.Schema({
-	title:{
+	seasons:{
 		type: String,
 		required: true
 	},
-	genre:{
+	dates:{
+		type: String,
+        required: true
+	},
+	times:{
+		type: String,
+        required: true
+	},
+	locations:{
+		type: String,
+        required: true
+	},
+	weeks:{
+		type: String,
+        required: true
+	},
+	homes:{
 		type: String,
 		required: true
 	},
-	description:{
-		type: String
-	},
-	author:{
+	aways:{
 		type: String,
-		required: true
-	},
-	publisher:{
-		type: String
-	},
-	pages:{
-		type: String
-	},
-	image_url:{
-		type: String
-	},
-	buy_url:{
-		type: String
+        required: true
 	},
 	create_date:{
 		type: Date,

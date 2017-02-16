@@ -1,22 +1,20 @@
 <a href="#/schedules">Go Back</a>
 <div class="panel panel-primary" ng-init="getSchedule()">
   <div class="panel-heading">
-    <h3 class="panel-title">{{schedule.title}}</h3>
+    <h3 class="panel-title"></h3>
   </div>
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-4">
-        <img src="{{schedule.image_url}}">
-      </div>
       <div class="col-md-8">
         <ul class="list-group">
-          <li class="list-group-item">Genre: {{schedule.genre}}</li>
-          <li class="list-group-item">Author: {{schedule.author}}</li>
-          <li class="list-group-item">Publisher: {{schedule.publisher}}</li>
-          <li class="list-group-item">Pages: {{schedule.pages}}</li>
+          <li class="list-group-item">Season: {{schedule.seasons}}</li>
+          <li class="list-group-item">Date: {{schedule.dates}}</li>
+          <li class="list-group-item">Time: {{schedule.times}}</li>
+          <li class="list-group-item">Location: {{schedule.locations}}</li>
+          <li class="list-group-item">Week: {{schedule.weeks}}</li>
+          <li class="list-group-item">Home Team: {{schedule.homes}}</li>
+          <li class="list-group-item">Away Team: {{schedule.aways}}</li>
         </ul>
-        <p>{{schedule.description}}</p>
-        <a target="_blank" href="{{schedule.buy_url}}" class="btn btn-primary">Buy on Amazon</a>
       </div>
     </div>
     <div class="pull-right">

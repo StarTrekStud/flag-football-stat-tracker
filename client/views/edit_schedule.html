@@ -8,46 +8,33 @@
       <div class="col-md-12">
       <form ng-submit="updateSchedule()" ng-init="getSchedule()">
         <div class="form-group">
-          <label>Title</label>
-          <input type="text" class="form-control" ng-model="schedule.title" placeholder="Title">
+          <label>Season</label>
+          <input type="text" class="form-control" ng-model="schedule.seasons" placeholder="Season">
         </div>
         <div class="form-group">
-          <label>Genre</label>
-          <select ng-model="schedule.genre" class="form-control">
-            <option value="Suspense">Suspense</option>
-            <option value="Litrature">Litrature</option>
-            <option value="Romance">Romance</option>
-            <option value="Sci-Fi">Sci-Fi</option>
-            <option value="Biography">Biography</option>
-            <option value="History">History</option>
-            <option value="Other">Other</option>
-          </select>
+          <label>Date</label>
+          <input type="text" class="form-control" ng-model="schedule.dates" placeholder="Date">
         </div>
         <div class="form-group">
-          <label>Author</label>
-          <input type="text" class="form-control" ng-model="schedule.author" placeholder="Author">
+          <label>Time</label>
+          <input type="text" class="form-control" ng-model="schedule.times" placeholder="Time">
         </div>
         <div class="form-group">
-          <label>Publisher</label>
-          <input type="text" class="form-control" ng-model="schedule.publisher" placeholder="Publisher">
+          <label>Location</label>
+          <input type="text" class="form-control" ng-model="schedule.locations" placeholder="Location">
         </div>
         <div class="form-group">
-          <label>Pages</label>
-          <input type="text" class="form-control" ng-model="schedule.pages" placeholder="Pages">
+          <label>Week</label>
+          <input type="text" class="form-control" ng-model="schedule.weeks" placeholder="Week">
         </div>
         <div class="form-group">
-          <label>Description</label>
-          <textarea class="form-control" ng-model="schedule.description" placeholder="Description"></textarea>
+          <label>Home Team</label>
+          <input type="text" class="form-control" ng-model="schedule.homes" placeholder="Home Team">
         </div>
         <div class="form-group">
-          <label>Image URL</label>
-          <input type="text" class="form-control" ng-model="schedule.image_url" placeholder="Image URL">
+          <label>Away Team</label>
+          <input type="text" class="form-control" ng-model="schedule.aways" placeholder="Away Team">
         </div>
-        <div class="form-group">
-          <label>Buy URL</label>
-          <input type="text" class="form-control" ng-model="schedule.buy_url" placeholder="Buy URL">
-        </div>
-       
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
     </div>
