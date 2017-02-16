@@ -37,6 +37,22 @@ myApp.config(function($routeProvider){
 		controller:'PlayersController',
 		templateUrl: 'views/edit_player.html'
 	})
+	.when('/schedules', {
+		controller:'SchedulesController',
+		templateUrl: 'views/schedules.html'
+	})
+	.when('/schedules/details/:id',{
+		controller:'SchedulesController',
+		templateUrl: 'views/schedule_details.html'
+	})
+	.when('/schedules/add',{
+		controller:'SchedulesController',
+		templateUrl: 'views/add_schedule.html'
+	})
+	.when('/schedules/edit/:id',{
+		controller:'SchedulesController',
+		templateUrl: 'views/edit_schedule.html'
+	})
 	.otherwise({
 		redirectTo: '/'
 	});

@@ -117,6 +117,55 @@ app.delete('/api/players/:_id', function(req, res){
 	});
 });
 
+app.get('/api/schedules', function(req, res){
+	Schedule.getSchedules(function(err, schedules){
+		if(err){
+			throw err;
+		}
+		res.json(schedules);
+	});
+});
+
+app.get('/api/schedules/:_id', function(req, res){
+	Schedule.getScheduleById(req.params._id, function(err, schedule){
+		if(err){
+			throw err;
+		}
+		res.json(schedule);
+	});
+});
+
+app.post('/api/schedules', function(req, res){
+	var schedule = req.body;
+	Schedule.addSchedule(schedule, function(err, schedule){
+		if(err){
+			throw err;
+		}
+		res.json(schedule);
+	});
+});
+
+app.put('/api/schedules/:_id', function(req, res){
+	var id = req.params._id;
+	var schedule = req.body;
+	Schedule.updateSchedule(id, schedule, {}, function(err, schedule){
+		if(err){
+			throw err;
+		}
+		res.json(schedule);
+	});
+});
+
+app.delete('/api/schedules/:_id', function(req, res){
+	var id = req.params._id;
+	Schedule.removeSchedule(id, function(err, schedule){
+		if(err){
+			throw err;
+		}
+		res.json(schedule);
+	});
+});
+
 //app.listen(3000);
 //console.log('Running on port 3000...');
 

@@ -1,0 +1,33 @@
+<div class="panel panel-default" ng-init="getSchedules()">
+  <div class="panel-heading">
+    <h3 class="panel-title">Latest Schedules
+      <span class="pull-right">Filter by genre: 
+      <select ng-model="genre">
+        <option value="" selected>All</option>
+        <option value="Suspense">Suspense</option>
+        <option value="Litrature">Litrature</option>
+        <option value="Romance">Romance</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+        <option value="Biography">Biography</option>
+        <option value="History">History</option>
+        <option value="Other">Other</option>
+      </select></span></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    	<div ng-repeat="schedule in schedules | filter:genre">
+    		<div class="col-md-6">
+    			<div class="col-md-6">
+    				<a href="#/schedules/details/{{schedule._id}}"><h4>{{schedule.title}}</h4></a>
+    				<p>by <em>{{schedule.author}}</em></p>
+    				<p>{{schedule.description}}</p>
+    				<a class="btn btn-primary" href="#/schedules/details/{{schedule._id}}">View Details</a>
+    			</div>
+    			<div class="col-md-6">
+    				<a href="#/schedules/details/{{schedule._id}}"><img class="thumbnail" src="{{schedule.image_url}}"></a>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+  </div>
+</div>
