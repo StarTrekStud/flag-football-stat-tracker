@@ -1,30 +1,27 @@
 <div class="panel panel-default" ng-init="getPlayers()">
   <div class="panel-heading">
     <h3 class="panel-title">Latest Players
-      <span class="pull-right">Filter by genre: 
-      <select ng-model="genre">
+      <span class="pull-right">Filter by Player:
+      <select ng-model="full_names">
         <option value="" selected>All</option>
-        <option value="Suspense">Suspense</option>
-        <option value="Litrature">Litrature</option>
-        <option value="Romance">Romance</option>
-        <option value="Sci-Fi">Sci-Fi</option>
-        <option value="Biography">Biography</option>
-        <option value="History">History</option>
-        <option value="Other">Other</option>
+        <option value="Dave Oji">Dave Oji</option>
+        <option value="William Beltran">William Beltran</option>
       </select></span></h3>
   </div>
   <div class="panel-body">
     <div class="row">
-    	<div ng-repeat="player in players | filter:genre">
+    	<div ng-repeat="player in players | filter:full_names">
     		<div class="col-md-6">
     			<div class="col-md-6">
-    				<a href="#/players/details/{{player._id}}"><h4>{{player.title}}</h4></a>
-    				<p>by <em>{{player.author}}</em></p>
-    				<p>{{player.description}}</p>
+    				<p>Full Name: <em>{{player.full_names}}</em></p>
+                    <p>Height: <em>{{player.heights}}</em></p>
+                    <p>Weight: <em>{{player.weights}}</em></p>
+                    <p>Birth Date: <em>{{player.birth_dates}}</em></p>
+                    <p>Birth Place: <em>{{player.birth_places}}</em></p>
+                    <p>School: <em>{{player.schools}}</em></p>
+                    <p>Joined VSP: <em>{{player.joined_vsp}}</em></p>
+                    <p>Joined League: <em>{{player.joined_league}}</em></p>
     				<a class="btn btn-primary" href="#/players/details/{{player._id}}">View Details</a>
-    			</div>
-    			<div class="col-md-6">
-    				<a href="#/players/details/{{player._id}}"><img class="thumbnail" src="{{player.image_url}}"></a>
     			</div>
     		</div>
     	</div>

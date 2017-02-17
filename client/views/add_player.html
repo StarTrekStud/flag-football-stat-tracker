@@ -8,49 +8,39 @@
       <div class="col-md-12">
       <form ng-submit="addPlayer()">
         <div class="form-group">
-          <label>Title</label>
-          <input type="text" class="form-control" ng-model="player.title" placeholder="Title">
+          <label>Full Name</label>
+          <input type="text" class="form-control" ng-model="schedule.full_names" placeholder="First Last">
         </div>
         <div class="form-group">
-          <label>Genre</label>
-          <select ng-model="player.genre" class="form-control">
-            <option value="Suspense">Suspense</option>
-            <option value="Litrature">Litrature</option>
-            <option value="Romance">Romance</option>
-            <option value="Sci-Fi">Sci-Fi</option>
-            <option value="Biography">Biography</option>
-            <option value="History">History</option>
-            <option value="Other">Other</option>
-          </select>
+          <label>Height</label>
+          <input type="text" class="form-control" ng-model="schedule.dates" placeholder="FeetInches">
         </div>
         <div class="form-group">
-          <label>Author</label>
-          <input type="text" class="form-control" ng-model="player.author" placeholder="Author">
+          <label>Weight</label>
+          <input type="text" class="form-control" ng-model="schedule.weights" placeholder="Pounds">
         </div>
         <div class="form-group">
-          <label>Publisher</label>
-          <input type="text" class="form-control" ng-model="player.publisher" placeholder="Publisher">
+          <label>Birth Date</label>
+          <input type="text" class="form-control" ng-model="schedule.birth_dates" placeholder="MM/DD/YYYY">
         </div>
         <div class="form-group">
-          <label>Pages</label>
-          <input type="text" class="form-control" ng-model="player.pages" placeholder="Pages">
+          <label>Birth Place</label>
+          <input type="text" class="form-control" ng-model="schedule.birth_places" placeholder="Birth Place">
         </div>
         <div class="form-group">
-          <label>Description</label>
-          <textarea class="form-control" ng-model="player.description" placeholder="Description"></textarea>
+          <label>School</label>
+          <input type="text" class="form-control" ng-model="schedule.schools" placeholder="School">
         </div>
         <div class="form-group">
-          <label>Image URL</label>
-          <input type="text" class="form-control" ng-model="player.image_url" placeholder="Image URL">
+          <label>Joined VSP</label>
+          <input type="text" class="form-control" ng-model="schedule.joined_vsp" placeholder="MM/DD/YYYY">
         </div>
         <div class="form-group">
-          <label>Buy URL</label>
-          <input type="text" class="form-control" ng-model="player.buy_url" placeholder="Buy URL">
+          <label>Joined League</label>
+          <input type="text" class="form-control" ng-model="schedule.joined_league" placeholder="MM/DD/YYYY">
         </div>
-       
-        <button type="submit" class="btn btn-default">Submit</button>
       </form>
-    </div>
+      </div>
     </div>
   </div>
 </div>

@@ -57,14 +57,13 @@ module.exports.addSchedule = function(schedule, callback){
 module.exports.updateSchedule = function(id, schedule, options, callback){
 	var query = {_id: id};
 	var update = {
-		title: schedule.title,
-		genre: schedule.genre,
-		description: schedule.description,
-		author: schedule.author,
-		publisher: schedule.publisher,
-		pages: schedule.pages,
-		image_url: schedule.image_url,
-		buy_url: schedule.buy_url
+		seasons: schedule.seasons,
+		dates: schedule.dates,
+		times: schedule.times,
+		locations: schedule.locations,
+		weeks: schedule.weeks,
+		homes: schedule.homes,
+		aways: schedule.aways
 	}
 	Schedule.findOneAndUpdate(query, update, options, callback);
 }

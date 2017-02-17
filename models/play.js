@@ -3,19 +3,16 @@ var mongoose = require('mongoose');
 // Play Schema
 var playSchema = mongoose.Schema({
 	title:{
-		type: String,
-		required: true
+		type: String
 	},
 	genre:{
-		type: String,
-		required: true
+		type: String
 	},
 	description:{
 		type: String
 	},
 	author:{
-		type: String,
-		required: true
+		type: String
 	},
 	publisher:{
 		type: String
