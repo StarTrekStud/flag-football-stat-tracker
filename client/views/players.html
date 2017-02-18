@@ -1,19 +1,20 @@
 <div class="panel panel-default" ng-init="getPlayers()">
   <div class="panel-heading">
-    <h3 class="panel-title">Latest Players
+    <h3 class="panel-title">View Players
       <span class="pull-right">Filter by Team:
-      <select ng-model="full_names">
-        <option value="" selected>All</option>
-        <option value="The Fighting VSPs">The Fighting VSPs</option>
-        <option value="VSP Prime">VSP Prime</option>
-      </select></span></h3>
+          <select ng-model="team_names"
+                  ng-options="team.team_names as team.team_names for team in teamList">
+            <option value="">Select Team</option>
+          </select>
+      </span>
+    </h3>
   </div>
   <div class="panel-body">
     <div class="row">
-    	<div ng-repeat="player in players | filter:teams">
+    	<div ng-repeat="player in players | filter:team_names">
     		<div class="col-md-6">
     			<div class="col-md-6">
-    				<p>Team Name: <em>{{player.teams}}</em></p>
+    				<p>Team Name: <em>{{player.team_names}}</em></p>
                     <p>Full Name: <em>{{player.full_names}}</em></p>
                     <p>Position: <em>{{player.positions}}</em></p>
                     <p>Height: <em>{{player.heights}}</em></p>
