@@ -1,0 +1,20 @@
+<a href="#/results">Go Back</a>
+<div class="panel panel-primary" ng-init="getResult()">
+  <div class="panel-heading">
+    <h3 class="panel-title"></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-8">
+        <ul class="list-group">
+          <li class="list-group-item">Result: <em>{{result.result_names}}</em></li>
+          <li class="list-group-item">Offense: <em>{{result.offense}}</em></li>
+          <li class="list-group-item">Defense: <em>{{result.defense}}</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pull-right">
+        <a href="#/results/edit/{{result._id}}">Edit</a>  |  <a href="#" ng-click="removeResult(result._id)">Delete</a>
+    </div>
+  </div>
+</div>
