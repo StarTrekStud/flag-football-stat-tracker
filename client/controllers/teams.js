@@ -3,6 +3,17 @@ var myApp = angular.module('myApp');
 myApp.controller('TeamsController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('TeamsController loaded...');
 
+    $scope.teams = null;
+    $scope.teamList = [];
+
+    $http({
+            method: 'GET',
+            url: '/api/teams',
+            data: { applicationId: 3 }
+        }).success(function (response) {
+        $scope.teamList = response;
+    });
+
 	$scope.getTeams = function(){
 		$http.get('/api/teams').success(function(response){
 			$scope.teams = response;
