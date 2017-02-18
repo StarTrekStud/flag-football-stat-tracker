@@ -1,38 +1,38 @@
 var myApp = angular.module('myApp');
 
-myApp.controller('PlaysController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
-	console.log('PlaysController loaded...');
+myApp.controller('TeamsController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
+	console.log('TeamsController loaded...');
 
-	$scope.getPlays = function(){
-		$http.get('/api/plays').success(function(response){
-			$scope.plays = response;
+	$scope.getTeams = function(){
+		$http.get('/api/teams').success(function(response){
+			$scope.teams = response;
 		});
 	}
 
-	$scope.getPlay = function(){
+	$scope.getTeam = function(){
 		var id = $routeParams.id;
-		$http.get('/api/plays/'+id).success(function(response){
-			$scope.play = response;
+		$http.get('/api/teams/'+id).success(function(response){
+			$scope.team = response;
 		});
 	}
 
-	$scope.addPlay = function(){
-		console.log($scope.play);
-		$http.post('/api/plays/', $scope.play).success(function(response){
-			window.location.href='#/plays';
+	$scope.addTeam = function(){
+		console.log($scope.team);
+		$http.post('/api/teams/', $scope.team).success(function(response){
+			window.location.href='#/teams';
 		});
 	}
 
-	$scope.updatePlay = function(){
+	$scope.updateTeam = function(){
 		var id = $routeParams.id;
-		$http.put('/api/plays/'+id, $scope.play).success(function(response){
-			window.location.href='#/plays';
+		$http.put('/api/teams/'+id, $scope.team).success(function(response){
+			window.location.href='#/teams';
 		});
 	}
 
-	$scope.removePlay = function(id){
-		$http.delete('/api/plays/'+id).success(function(response){
-			window.location.href='#/plays';
+	$scope.removeTeam = function(id){
+		$http.delete('/api/teams/'+id).success(function(response){
+			window.location.href='#/teams';
 		});
 	}
 }]);
