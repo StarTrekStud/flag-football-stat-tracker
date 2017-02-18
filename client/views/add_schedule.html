@@ -29,7 +29,10 @@
         </div>
         <div class="form-group">
           <label>Home Team</label>
-          <input type="text" class="form-control" ng-model="schedule.homes" placeholder="Home Team">
+          <select ng-model="schedule.homes"
+                  ng-options="team.team_names as team.team_names for team in teamList">
+            <option value="">Select Team</option>
+          </select>>
         </div>
         <div class="form-group">
           <label>Away Team</label>
