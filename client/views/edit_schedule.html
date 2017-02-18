@@ -13,7 +13,9 @@
         </div>
         <div class="form-group">
           <label>Date</label>
-          <input type="text" class="form-control" ng-model="schedule.dates" placeholder="Date">
+          <input type="date"
+                 ng-model="schedule.dates"
+                 value="{{ date | date: 'MM-dd-yyyy' }}" />
         </div>
         <div class="form-group">
           <label>Time</label>
