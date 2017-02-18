@@ -2,29 +2,21 @@ var mongoose = require('mongoose');
 
 // Play Schema
 var playSchema = mongoose.Schema({
-	title:{
-		type: String
+	schedules:{
+		type: String,
+        required: true
 	},
-	genre:{
-		type: String
+	first_players:{
+		type: String,
+        required: true
 	},
-	description:{
-		type: String
+	second_players:{
+		type: String,
+        required: true
 	},
-	author:{
-		type: String
-	},
-	publisher:{
-		type: String
-	},
-	pages:{
-		type: String
-	},
-	image_url:{
-		type: String
-	},
-	buy_url:{
-		type: String
+	results:{
+		type: String,
+        required: true
 	},
 	create_date:{
 		type: Date,
@@ -53,14 +45,10 @@ module.exports.addPlay = function(play, callback){
 module.exports.updatePlay = function(id, play, options, callback){
 	var query = {_id: id};
 	var update = {
-		title: play.title,
-		genre: play.genre,
-		description: play.description,
-		author: play.author,
-		publisher: play.publisher,
-		pages: play.pages,
-		image_url: play.image_url,
-		buy_url: play.buy_url
+		schedules: play.schedules,
+		first_players: play.first_players,
+		second_players: play.second_players,
+		results: play.results
 	}
 	Play.findOneAndUpdate(query, update, options, callback);
 }

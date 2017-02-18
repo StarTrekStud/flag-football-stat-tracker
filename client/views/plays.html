@@ -1,30 +1,23 @@
 <div class="panel panel-default" ng-init="getPlays()">
   <div class="panel-heading">
     <h3 class="panel-title">Latest Plays
-      <span class="pull-right">Filter by genre: 
+      <span class="pull-right">Filter by Result:
       <select ng-model="genre">
         <option value="" selected>All</option>
-        <option value="Suspense">Suspense</option>
-        <option value="Litrature">Litrature</option>
-        <option value="Romance">Romance</option>
-        <option value="Sci-Fi">Sci-Fi</option>
-        <option value="Biography">Biography</option>
-        <option value="History">History</option>
-        <option value="Other">Other</option>
+        <option value="Catch">Catch</option>
+        <option value="Drop">Drop</option>
       </select></span></h3>
   </div>
   <div class="panel-body">
     <div class="row">
-    	<div ng-repeat="play in plays | filter:genre">
+    	<div ng-repeat="play in plays | filter:results">
     		<div class="col-md-6">
     			<div class="col-md-6">
-    				<a href="#/plays/details/{{play._id}}"><h4>{{play.title}}</h4></a>
-    				<p>by <em>{{play.author}}</em></p>
-    				<p>{{play.description}}</p>
+                    <p>Schedule: <em>{{play.schedules}}</em></p>
+    				<p>First Player: <em>{{play.first_players}}</em></p>
+                    <p>Second Player: <em>{{play.second_players}}</em></p>
+                    <p>Result <em>{{play.results}}</em></p>
     				<a class="btn btn-primary" href="#/plays/details/{{play._id}}">View Details</a>
-    			</div>
-    			<div class="col-md-6">
-    				<a href="#/plays/details/{{play._id}}"><img class="thumbnail" src="{{play.image_url}}"></a>
     			</div>
     		</div>
     	</div>

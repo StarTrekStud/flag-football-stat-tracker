@@ -2,7 +2,15 @@ var mongoose = require('mongoose');
 
 // Player Schema
 var playerSchema = mongoose.Schema({
+	teams:{
+		type: String,
+        required: true
+	},
 	full_names:{
+		type: String,
+        required: true
+	},
+	positions:{
 		type: String,
         required: true
 	},

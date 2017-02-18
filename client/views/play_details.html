@@ -1,22 +1,17 @@
 <a href="#/plays">Go Back</a>
 <div class="panel panel-primary" ng-init="getPlay()">
   <div class="panel-heading">
-    <h3 class="panel-title">{{play.title}}</h3>
+    <h3 class="panel-title"></h3>
   </div>
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-4">
-        <img src="{{play.image_url}}">
-      </div>
       <div class="col-md-8">
         <ul class="list-group">
-          <li class="list-group-item">Genre: {{play.genre}}</li>
-          <li class="list-group-item">Author: {{play.author}}</li>
-          <li class="list-group-item">Publisher: {{play.publisher}}</li>
-          <li class="list-group-item">Pages: {{play.pages}}</li>
+          <li class="list-group-item">Schedule: <em>{{play.schedules}}</em></li>
+          <li class="list-group-item">First Player: <em>{{play.first_players}}</em></li>
+          <li class="list-group-item">Second Player: <em>{{play.second_players}}</em></li>
+          <li class="list-group-item">Result: <em>{{play.results}}</em></li>
         </ul>
-        <p>{{play.description}}</p>
-        <a target="_blank" href="{{play.buy_url}}" class="btn btn-primary">Buy on Amazon</a>
       </div>
     </div>
     <div class="pull-right">
