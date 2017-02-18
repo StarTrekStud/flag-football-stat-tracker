@@ -9,7 +9,10 @@
                 <form ng-submit="addPlayer()">
                     <div class="form-group">
                         <label>Team Name</label>
-                        <input type="text" class="form-control" ng-model="player.team_names" placeholder="Team Name">
+                        <select ng-model="player.team_names"
+                                ng-options="team.team_names as team.team_names for team in teamList">
+                            <option value="">Select Team</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Full Name</label>
