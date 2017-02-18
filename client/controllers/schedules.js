@@ -4,14 +4,14 @@ myApp.controller('SchedulesController', ['$scope', '$http', '$location', '$route
 	console.log('SchedulesController loaded...');
 
     $scope.teams = null;
-    $scope.testAccounts = [];
+    $scope.teamList = [];
 
     $http({
             method: 'GET',
             url: '/api/teams',
             data: { applicationId: 3 }
-        }).success(function (result) {
-        $scope.testAccounts = result;
+        }).success(function (response) {
+        $scope.teamList = response;
     });
 
 	$scope.getSchedules = function(){
