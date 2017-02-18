@@ -33,9 +33,8 @@
         </div>
         <div class="form-group">
           <label>Away Team</label>
-          <select ng-model="teams"
-                  ng-options="team.Id as team.team_names for team in teamNames">
-            <option value="">Select Team</option>
+          <select name="teams" ng-model="teams">
+            <option ng-repeat="team in teams" value="{{team.id}}">{{team.name}}</option>
           </select>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
