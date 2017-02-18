@@ -33,7 +33,10 @@
         </div>
         <div class="form-group">
           <label>Away Team</label>
-          <input type="text" class="form-control" ng-model="schedule.aways" placeholder="Away Team">
+          <select ng-model="teams"
+                  ng-options="team.Id as team.team_names for team in teamNames">
+            <option value="">Select Team</option>
+          </select>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
