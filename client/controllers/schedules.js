@@ -3,6 +3,18 @@ var myApp = angular.module('myApp');
 myApp.controller('SchedulesController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('SchedulesController loaded...');
 
+    $scope.selectedTeam = null;
+    $scope.teamNames = [];
+
+    $http({
+        method: 'GET',
+        url: '/api/teams',
+        data: { applicationId: 1 }
+        }).success(function (response) ) {
+        $scope.teamNames = response;
+        }
+    })
+
 	$scope.getSchedules = function(){
 		$http.get('/api/schedules').success(function(response){
 			$scope.schedules = response;
