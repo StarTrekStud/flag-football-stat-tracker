@@ -1,0 +1,25 @@
+<div class="panel panel-default" ng-init="getTeams()">
+  <div class="panel-heading">
+    <h3 class="panel-title">Latest Teams
+      <span class="pull-right">Filter by Team:
+      <select ng-model="genre">
+        <option value="" selected>All</option>
+        <option value="Catch">Catch</option>
+        <option value="Drop">Drop</option>
+      </select></span></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    	<div ng-repeat="team in teams | filter:team_names">
+    		<div class="col-md-6">
+    			<div class="col-md-6">
+                    <p>Team: <em>{{team.team_names}}</em></p>
+    				<p>Colors: <em>{{team.team_colors}}</em></p>
+                    <p>Mascot: <em>{{team.team_mascots}}</em></p>
+    				<a class="btn btn-primary" href="#/teams/details/{{team._id}}">View Details</a>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+  </div>
+</div>

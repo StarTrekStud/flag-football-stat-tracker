@@ -8,9 +8,11 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
 
-Play = require('./models/play');
-Player = require('./models/player')
+Team = require('./models/team');
 Schedule = require('./models/schedule')
+Player = require('./models/player')
+Play = require('./models/play');
+Result = require('./models/result');
 
 // Connect to Mongoose
 mongoose.connect('mongodb://heroku_n5zsjf7c:heroku_n5zsjf7c@ds151289.mlab.com:51289/heroku_n5zsjf7c');
@@ -20,52 +22,101 @@ app.get('/', function(req, res){
 	res.send('Please use /api/plays');
 });
 
-app.get('/api/plays', function(req, res){
-	Play.getPlays(function(err, plays){
+app.get('/api/teams', function(req, res){
+	Team.getTeams(function(err, teams){
 		if(err){
 			throw err;
 		}
-		res.json(plays);
+		res.json(teams);
 	});
 });
 
-app.get('/api/plays/:_id', function(req, res){
-	Play.getPlayById(req.params._id, function(err, play){
+app.get('/api/teams/:_id', function(req, res){
+	Team.getTeamById(req.params._id, function(err, team){
 		if(err){
 			throw err;
 		}
-		res.json(play);
+		res.json(team);
 	});
 });
 
-app.post('/api/plays', function(req, res){
-	var play = req.body;
-	Play.addPlay(play, function(err, play){
+app.post('/api/teams', function(req, res){
+	var team = req.body;
+	Team.addTeam(team, function(err, team){
 		if(err){
 			throw err;
 		}
-		res.json(play);
+		res.json(team);
 	});
 });
 
-app.put('/api/plays/:_id', function(req, res){
+app.put('/api/teams/:_id', function(req, res){
 	var id = req.params._id;
-	var play = req.body;
-	Play.updatePlay(id, play, {}, function(err, play){
+	var team = req.body;
+	Team.updateTeam(id, team, {}, function(err, team){
 		if(err){
 			throw err;
 		}
-		res.json(play);
+		res.json(team);
 	});
 });
 
-app.delete('/api/plays/:_id', function(req, res){
+app.delete('/api/teams/:_id', function(req, res){
 	var id = req.params._id;
-	Play.removePlay(id, function(err, play){
+	Team.removeTeam(id, function(err, team){
 		if(err){
 			throw err;
 		}
-		res.json(play);
+		res.json(team);
+	});
+});
+
+app.get('/api/schedules', function(req, res){
+	Schedule.getSchedules(function(err, schedules){
+		if(err){
+			throw err;
+		}
+		res.json(schedules);
+	});
+});
+
+app.get('/api/schedules/:_id', function(req, res){
+	Schedule.getScheduleById(req.params._id, function(err, schedule){
+		if(err){
+			throw err;
+		}
+		res.json(schedule);
+	});
+});
+
+app.post('/api/schedules', function(req, res){
+	var schedule = req.body;
+	Schedule.addSchedule(schedule, function(err, schedule){
+		if(err){
+			throw err;
+		}
+		res.json(schedule);
+	});
+});
+
+app.put('/api/schedules/:_id', function(req, res){
+	var id = req.params._id;
+	var schedule = req.body;
+	Schedule.updateSchedule(id, schedule, {}, function(err, schedule){
+		if(err){
+			throw err;
+		}
+		res.json(schedule);
+	});
+});
+
+app.delete('/api/schedules/:_id', function(req, res){
+	var id = req.params._id;
+	Schedule.removeSchedule(id, function(err, schedule){
+		if(err){
+			throw err;
+		}
+		res.json(schedule);
 	});
 });
 
@@ -118,52 +169,101 @@ app.delete('/api/players/:_id', function(req, res){
 	});
 });
 
-app.get('/api/schedules', function(req, res){
-	Schedule.getSchedules(function(err, schedules){
+app.get('/api/plays', function(req, res){
+	Play.getPlays(function(err, plays){
 		if(err){
 			throw err;
 		}
-		res.json(schedules);
+		res.json(plays);
 	});
 });
 
-app.get('/api/schedules/:_id', function(req, res){
-	Schedule.getScheduleById(req.params._id, function(err, schedule){
+app.get('/api/plays/:_id', function(req, res){
+	Play.getPlayById(req.params._id, function(err, play){
 		if(err){
 			throw err;
 		}
-		res.json(schedule);
+		res.json(play);
 	});
 });
 
-app.post('/api/schedules', function(req, res){
-	var schedule = req.body;
-	Schedule.addSchedule(schedule, function(err, schedule){
+app.post('/api/plays', function(req, res){
+	var play = req.body;
+	Play.addPlay(play, function(err, play){
 		if(err){
 			throw err;
 		}
-		res.json(schedule);
+		res.json(play);
 	});
 });
 
-app.put('/api/schedules/:_id', function(req, res){
+app.put('/api/plays/:_id', function(req, res){
 	var id = req.params._id;
-	var schedule = req.body;
-	Schedule.updateSchedule(id, schedule, {}, function(err, schedule){
+	var play = req.body;
+	Play.updatePlay(id, play, {}, function(err, play){
 		if(err){
 			throw err;
 		}
-		res.json(schedule);
+		res.json(play);
 	});
 });
 
-app.delete('/api/schedules/:_id', function(req, res){
+app.delete('/api/plays/:_id', function(req, res){
 	var id = req.params._id;
-	Schedule.removeSchedule(id, function(err, schedule){
+	Play.removePlay(id, function(err, play){
 		if(err){
 			throw err;
 		}
-		res.json(schedule);
+		res.json(play);
+	});
+});
+
+app.get('/api/results', function(req, res){
+	Result.getResults(function(err, results){
+		if(err){
+			throw err;
+		}
+		res.json(results);
+	});
+});
+
+app.get('/api/results/:_id', function(req, res){
+	Result.getResultById(req.params._id, function(err, result){
+		if(err){
+			throw err;
+		}
+		res.json(result);
+	});
+});
+
+app.post('/api/results', function(req, res){
+	var result = req.body;
+	Result.addResult(result, function(err, result){
+		if(err){
+			throw err;
+		}
+		res.json(result);
+	});
+});
+
+app.put('/api/results/:_id', function(req, res){
+	var id = req.params._id;
+	var result = req.body;
+	Result.updateResult(id, result, {}, function(err, result){
+		if(err){
+			throw err;
+		}
+		res.json(result);
+	});
+});
+
+app.delete('/api/results/:_id', function(req, res){
+	var id = req.params._id;
+	Result.removeResult(id, function(err, result){
+		if(err){
+			throw err;
+		}
+		res.json(result);
 	});
 });
 

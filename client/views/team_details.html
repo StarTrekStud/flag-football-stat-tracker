@@ -1,0 +1,20 @@
+<a href="#/teams">Go Back</a>
+<div class="panel panel-primary" ng-init="getTeam()">
+  <div class="panel-heading">
+    <h3 class="panel-title"></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-8">
+        <ul class="list-group">
+          <li class="list-group-item">Team: <em>{{team.team_names}}</em></li>
+          <li class="list-group-item">Colors: <em>{{team.team_colors}}</em></li>
+          <li class="list-group-item">Mascot: <em>{{team.team_mascots}}</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pull-right">
+        <a href="#/teams/edit/{{team._id}}">Edit</a>  |  <a href="#" ng-click="removeTeam(team._id)">Delete</a>
+    </div>
+  </div>
+</div>
