@@ -9,7 +9,7 @@ myApp.controller('SchedulesController', ['$scope', '$http', '$location', '$route
     $http({
         method: 'GET',
         url: '/api/teams',
-        data: { applicationId: 1 }
+        data: { applicationId: 3 }
         }).success(function (response) ) {
         $scope.teamNames = response;
         }
