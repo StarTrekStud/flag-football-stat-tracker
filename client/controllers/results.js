@@ -3,17 +3,6 @@ var myApp = angular.module('myApp');
 myApp.controller('ResultsController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('ResultsController loaded...');
 
-    $scope.results = null;
-    $scope.resultList = [];
-
-    $http({
-            method: 'GET',
-            url: '/api/results',
-            data: { applicationId: 3 }
-        }).success(function (response) {
-        $scope.resultList = response;
-    });
-
 	$scope.getResults = function(){
 		$http.get('/api/results').success(function(response){
 			$scope.results = response;

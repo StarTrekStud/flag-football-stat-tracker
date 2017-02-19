@@ -1,10 +1,10 @@
 <div class="panel panel-default" ng-init="getPlays()">
   <div class="panel-heading">
     <h3 class="panel-title">View Plays
-        <span class="pull-right">Filter by Schedule:
+        <span class="pull-right">Filter by Game:
           <select ng-model="schedules"
                   ng-options="schedule.seasons + ' - ' + schedule.dates + ' - ' + schedule.times as schedule.seasons + ' - ' + schedule.dates + ' - ' + schedule.times for schedule in scheduleList">
-              <option value="" selected>Select Result</option>
+              <option value="" selected>Select Game</option>
           </select>
       </span>
     </h3>
