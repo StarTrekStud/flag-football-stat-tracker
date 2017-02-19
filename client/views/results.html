@@ -10,7 +10,8 @@
   </div>
   <div class="panel-body">
       <div ng-repeat="result in results | filter:result_names">
-          <a class="btn btn-primary" href="#/results/details/{{result._id}}"><br>Result: {{result.result_names}} | Offense: {{result.offense}} | Defense: {{result.defense}}</a>
+          <br>
+          <a class="btn btn-primary" href="#/results/details/{{result._id}}"><br>Result: {{result.result_names}} | Offense: {{result.offense}} | Defense: {{result.defense}}<br></a>
       </div>
   </div>
 </div>
