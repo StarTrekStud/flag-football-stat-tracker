@@ -35,6 +35,15 @@
             <option value="">Select Result</option>
           </select>
         </div>
+        <div class="form-group">
+          <label data-ng-repeat="result in resultList">
+            <input
+                    type="radio"
+                    value="{{result}}"
+                    ng-model="play.results" />
+            {{result}}
+          </label>
+        </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
     </div>
