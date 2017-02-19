@@ -4,7 +4,8 @@
       <span class="pull-right">Filter by Season:
           <select ng-model="seasons"
                   ng-options="schedule.seasons as schedule.seasons for schedule in scheduleList">
-            <option value="">Select Season</option>
+              <option value="">Select Season</option>
+              <option value="" selected>All</option>
           </select>
       </span>
     </h3>

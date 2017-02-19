@@ -4,7 +4,8 @@
         <span class="pull-right">Filter by Schedule:
           <select ng-model="plays"
                   ng-options="play.schedules as play.schedules for play in playList">
-            <option value="">Select Result</option>
+              <option value="">Select Result</option>
+              <option value="" selected>All</option>
           </select>
       </span>
     </h3>
