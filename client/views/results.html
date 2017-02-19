@@ -1,20 +1,16 @@
 <div class="panel panel-default" ng-init="getResults()">
   <div class="panel-heading">
     <h3 class="panel-title">View Results
-      <span class="pull-right">Filter by Result:
-      <select ng-model="result_names">
-        <option value="" selected>All</option>
-      </select>
-      </span>
+        <span class="pull-right">Filter by Result:
+            <select ng-model="result_names">
+                <option value="" selected>All</option>
+            </select>
+        </span>
     </h3>
   </div>
   <div class="panel-body">
-    <div class="row">
-    	<div ng-repeat="result in results | filter:result_names">
-    		<div class="col-md-6">
-                <a class="btn btn-primary" href="#/results/details/{{result._id}}">Result: {{result.result_names}} | Offense: {{result.offense}} | Defense: {{result.defense}}</a>
-    		</div>
-    	</div>
-    </div>
+      <div ng-repeat="result in results | filter:result_names">
+          <a class="btn btn-primary" href="#/results/details/{{result._id}}">Result: {{result.result_names}} | Offense: {{result.offense}} | Defense: {{result.defense}}</a>
+      </div>
   </div>
 </div>
