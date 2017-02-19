@@ -16,17 +16,23 @@
         </div>
         <div class="form-group">
           <label>First Player</label>
-          <select ng-model="play.first_players"
-                  ng-options="player.full_names as player.full_names for player in playerList">
-            <option value="">Select Player</option>
-          </select>
+          <label data-ng-repeat="player in playerList">
+            <input
+                    type="radio"
+                    value="{{player.full_names}}"
+                    ng-model="play.first_players" />
+            {{player.full_names}}
+          </label>
         </div>
         <div class="form-group">
           <label>Second Player</label>
-          <select ng-model="play.second_players"
-                  ng-options="player.full_names as player.full_names for player in playerList">
-            <option value="">Select Player</option>
-          </select>
+          <label data-ng-repeat="player in playerList">
+            <input
+                    type="radio"
+                    value="{{player.full_names}}"
+                    ng-model="play.second_players" />
+            {{player.full_names}}
+          </label>
         </div>
         <div class="form-group">
           <label>Result</label>
