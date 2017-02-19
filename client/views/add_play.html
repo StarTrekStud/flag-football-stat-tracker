@@ -9,7 +9,10 @@
       <form ng-submit="addPlay()">
         <div class="form-group">
           <label>Schedule</label>
-          <input type="text" class="form-control" ng-model="play.schedules" placeholder="Schedule">
+          <select ng-model="play.schedules"
+                  ng-options="schedule._id as schedule.seasons + ' - ' + schedule.dates + ' - ' + schedule.times for schedule in scheduleList">
+            <option value="">Select Team</option>
+          </select>
         </div>
         <div class="form-group">
           <label>First Player</label>

@@ -1,16 +1,17 @@
 <div class="panel panel-default" ng-init="getPlays()">
   <div class="panel-heading">
-    <h3 class="panel-title">Latest Plays
-      <span class="pull-right">Filter by Result:
-      <select ng-model="results">
-        <option value="" selected>All</option>
-        <option value="Catch">Catch</option>
-        <option value="Drop">Drop</option>
-      </select></span></h3>
+    <h3 class="panel-title">View Plays
+        <span class="pull-right">Filter by Schedule:
+          <select ng-model="plays"
+                  ng-options="play.schedules as play.schedules for play in playList">
+            <option value="">Select Result</option>
+          </select>
+      </span>
+    </h3>
   </div>
   <div class="panel-body">
     <div class="row">
-    	<div ng-repeat="play in plays | filter:results">
+    	<div ng-repeat="play in plays | filter:schedules">
     		<div class="col-md-6">
     			<div class="col-md-6">
                     <p>Schedule: <em>{{play.schedules}}</em></p>
