@@ -19,7 +19,7 @@ var scheduleSchema = mongoose.Schema({
         required: true
 	},
 	weeks:{
-		type: String,
+		type: Number,
         required: true
 	},
 	homes:{

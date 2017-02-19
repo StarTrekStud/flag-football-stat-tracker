@@ -15,11 +15,11 @@ var playerSchema = mongoose.Schema({
         required: true
 	},
 	heights:{
-		type: String,
+		type: Number,
         required: true
 	},
 	weights:{
-		type: String,
+		type: Number,
         required: true
 	},
 	birth_dates:{
