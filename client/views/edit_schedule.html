@@ -19,7 +19,8 @@
         </div>
         <div class="form-group">
           <label>Time</label>
-          <input type="text" class="form-control" ng-model="schedule.times" placeholder="Time">
+          <input type="time" id="times" name="times" ng-model="schedule.times"
+                 placeholder="HH:mm" min="19:00:00" max="21:00:00" required />
         </div>
         <div class="form-group">
           <label>Location</label>
@@ -27,7 +28,7 @@
         </div>
         <div class="form-group">
           <label>Week</label>
-          <input type="text" class="form-control" ng-model="schedule.weeks" placeholder="Week">
+          <input type="number" class="form-control" ng-model="schedule.weeks" placeholder="Week">
         </div>
         <div class="form-group">
           <label>Home Team</label>
