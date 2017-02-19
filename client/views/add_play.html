@@ -5,7 +5,7 @@
   </div>
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-10">
           <form ng-submit="addPlay()">
             <div class="form-group">
               <label>Schedule</label>
@@ -15,7 +15,8 @@
                 <option value="">Select Game</option>
               </select>
             </div>
-            <div class="col-sm-4">
+              <button type="submit" class="btn btn-default">Submit</button>
+            <div class="col-sm-3">
               <div class="form-group">
                 <label>First Player</label>
                 <label data-ng-repeat="player in playerList">
@@ -27,7 +28,7 @@
                 </label>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
               <div class="form-group">
                 <label>Second Player</label>
                 <label data-ng-repeat="player in playerList">
@@ -39,7 +40,7 @@
                 </label>
               </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
               <div class="form-group">
                 <label>Result</label>
                   <div class="radio">
@@ -53,9 +54,7 @@
                   </div>
               </div>
             </div>
-            <div class="col-sm-1">
-              <button type="submit" class="btn btn-default">Submit</button>
-            </div>
+
           </form>
         </div>
     </div>
