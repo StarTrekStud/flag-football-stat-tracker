@@ -11,20 +11,29 @@
           <label>Schedule</label>
           <select ng-model="play.schedules"
                   ng-options="schedule._id as schedule.seasons + ' - ' + schedule.dates + ' - ' + schedule.times for schedule in scheduleList">
-            <option value="">Select Team</option>
+            <option value="">Select Game</option>
           </select>
         </div>
         <div class="form-group">
           <label>First Player</label>
-          <input type="text" class="form-control" ng-model="play.first_players" placeholder="Name">
+          <select ng-model="play.first_players"
+                  ng-options="player.full_names as player.full_names for player in playerList">
+            <option value="">Select Player</option>
+          </select>
         </div>
         <div class="form-group">
           <label>Second Player</label>
-          <input type="text" class="form-control" ng-model="play.second_players" placeholder="Name">
+          <select ng-model="play.second_players"
+                  ng-options="player.full_names as player.full_names for player in playerList">
+            <option value="">Select Player</option>
+          </select>
         </div>
         <div class="form-group">
           <label>Result</label>
-          <input type="text" class="form-control" ng-model="play.results" placeholder="Result">
+          <select ng-model="play.results"
+                  ng-options="result.result_names as result.result_names for result in resultList">
+            <option value="">Select Result</option>
+          </select>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>

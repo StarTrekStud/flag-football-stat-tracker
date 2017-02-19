@@ -3,8 +3,19 @@ var myApp = angular.module('myApp');
 myApp.controller('PlaysController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('PlaysController loaded...');
 
-    $scope.schedules = null;
-    $scope.scheduleList = [];
+    $scope.results = null;
+    $scope.resultList = [];
+
+    $http({
+            method: 'GET',
+            url: '/api/results',
+            data: { applicationId: 3 }
+        }).success(function (response) {
+        $scope.resultList = response;
+    });
+
+    $scope.results = null;
+    $scope.resultList = [];
 
     $http({
             method: 'GET',
