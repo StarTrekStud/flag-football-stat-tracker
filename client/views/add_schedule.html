@@ -11,25 +11,24 @@
           <label>Season</label>
           <input type="text" class="form-control" ng-model="schedule.seasons" placeholder="Season">
         </div>
-          <div class="form-group">
-              <label>Date</label>
-              <input type="date"
-                     ng-model="schedule.dates"
-                     value="{{ date | date: 'yyyy-MM-dd' }}" />
-          </div>
-          <div class="form-group">
-              <label>Time</label>
-              <input type="time"
-                     ng-model="schedule.times"
-                     value="{{ time | time: 'HH:mm' }}" />
-          </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date"
+                 ng-model="schedule.dates"
+                 value="{{ date | date: 'MM-dd-yyyy' }}" />
+        </div>
+        <div class="form-group">
+          <label>Time</label>
+          <input type="time" id="times" name="times" ng-model="schedule.times"
+                 placeholder="HH:mm" min="19:00:00" max="21:00:00" required />
+        </div>
         <div class="form-group">
           <label>Location</label>
           <input type="text" class="form-control" ng-model="schedule.locations" placeholder="Location">
         </div>
         <div class="form-group">
-          <label>Week #</label>
-          <input type="number" class="form-control" ng-model="schedule.weeks" placeholder="#">
+          <label>Week</label>
+          <input type="number" class="form-control" ng-model="schedule.weeks" placeholder="Week#">
         </div>
         <div class="form-group">
           <label>Home Team</label>
