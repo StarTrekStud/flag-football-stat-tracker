@@ -3,19 +3,8 @@ var myApp = angular.module('myApp');
 myApp.controller('PlayersController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('PlayersController loaded...');
 
-    $scope.players = null;
-    $scope.playerList = [];
-
-    $http({
-            method: 'GET',
-            url: '/api/players',
-            data: { applicationId: 3 }
-        }).success(function (response) {
-        $scope.playerList = response;
-    });
-
-    $scope.players = null;
-    $scope.playerList = [];
+    $scope.teams = null;
+    $scope.teamList = [];
 
     $http({
             method: 'GET',
