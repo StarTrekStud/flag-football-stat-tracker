@@ -12,12 +12,7 @@
     <div class="row">
     	<div ng-repeat="result in results | filter:result_names">
     		<div class="col-md-6">
-    			<div class="col-md-6">
-                    <p>Result: <em>{{result.result_names}}</em></p>
-    				<p>Offense: <em>{{result.offense}}</em></p>
-                    <p>Defense: <em>{{result.defense}}</em></p>
-    				<a class="btn btn-primary" href="#/results/details/{{result._id}}">View Details</a>
-    			</div>
+                <a class="btn btn-primary" href="#/results/details/{{result._id}}">Result: {{result.result_names}} | Offense: {{result.offense}} | Defense: {{result.defense}}</a>
     		</div>
     	</div>
     </div>
