@@ -30,18 +30,12 @@
         </div>
         <div class="form-group">
           <label>Result</label>
-          <select ng-model="play.results"
-                  ng-options="result.result_names as result.result_names for result in resultList">
-            <option value="">Select Result</option>
-          </select>
-        </div>
-        <div class="form-group">
           <label data-ng-repeat="result in resultList">
             <input
                     type="radio"
-                    value="{{result}}"
+                    value="{{result.result_names}}"
                     ng-model="play.results" />
-            {{result}}
+            {{result.result_names}}
           </label>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
