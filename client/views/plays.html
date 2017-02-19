@@ -2,8 +2,8 @@
   <div class="panel-heading">
     <h3 class="panel-title">View Plays
         <span class="pull-right">Filter by Schedule:
-          <select ng-model="plays"
-                  ng-options="play.schedules as play.schedules for play in playList">
+          <select ng-model="schedules"
+                  ng-options="schedule.seasons + ' - ' + schedule.dates + ' - ' + schedule.times as schedule.seasons + ' - ' + schedule.dates + ' - ' + schedule.times for schedule in scheduleList">
               <option value="" selected>Select Result</option>
           </select>
       </span>
