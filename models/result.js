@@ -7,11 +7,11 @@ var resultSchema = mongoose.Schema({
         required: true
 	},
 	offense:{
-		type: Boolean,
+		type: String,
         required: true
 	},
 	defense:{
-		type: Boolean,
+		type: String,
         required: true
 	},
 	create_date:{
