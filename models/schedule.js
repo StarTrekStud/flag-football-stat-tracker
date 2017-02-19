@@ -6,11 +6,7 @@ var scheduleSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	dates:{
-		type: String,
-        required: true
-	},
-	times:{
+	date_times:{
 		type: String,
         required: true
 	},
@@ -58,8 +54,7 @@ module.exports.updateSchedule = function(id, schedule, options, callback){
 	var query = {_id: id};
 	var update = {
 		seasons: schedule.seasons,
-		dates: schedule.dates,
-		times: schedule.times,
+		date_times: schedule.date_times,
 		locations: schedule.locations,
 		weeks: schedule.weeks,
 		homes: schedule.homes,
