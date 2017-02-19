@@ -11,14 +11,18 @@
           <label>Season</label>
           <input type="text" class="form-control" ng-model="schedule.seasons" placeholder="Season">
         </div>
-        <div class="form-group">
-          <label>Date</label>
-          <input type="date" datetime="MM-dd-yyyy" ng-model="schedule.date_times">
-        </div>
-        <div class="form-group">
-          <label>Time</label>
-          <input type="time" datetime="HH:mm" ng-model="schedule.date_times">
-        </div>
+          <div class="form-group">
+              <label>Date</label>
+              <input type="date"
+                     ng-model="schedule.dates"
+                     value="{{ date | date: 'yyyy-MM-dd' }}" />
+          </div>
+          <div class="form-group">
+              <label>Time</label>
+              <input type="time"
+                     ng-model="schedule.times"
+                     value="{{ time | time: 'HH:mm' }}" />
+          </div>
         <div class="form-group">
           <label>Location</label>
           <input type="text" class="form-control" ng-model="schedule.locations" placeholder="Location">
