@@ -13,11 +13,33 @@
         </div>
         <div class="form-group">
           <label>Offense</label>
-          <input type="text" class="form-control" ng-model="result.offense" placeholder="Offense">
+          <div class="radio">
+            <label>
+              <input type="radio" ng-value="true" ng-model="result.offense">
+              true
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" ng-value="false" ng-model="result.offense">
+              false
+            </label>
+          </div>
         </div>
         <div class="form-group">
           <label>Defense</label>
-          <input type="text" class="form-control" ng-model="result.defense" placeholder="Defense">
+          <div class="radio">
+            <label>
+              <input type="radio" ng-value="true" ng-model="result.defense">
+              true
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" ng-value="false"" ng-model="result.defense">
+              false
+            </label>
+          </div>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
