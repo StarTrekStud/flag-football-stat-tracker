@@ -3,10 +3,9 @@ var myApp = angular.module('myApp');
 myApp.controller('PlaysController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('PlaysController loaded...');
 
-    $scope.uncheck = function (event) {
-        if ($scope.checked == event.target.value)
-            $scope.checked = false
-    }
+    $('input[type="checkbox"]').on('change', function() {
+       $(this).siblings('input[type="checkbox"]').not(this).prop('checked', false);
+    });
 
     $scope.schedules = null;
     $scope.scheduleList = [];

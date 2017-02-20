@@ -16,13 +16,16 @@
             <div class="col-sm-3">
               <div class="form-group">
                   <label>First Player</label>
-                  <ul>
-                      <li ng-repeat="player in playerList">
-                          <label>{{player.full_names}}
-                              <input type="checkbox" ng-model="play.first_players" value="{{player.full_names}}" required />
-                          </label>
-                      </li>
-                  </ul>
+                  <div>
+                      <span>Group 1:</span>
+                      <ul>
+                          <li ng-repeat="player in playerList">
+                              <label>{{player.full_names}}
+                                  <input type="checkbox" class="group1" ng-model="play.first_players" value="{{player.full_names}}" required />
+                              </label>
+                          </li>
+                      </ul>
+                  </div>
               </div>
             </div>
             <div class="col-sm-3">
@@ -39,14 +42,10 @@
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                  <label>Result</label>
-                  <ul>
-                      <li ng-repeat="result in resultList">
-                          <label>{{result.result_names}}
-                              <input type="checkbox" ng-model="play.result_names" value="{{result.result_names}}" required />
-                          </label>
-                      </li>
-                  </ul>
+                <label>Result</label>
+                  <select ng-model="play.results" ng-options="result.result_names as result.result_names for result in resultList">
+                      <option value="">Select Result</option>
+                  </select>
               </div>
             </div>
               <div class="col-sm-1">
