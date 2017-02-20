@@ -16,7 +16,7 @@
             <div class="col-sm-3">
               <div class="form-group">
                 <label>First Player</label>
-                  <select size="3" ng-model="play.first_players" ng-options="player.full_names as player.full_names for player in playerList">
+                  <select size="player.length" ng-model="play.first_players" ng-options="player.full_names as player.full_names for player in playerList">
                       <option value="">Select Player</option>
                   </select>
               </div>
@@ -24,7 +24,7 @@
             <div class="col-sm-3">
               <div class="form-group">
                 <label>Second Player</label>
-                  <select size="3" ng-model="play.second_players" ng-options="player.full_names as player.full_names for player in playerList">
+                  <select size="player.length" ng-model="play.second_players" ng-options="player.full_names as player.full_names for player in playerList">
                       <option value="">Select Player</option>
                   </select>
               </div>

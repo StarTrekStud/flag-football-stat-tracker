@@ -18,7 +18,7 @@
           <div class="form-group">
             <label>First Player</label>
             <label data-ng-repeat="player in playerList">
-              <input type="radio" value="{{player.full_names}}" ng-click="uncheck($event)" ng-model="play.first_players" />
+              <input type="radio" value="{{player.full_names}}" ng-model="play.first_players" />
               {{player.full_names}}
             </label>
           </div>
@@ -27,7 +27,7 @@
           <div class="form-group">
             <label>Second Player</label>
             <label data-ng-repeat="player in playerList">
-              <input type="radio" value="{{player.full_names}}" ng-click="uncheck($event)" ng-model="play.second_players" />
+              <input type="radio" value="{{player.full_names}}" ng-model="play.second_players" />
               {{player.full_names}}
             </label>
           </div>
@@ -36,7 +36,7 @@
           <div class="form-group">
             <label>Result</label>
             <label data-ng-repeat="result in resultList">
-              <input type="radio" value="{{result.result_names}}" ng-click="uncheck($event)" ng-model="play.results" />
+              <input type="radio" value="{{result.result_names}}" ng-model="play.results" />
               {{result.result_names}}
             </label>
           </div>
