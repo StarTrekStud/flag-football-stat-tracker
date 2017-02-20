@@ -16,43 +16,37 @@
             <div class="col-sm-3">
               <div class="form-group">
                   <label>First Player</label>
-                  <div class="radio">
                   <ul>
                       <li ng-repeat="player in playerList">
                           <label>{{player.full_names}}
-                              <input type="radio" ng-model="play.first_players" value="{{player.full_names}}" required />
+                              <input type="checkbox" ng-model="play.first_players" value="{{player.full_names}}" required />
                           </label>
                       </li>
                   </ul>
-                  </div>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
                   <label>Second Player</label>
-                  <div class="radio">
                   <ul>
                       <li ng-repeat="player in playerList">
                           <label>{{player.full_names}}
-                              <input type="radio" ng-model="play.second_players" value="{{player.full_names}}" required />
+                              <input type="checkbox" ng-model="play.second_players" value="{{player.full_names}}" required />
                           </label>
                       </li>
                   </ul>
-                  </div>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
                   <label>Result</label>
-                  <div class="radio">
                   <ul>
                       <li ng-repeat="result in resultList">
                           <label>{{result.result_names}}
-                              <input type="radio" ng-model="play.result_names" value="{{result.result_names}}" required />
+                              <input type="checkbox" ng-model="play.result_names" value="{{result.result_names}}" required />
                           </label>
                       </li>
                   </ul>
-                  </div>
               </div>
             </div>
               <div class="col-sm-1">
