@@ -16,28 +16,25 @@
             <div class="col-sm-3">
               <div class="form-group">
                 <label>First Player</label>
-                <label data-ng-repeat="player in playerList">
-                    <input type="radio" value="{{player.full_names}}" ng-click="uncheck($event)" ng-model="play.first_players" />
-                    {{player.full_names}}
-                </label>
+                  <select size="3" ng-model="play.first_players" ng-options="player.full_names as player.full_names for player in playerList">
+                      <option value="">Select Player</option>
+                  </select>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
                 <label>Second Player</label>
-                  <label data-ng-repeat="player in playerList">
-                      <input type="radio" value="{{player.full_names}}" ng-click="uncheck($event)" ng-model="play.second_players" />
-                      {{player.full_names}}
-                </label>
+                  <select size="3" ng-model="play.second_players" ng-options="player.full_names as player.full_names for player in playerList">
+                      <option value="">Select Player</option>
+                  </select>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
                 <label>Result</label>
-                  <label data-ng-repeat="result in resultList">
-                      <input type="radio" value="{{result.result_names}}" ng-click="uncheck($event)" ng-model="play.results" />
-                      {{result.result_names}}
-                  </label>
+                  <select ng-model="play.results" ng-options="result.result_names as result.result_names for result in resultList">
+                      <option value="">Select Result</option>
+                  </select>
               </div>
             </div>
               <div class="col-sm-1">
