@@ -13,27 +13,33 @@
                     <option value="">Select Game</option>
                 </select>
             </div>
-            <div class="col-sm-3">
-              <div class="form-group">
-                <label>First Player</label>
-                  <input type="checkbox" ng-model="play.first_players" ng-options="player.full_names as player.full_names for player in playerList">
-                    <option value="">Select Player</option>
+              <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>First Player</label>
+                      <label data-ng-repeat="player in playerList">
+                          <input type="checkbox" value="{{player.full_names}}" ng-model="play.first_players" />
+                          {{player.full_names}}
+                      </label>
+                  </div>
               </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="form-group">
-                <label>Second Player</label>
-                  <input type="checkbox" ng-model="play.second_players" ng-options="player.full_names as player.full_names for player in playerList">
-                      <option value="">Select Player</option>
+              <div class="col-sm-4">
+                  <div class="form-group">
+                      <label>Second Player</label>
+                      <label data-ng-repeat="player in playerList">
+                          <input type="checkbox" value="{{player.full_names}}" ng-model="play.second_players" />
+                          {{player.full_names}}
+                      </label>
+                  </div>
               </div>
-            </div>
-            <div class="col-sm-3">
-              <div class="form-group">
-                <label>Result</label>
-                  <input type="checkbox" ng-model="play.results" ng-options="result.result_names as result.result_names for result in resultList">
-                  <option value="">Select Player</option>
+              <div class="col-sm-3">
+                  <div class="form-group">
+                      <label>Result</label>
+                      <label data-ng-repeat="result in resultList">
+                          <input type="checkbox" value="{{result.result_names}}" ng-model="play.results" />
+                          {{result.result_names}}
+                      </label>
+                  </div>
               </div>
-            </div>
               <div class="col-sm-1">
                   <button type="submit" class="btn btn-default">Submit</button>
               </div>
