@@ -17,16 +17,17 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-              <li><a href="#/teams/add">Add Team</a></li>
-              <li><a href="#/teams">View Teams</a></li>
-              <li><a href="#/schedules/add">Add Schedule</a></li>
-              <li><a href="#/schedules">View Schedules</a></li>
-              <li><a href="#/players/add">Add Player</a></li>
-              <li><a href="#/players">View Players</a></li>
+              <li><a href="#/">View Stats</a></li>
               <li><a href="#/plays/add">Add Play</a></li>
               <li><a href="#/plays">View Plays</a></li>
+              <li><a href="#/players/add">Add Player</a></li>
+              <li><a href="#/players">View Players</a></li>
               <li><a href="#/results/add">Add Result</a></li>
               <li><a href="#/results">View Results</a></li>
+              <li><a href="#/schedules/add">Add Schedule</a></li>
+              <li><a href="#/schedules">View Schedules</a></li>
+              <li><a href="#/teams/add">Add Team</a></li>
+              <li><a href="#/teams">View Teams</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -44,11 +45,11 @@
 	<script src="/bower_components/angular-route/angular-route.js"></script>
 	<script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="/app.js"></script>
-    <script src="/controllers/teams.js"></script>
-    <script src="/controllers/schedules.js"></script>
+    <script src="/controllers/plays.js"></script>
     <script src="/controllers/players.js"></script>
-	<script src="/controllers/plays.js"></script>
     <script src="/controllers/results.js"></script>
+    <script src="/controllers/schedules.js"></script>
+    <script src="/controllers/teams.js"></script>
     <script>
         $(".navbar-nav li a").click(function(event) {
             $(".navbar-collapse").collapse('hide');
