@@ -15,26 +15,38 @@
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <label>First Player</label>
-                  <select size="4" ng-model="play.first_players" ng-options="player.full_names as player.full_names for player in playerList">
-                      <option value="">Select Player</option>
-                  </select>
+                  <label>First Player</label>
+                  <ul>
+                      <li ng-repeat="player in playerList">
+                          <label>{{player.full_names}}
+                              <input type="radio" ng-model="play.first_players" value="{{player.full_names}}" required />
+                          </label>
+                      </li>
+                  </ul>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <label>Second Player</label>
-                  <select size="4" ng-model="play.second_players" ng-options="player.full_names as player.full_names for player in playerList">
-                      <option value="">Select Player</option>
-                  </select>
+                  <label>Second Player</label>
+                  <ul>
+                      <li ng-repeat="player in playerList">
+                          <label>{{player.full_names}}
+                              <input type="radio" ng-model="play.second_players" value="{{player.full_names}}" required />
+                          </label>
+                      </li>
+                  </ul>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <label>Result</label>
-                  <select size="12" ng-model="play.results" ng-options="result.result_names as result.result_names for result in resultList">
-                      <option value="">Select Result</option>
-                  </select>
+                  <label>Result</label>
+                  <ul>
+                      <li ng-repeat="result in resultList">
+                          <label>{{result.result_names}}
+                              <input type="radio" ng-model="play.result_names" value="{{result.result_names}}" required />
+                          </label>
+                      </li>
+                  </ul>
               </div>
             </div>
               <div class="col-sm-1">
