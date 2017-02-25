@@ -7,16 +7,13 @@ var playSchema = mongoose.Schema({
         required: true
 	},
 	first_players:{
-		type: String,
-        required: true
+		type: String
 	},
 	second_players:{
-		type: String,
-        required: true
+		type: String
 	},
 	results:{
-		type: String,
-        required: true
+		type: String
 	},
 	create_date:{
 		type: Date,
