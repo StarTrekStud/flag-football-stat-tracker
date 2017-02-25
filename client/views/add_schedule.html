@@ -9,16 +9,16 @@
       <form ng-submit="addSchedule()">
         <div class="form-group">
           <label>Season</label>
-          <input type="text" class="form-control" ng-model="schedule.seasons" placeholder="Season">
+          <input type="text" class="form-control" ng-required="required" ng-model="schedule.seasons" placeholder="Season">
         </div>
-          <div class="form-group">
-              <label>Date</label>
-              <input type="text" class="form-control" ng-model="schedule.dates" placeholder="MM-DD-YYYY">
-          </div>
-          <div class="form-group">
-              <label>Time</label>
-              <input type="text" class="form-control" ng-model="schedule.times" placeholder="HH:MM:PM">
-          </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="text" class="form-control" ng-required="required" ng-model="schedule.dates" placeholder="MM-DD-YYYY">
+        </div>
+        <div class="form-group">
+          <label>Time</label>
+          <input type="text" class="form-control" ng-required="required" ng-model="schedule.times" placeholder="HH:MM:PM">
+        </div>
         <div class="form-group">
           <label>Location</label>
           <input type="text" class="form-control" ng-model="schedule.locations" placeholder="Location">
@@ -40,6 +40,14 @@
                   ng-options="team.team_names as team.team_names for team in teamList">
             <option value="">Select Team</option>
           </select>
+        </div>
+        <div class="form-group">
+          <label>Home Score</label>
+          <input type="number" class="form-control" ng-model="schedule.home_scores" placeholder="#">
+        </div>
+        <div class="form-group">
+          <label>Away Score</label>
+          <input type="number" class="form-control" ng-model="schedule.away_scores" placeholder="#">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>

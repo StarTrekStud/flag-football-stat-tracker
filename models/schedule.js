@@ -15,20 +15,22 @@ var scheduleSchema = mongoose.Schema({
         required: true
 	},
 	locations:{
-		type: String,
-        required: true
+		type: String
 	},
 	weeks:{
-		type: Number,
-        required: true
+		type: Number
 	},
 	homes:{
-		type: String,
-		required: true
+		type: String
 	},
 	aways:{
-		type: String,
-        required: true
+		type: String
+	},
+	home_scores:{
+		type: Number
+	},
+	away_scores:{
+		type: Number
 	},
 	create_date:{
 		type: Date,
@@ -63,7 +65,9 @@ module.exports.updateSchedule = function(id, schedule, options, callback){
 		locations: schedule.locations,
 		weeks: schedule.weeks,
 		homes: schedule.homes,
-		aways: schedule.aways
+		aways: schedule.aways,
+		home_scores: schedule.home_scores,
+		away_scores: schedule.away_scores
 	}
 	Schedule.findOneAndUpdate(query, update, options, callback);
 }
