@@ -50,7 +50,7 @@
 <div class="panel panel-default" ng-init="getPlays()">
     <div class="panel-body">
         <div class="row">
-            <div ng-repeat="play in plays | filter:schedules | orderBy: '-create_date' ">
+            <div ng-repeat="play in plays | orderBy: '-create_date' ">
                 <div class="col-1-1">
                     <div class="col-1-1">
                         <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.first_players}} | {{play.second_players}} | {{play.results}}</a>
