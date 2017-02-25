@@ -30,6 +30,12 @@ var scheduleSchema = mongoose.Schema({
 		type: String,
         required: true
 	},
+	home_scores:{
+		type: Number
+	},
+	away_scores:{
+		type: Number
+	},
 	create_date:{
 		type: Date,
 		default: Date.now
