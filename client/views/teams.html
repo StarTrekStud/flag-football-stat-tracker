@@ -10,12 +10,12 @@
     </h3>
   </div>
   <div class="panel-body">
-    <div class="row">
-    	<div ng-repeat="team in teams | filter:team_names">
-            <div class="col-md-3">
+      <div ng-repeat="team in teams | filter:team_names">
+        <div class="row">
+            <div class="col-md-6">
                 <a class="btn btn-primary" href="#/teams/details/{{team._id}}">Team Name: {{team.team_names}} | Team Colors: {{team.team_colors}} | Team Mascot: {{team.team_mascots}}</a>
             </div>
-    	</div>
+        </div>
     </div>
   </div>
 </div>
