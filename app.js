@@ -15,8 +15,7 @@ Play = require('./models/play');
 Result = require('./models/result');
 
 // Connect to Mongoose
-var uri = process.env.MONGODB_URI;
-mongoose.connect('mongodb://heroku_n5zsjf7c:3uv47u5q2cjo2tvmb3ki78vtcr@ds151289.mlab.com:51289/heroku_n5zsjf7c');
+mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
