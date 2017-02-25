@@ -5,6 +5,10 @@ myApp.config(function($routeProvider){
 		controller:'PlaysController',
 		templateUrl: 'views/view_stats.html'
 	})
+	.when('/admins', {
+		controller:'PlaysController',
+		templateUrl: 'views/admins.html'
+	})
 	.when('/teams', {
 		controller:'TeamsController',
 		templateUrl: 'views/teams.html'
