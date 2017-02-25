@@ -14,11 +14,7 @@
     	<div ng-repeat="play in plays | filter:schedules">
     		<div class="col-md-6">
     			<div class="col-md-6">
-                    <p>Schedule: <em>{{play.schedules}}</em></p>
-    				<p>First Player: <em>{{play.first_players}}</em></p>
-                    <p>Second Player: <em>{{play.second_players}}</em></p>
-                    <p>Result: <em>{{play.results}}</em></p>
-    				<a class="btn btn-primary" href="#/plays/details/{{play._id}}">View Details</a>
+    				<a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.first_players}} | {{play.second_players}} | {{play.results}}</a>
     			</div>
     		</div>
     	</div>
