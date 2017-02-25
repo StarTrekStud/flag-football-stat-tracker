@@ -10,7 +10,7 @@
         <div class="form-group">
           <label>Schedule</label>
           <select ng-model="play.schedules"
-                  ng-options="schedule._id as schedule.seasons + ' - ' + schedule.dates + ' - ' + schedule.times for schedule in scheduleList">
+                  ng-options="schedule.dates + ' - ' + schedule.times as schedule.dates + ' - ' + schedule.times for schedule in scheduleList">
             <option value="">Select Game</option>
           </select>
         </div>
