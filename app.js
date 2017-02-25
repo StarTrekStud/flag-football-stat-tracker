@@ -19,7 +19,7 @@ mongoose.connect('mongodb://heroku_n5zsjf7c:heroku_n5zsjf7c@ds151289.mlab.com:51
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
-	res.send('Please use /api/plays');
+	res.send('Please use /api/admins');
 });
 
 app.get('/api/teams', function(req, res){
