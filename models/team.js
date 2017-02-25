@@ -7,10 +7,12 @@ var teamSchema = mongoose.Schema({
         required: true
 	},
 	team_colors:{
-		type: String
+		type: String,
+        required: true
 	},
 	team_mascots:{
-		type: Stringdx
+		type: String,
+        required: true
 	},
 	create_date:{
 		type: Date,
