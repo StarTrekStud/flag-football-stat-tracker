@@ -9,7 +9,7 @@
       <form ng-submit="updateResult()" ng-init="getResult()">
         <div class="form-group">
           <label>Result</label>
-          <input type="text" class="form-control" ng-model="result.result_names" placeholder="Result">
+          <input type="text" class="form-control" ng-required="required" ng-model="result.result_names" placeholder="Result">
         </div>
         <div class="form-group">
           <label>Offense</label>
