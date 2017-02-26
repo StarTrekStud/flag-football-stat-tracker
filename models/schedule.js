@@ -42,7 +42,7 @@ var scheduleSchema = mongoose.Schema({
 });
 
 scheduleSchema.pre('save', function(next) {
-  this.create_date = new Date().toLocaleString();
+  this.create_date = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
   next();
 });
 
