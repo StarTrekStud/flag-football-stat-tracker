@@ -11,9 +11,11 @@
   </div>
   <div class="panel-body">
     <div class="row">
-    	<div ng-repeat="play in plays | filter:schedules | ng-if=play.create_date.indexOf(play.dates) > -1 | orderBy: '-create_date' ">
+    	<div ng-repeat="play in plays | filter:schedules">
     		<div class="col-md-6">
-                <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.first_players}} | {{play.second_players}} | {{play.results}}</a>
+    			<div class="col-md-6">
+    				<a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.first_players}} | {{play.second_players}} | {{play.results}}</a>
+    			</div>
     		</div>
     	</div>
     </div>
