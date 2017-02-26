@@ -20,7 +20,6 @@
           <div ng-repeat="player in players | filter:team_names | filter:full_names">
               <div class="row">
                   <div class="col-md-6">
-                      <br>
                       <p>Team Name: <em>{{player.team_names}}</em></p>
                       <p>Full Name: <em>{{player.full_names}}</em></p>
                       <p>Position: <em>{{player.positions}}</em></p>
@@ -32,12 +31,11 @@
                       <p>Joined VSP: <em>{{player.joined_vsp}}</em></p>
                       <p>Joined League: <em>{{player.joined_league}}</em></p>
                       <a class="btn btn-primary" href="#/players/details/{{player._id}}">View Details</a>
-                      <br>
                   </div>
               </div>
           </div>
       </div>
-      <div ng-if="team_names == selected">
+      <div ng-if="team_names == selected || full_names == selected">
           <div ng-repeat="player in players | filter:full_names">
               <div class="row">
                   <div class="col-md-6">
