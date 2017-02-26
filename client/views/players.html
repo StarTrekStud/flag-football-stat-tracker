@@ -3,7 +3,7 @@
     <h3 class="panel-title">View Players
         <span class="pull-right">Filter by Player:
             <select ng-model="full_names" ng-init="selected"
-                    ng-options="player.full_names as player.full_names for player in playerList">
+                    ng-options="player.team_names as player.full_names for player in playerList | filter:team_names">
                 <option value="" selected="selected">All</option>
             </select>
         </span>
