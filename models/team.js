@@ -13,7 +13,7 @@ var teamSchema = mongoose.Schema({
 		type: String
 	},
 	create_date:{
-		type: Date,
+		type: String,
 		default: Date.now
 	}
 });

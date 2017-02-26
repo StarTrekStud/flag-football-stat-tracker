@@ -43,7 +43,7 @@ var playerSchema = mongoose.Schema({
         required: true
 	},
 	create_date:{
-		type: Date,
+		type: String,
 		default: Date.now
 	}
 });

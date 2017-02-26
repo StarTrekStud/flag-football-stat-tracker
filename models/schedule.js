@@ -11,7 +11,7 @@ var scheduleSchema = mongoose.Schema({
         required: true
 	},
 	times:{
-		type: String,
+		type: Number,
         required: true
 	},
 	locations:{
@@ -37,7 +37,7 @@ var scheduleSchema = mongoose.Schema({
 		type: Number
 	},
 	create_date:{
-		type: Date,
+		type: String,
 		default: Date.now
 	}
 });
