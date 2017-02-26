@@ -16,9 +16,13 @@ var playSchema = mongoose.Schema({
 		type: String
 	},
 	create_date:{
-		type: String,
-		default: Date.now
+		type: String
 	}
+});
+
+playSchema.pre('save', function(next) {
+  this.create_date = new Date().toString();
+  next();
 });
 
 var Play = module.exports = mongoose.model('Play', playSchema);

@@ -37,9 +37,13 @@ var scheduleSchema = mongoose.Schema({
 		type: Number
 	},
 	create_date:{
-		type: String,
-		default: Date.now
+		type: String
 	}
+});
+
+scheduleSchema.pre('save', function(next) {
+  this.create_date = new Date().toString();
+  next();
 });
 
 var Schedule = module.exports = mongoose.model('Schedule', scheduleSchema);
