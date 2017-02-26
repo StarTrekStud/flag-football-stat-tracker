@@ -1,23 +1,32 @@
 <div class="panel panel-default" ng-init="getPlays()">
-  <div class="panel-heading">
-    <h3 class="panel-title">View Plays
-        <span class="pull-right">Filter by Game:
-          <select ng-model="schedules"
-                  ng-options="schedule.dates + 'T' + schedule.times as schedule.dates + 'T' + schedule.times for schedule in scheduleList">
-              <option value="" selected>Select Game</option>
-          </select>
-      </span>
-    </h3>
+    <div class="panel-heading">
+        <h3 class="panel-title">View Plays
+            <span class="pull-right">Filter by Game:
+                <select ng-model="schedules" ng-init="selected"
+                        ng-options="schedule.dates + 'T' + schedule.times as schedule.dates + 'T' + schedule.times for schedule in scheduleList">
+                    <option value="" selected="selected">Select Game</option>
+                </select>
+            </span>
+        </h3>
   </div>
   <div class="panel-body">
-    <div class="row">
-    	<div ng-repeat="play in plays | filter:schedules">
-    		<div class="col-md-6">
-    			<div class="col-md-6">
-    				<a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.first_players}} | {{play.second_players}} | {{play.results}}</a>
-    			</div>
-    		</div>
-    	</div>
-    </div>
+      <div ng-if="schedules != selected">
+          <div ng-repeat="play in plays | filter:schedules">
+              <div class="row">
+                  <div class="col-md-6">
+                      <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.first_players}} | {{play.second_players}} | {{play.results}}</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div ng-if="schedules == selected">
+          <div ng-repeat="play in plays">
+              <div class="row">
+                  <div class="col-md-6">
+                      <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.first_players}} | {{play.second_players}} | {{play.results}}</a>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 </div>

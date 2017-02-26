@@ -4,7 +4,6 @@
 
 - fix model
 - fix view stats page
-- resolve edit put result bug
-- resolve bad post bug
+- resolve filter players all bug
 - add tests
 - clean up css
