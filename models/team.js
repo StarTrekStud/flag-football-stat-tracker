@@ -13,9 +13,13 @@ var teamSchema = mongoose.Schema({
 		type: String
 	},
 	create_date:{
-		type: String,
-		default: Date.now
+		type: String
 	}
+});
+
+teamSchema.pre('save', function(next) {
+  this.create_date = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
+  next();
 });
 
 var Team = module.exports = mongoose.model('Team', teamSchema);

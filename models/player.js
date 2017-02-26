@@ -43,9 +43,13 @@ var playerSchema = mongoose.Schema({
         required: true
 	},
 	create_date:{
-		type: String,
-		default: Date.now
+		type: String
 	}
+});
+
+playerSchema.pre('save', function(next) {
+  this.create_date = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
+  next();
 });
 
 var Player = module.exports = mongoose.model('Player', playerSchema);

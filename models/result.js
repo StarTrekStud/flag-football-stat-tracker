@@ -7,17 +7,19 @@ var resultSchema = mongoose.Schema({
         required: true
 	},
 	offense:{
-		type: Boolean,
-        required: true
+		type: Boolean
 	},
 	defense:{
-		type: Boolean,
-        required: true
+		type: Boolean
 	},
 	create_date:{
-		type: String,
-		default: Date.now
+		type: String
 	}
+});
+
+resultSchema.pre('save', function(next) {
+  this.create_date = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
+  next();
 });
 
 var Result = module.exports = mongoose.model('Result', resultSchema);
