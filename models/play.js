@@ -21,7 +21,7 @@ var playSchema = mongoose.Schema({
 });
 
 playSchema.pre('save', function(next) {
-  this.create_date = new Date().toString();
+  this.create_date = new Date().toLocaleString();
   next();
 });
 
