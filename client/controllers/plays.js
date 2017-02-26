@@ -52,7 +52,8 @@ myApp.controller('PlaysController', ['$scope', '$http', '$location', '$routePara
 	$scope.addPlay = function(){
 		console.log($scope.play);
 		$http.post('/api/plays/', $scope.play).success(function(response){
-			window.location.href='#/plays';
+			window.location.href='#/plays/add';
+			window.location.reload();
 		});
 	}
 
