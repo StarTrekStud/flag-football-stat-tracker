@@ -2,7 +2,7 @@
   <div class="panel-heading">
     <h3 class="panel-title">View Schedules
       <span class="pull-right">Filter by Team:
-          <select ng-model="seasons"
+          <select ng-model="homes"
                   ng-options="team.team_names as team.team_names for team in teamList">
               <option value="" selected>Select Team</option>
           </select>
@@ -11,12 +11,10 @@
   </div>
   <div class="panel-body">
     <div class="row">
-    	<div ng-repeat="schedule in schedules">
-            <div ng-if="schedule.homes == team.team_names">
+    	<div ng-repeat="schedule in schedules | filter:homes">
                 <div class="col-md-10">
                     <a class="btn btn-primary" href="#/schedules/details/{{schedule._id}}">{{schedule.dates}} @ {{schedule.times}} - Week {{schedule.weeks}} : {{schedule.aways}} {{schedule.away_scores}} @ {{schedule.homes}} {{schedule.home_scores}} </a>
                 </div>
-            </div>
     	</div>
     </div>
   </div>
