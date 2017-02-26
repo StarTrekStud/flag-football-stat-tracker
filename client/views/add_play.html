@@ -51,7 +51,7 @@
     <div class="panel-body">
         <div class="row">
             <div ng-repeat="play in plays | orderBy: '-create_date' ">
-                <div ng-if="play.create_date.indexOf(play.dates) > -1">
+                <div ng-if="play.dates.indexOf(play.create_date) > -1">
                     <div class="col-md-6">
                         <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.first_players}} | {{play.second_players}} | {{play.results}}</a>
                     </div>
