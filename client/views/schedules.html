@@ -4,7 +4,7 @@
       <span class="pull-right">Filter by Team:
           <select ng-model="team_names"
                   ng-options="team.team_names as team.team_names for team in teamList">
-              <option value="" selected>Select Team</option>
+              <option value="1" selected>Select Team</option>
           </select>
       </span>
     </h3>
@@ -18,7 +18,7 @@
                     </div>
             </div>
         </div>
-        <div ng-if="1 == 1">
+        <div ng-if="1 == team_names">
             <div ng-repeat="schedule in schedules">
                 <div class="col-md-10">
                     <a class="btn btn-primary" href="#/schedules/details/{{schedule._id}}">{{schedule.dates}} @ {{schedule.times}} - Week {{schedule.weeks}} : {{schedule.aways}} {{schedule.away_scores}} @ {{schedule.homes}} {{schedule.home_scores}} </a>
