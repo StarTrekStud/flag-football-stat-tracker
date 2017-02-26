@@ -1,12 +1,24 @@
 <div class="panel panel-default" ng-init="getPlayers()">
   <div class="panel-heading">
     <h3 class="panel-title">View Players
-        <span class="pull-right">Filter by Player:
-            <select ng-model="full_names" ng-init="selected"
-                    ng-options="player.full_names as player.full_names for player in playerList | filter:team_names">
-                <option value="" selected="selected">All</option>
-            </select>
-        </span>
+        <div ng-switch="team_names">
+            <div ng-switch-when="selected">
+                <span class="pull-right">Filter by Player:
+                    <select ng-model="full_names" ng-init="selected"
+                            ng-options="player.full_names as player.full_names for player in playerList">
+                        <option value="" selected="selected">All</option>
+                    </select>
+                </span>
+            </div>
+            <div ng-switch-default>
+                <span class="pull-right">Filter by Player:
+                    <select ng-model="full_names" ng-init="selected"
+                            ng-options="player.full_names as player.full_names for player in playerList | filter:team_names">
+                        <option value="" selected="selected">All</option>
+                    </select>
+                </span>
+            </div>
+        </div>
         <span class="pull-right">Filter by Team:
             <select ng-model="team_names" ng-init="selected"
                     ng-options="team.team_names as team.team_names for team in teamList">
