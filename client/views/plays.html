@@ -3,7 +3,7 @@
         <h3 class="panel-title">View Plays
             <span class="pull-right">Filter by Game:
                 <select ng-model="schedules" ng-init="selected"
-                        ng-options="schedule.dates + 'T' + schedule.times as schedule.dates + 'T' + schedule.times for schedule in scheduleList">
+                        ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList">
                     <option value="" selected="selected">All</option>
                 </select>
             </span>

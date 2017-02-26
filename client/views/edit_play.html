@@ -10,7 +10,7 @@
         <div class="form-group">
           <label>Schedule</label>
           <select ng-model="play.schedules" ng-required="required"
-                  ng-options="schedule.dates + 'T' + schedule.times as schedule.dates + 'T' + schedule.times for schedule in scheduleList">
+                  ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList">
             <option value="">Select Game</option>
           </select>
         </div>
