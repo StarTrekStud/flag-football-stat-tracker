@@ -2,7 +2,7 @@
   <div class="panel-heading">
     <h3 class="panel-title">View Players
         <span class="pull-right">Filter by Player:
-            <select ng-model="full_names" ng-init="selected"
+            <select ng-model="the_names" ng-init="selected"
                     ng-options="player.team_names as player.full_names for player in playerList | filter:team_names">
                 <option value="" selected="selected">All</option>
             </select>
@@ -17,7 +17,7 @@
   </div>
   <div class="panel-body">
       <div ng-if="team_names != selected">
-          <div ng-if="full_names == selected">
+          <div ng-if="the_names == selected">
               <div ng-repeat="player in players | filter:team_names">
                   <div class="row">
                       <div class="col-md-6">
@@ -36,8 +36,8 @@
                   </div>
               </div>
           </div>
-          <div ng-if="full_names != selected">
-              <div ng-repeat="player in players | filter:team_names | filter:full_names">
+          <div ng-if="the_names != selected">
+              <div ng-repeat="player in players | filter:team_names | filter:the_names">
                   <div class="row">
                       <div class="col-md-6">
                           <p>Team Name: <em>{{player.team_names}}</em></p>
@@ -57,7 +57,7 @@
           </div>
       </div>
       <div ng-if="team_names == selected">
-          <div ng-if="full_names == selected">
+          <div ng-if="the_names == selected">
               <div ng-repeat="player in players">
                   <div class="row">
                       <div class="col-md-6">
@@ -76,8 +76,8 @@
                   </div>
               </div>
           </div>
-          <div ng-if="full_names != selected">
-              <div ng-repeat="player in players | filter:full_names">
+          <div ng-if="the_names != selected">
+              <div ng-repeat="player in players | filter:the_names">
                   <div class="row">
                       <div class="col-md-6">
                           <p>Team Name: <em>{{player.team_names}}</em></p>
