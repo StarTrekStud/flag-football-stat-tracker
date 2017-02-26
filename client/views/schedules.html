@@ -10,21 +10,21 @@
     </h3>
   </div>
   <div class="panel-body">
-    <div class="row">
-        <div ng-if="team_names != selected">
-            <div ng-repeat="schedule in schedules | filter:team_names">
-                <div class="col-md-10">
-                    <a class="btn btn-primary" href="#/schedules/details/{{schedule._id}}">{{schedule.dates}} @ {{schedule.times}} - Week {{schedule.weeks}} : {{schedule.aways}} {{schedule.away_scores}} @ {{schedule.homes}} {{schedule.home_scores}} </a>
-                </div>
-            </div>
-        </div>
-        <div ng-if="team_names == selected">
-            <div ng-repeat="schedule in schedules">
-                <div class="col-md-10">
-                    <a class="btn btn-primary" href="#/schedules/details/{{schedule._id}}">{{schedule.dates}} @ {{schedule.times}} - Week {{schedule.weeks}} : {{schedule.aways}} {{schedule.away_scores}} @ {{schedule.homes}} {{schedule.home_scores}} </a>
-                </div>
-            </div>
-        </div>
-    </div>
+      <div class="row">
+          <div ng-if="team_names != selected">
+              <div ng-repeat="schedule in schedules | filter:team_names">
+                  <div class="col-md-10">
+                      <a class="btn btn-primary" href="#/schedules/details/{{schedule._id}}">{{schedule.dates}} @ {{schedule.times}} - Week {{schedule.weeks}} : {{schedule.aways}} {{schedule.away_scores}} @ {{schedule.homes}} {{schedule.home_scores}} </a>
+                  </div>
+              </div>
+          </div>
+          <div ng-if="team_names == selected">
+              <div ng-repeat="schedule in schedules">
+                  <div class="col-md-10">
+                      <a class="btn btn-primary" href="#/schedules/details/{{schedule._id}}">{{schedule.dates}} @ {{schedule.times}} - Week {{schedule.weeks}} : {{schedule.aways}} {{schedule.away_scores}} @ {{schedule.homes}} {{schedule.home_scores}} </a>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 </div>

@@ -18,7 +18,7 @@
                   </div>
               </div>
           </div>
-          <div ng-if="team_names -= selected">
+          <div ng-if="team_names == selected">
               <div ng-repeat="team in teams">
                   <div class="col-md-6">
                       <a class="btn btn-primary" href="#/teams/details/{{team._id}}">Team Name: {{team.team_names}} | Team Colors: {{team.team_colors}} | Team Mascot: {{team.team_mascots}}</a>
