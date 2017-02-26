@@ -8,7 +8,7 @@
           <form ng-submit="addPlay()">
             <div class="form-group">
                 <label>Schedule</label>
-                <select ng-model="play.schedules" ng-selected="2/26/2017, 3" ng-required="required" ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList">
+                <select ng-init="2/26/2017, 3" ng-model="play.schedules" ng-required="required" ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList">
                     <option value="">Select Game</option>
                 </select>
             </div>
