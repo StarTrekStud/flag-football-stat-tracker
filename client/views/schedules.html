@@ -2,7 +2,7 @@
   <div class="panel-heading">
     <h3 class="panel-title">View Schedules
       <span class="pull-right">Filter by Team:
-          <select ng-model="team_names"
+          <select ng-model="team_names" ng-init="selected"
                   ng-options="team.team_names as team.team_names for team in teamList">
               <option value="" selected="selected">Select Team</option>
           </select>
