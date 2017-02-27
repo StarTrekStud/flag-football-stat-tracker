@@ -25,6 +25,23 @@ myApp.controller('PlaysController', ['$scope', '$http', '$location', '$routePara
         $scope.playerList = response;
     });
 
+    $scope.teams = null;
+    $scope.teamList = [];
+
+    $http({
+            method: 'GET',
+            url: '/api/teams',
+            data: { applicationId: 3 }
+        }).success(function (response) {
+        $scope.teamList = response;
+    });
+
+	$scope.getPlayers = function(){
+		$http.get('/api/players').success(function(response){
+			$scope.players = response;
+		});
+	}
+
     $scope.results = null;
     $scope.resultList = [];
 
