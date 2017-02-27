@@ -17,21 +17,22 @@
                             <p>Full Name: <em>{{player.full_names}}</em></p>
                         </div>
                     </div>
+                    <div ng-init="getPlays()">
+                        <div ng-if="full_names != selected">
+                            <div class="row">
+                                <div ng-repeat="play in plays | filter: { second_players: full_names, results: 'Catch' } as catches">
+                                </div>
+                                <label>&nbsp;Catches: {{catches.length}}</label>
+                            </div>
+                            <div class="row">
+                                <div ng-repeat="play in plays | filter: { second_players: full_names, results: 'Drop' } as drops">
+                                </div>
+                                <label>&nbsp;Drops: {{drops.length}}</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
     </div>
-    <div class="panel-body" ng-init="getPlays()">
-        <div ng-if="full_names != selected">
-                <div class="row">
-                    <div ng-repeat="play in plays | filter: { second_players: full_names, results: 'Catch' } as catches">
-                    </div>
-                    <label>&nbsp;Catches: {{catches.length}}</label>
-                </div>
-                <div class="row">
-                    <div ng-repeat="play in plays | filter: { second_players: full_names, results: 'Drop' } as drops">
-                    </div>
-                    <label>&nbsp;Drops: {{drops.length}}</label>
-                </div>
-        </div>
-    </div>
+
 </div>
