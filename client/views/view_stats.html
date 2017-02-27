@@ -16,16 +16,16 @@
                         <div class="col-md-6">
                             <p>Full Name: <em>{{play.second_players}}</em></p>
                         </div>
-                        <div class="row">
-                            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Catch' } as catches">
-                            </div>
-                            <label>&nbsp;Catches: {{catches.length}}</label>
+                    </div>
+                    <div class="row">
+                        <div ng-repeat="play in plays | filter: { $: full_names, results: 'Catch' } as catches">
                         </div>
-                        <div class="row">
-                            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Drop' } as drops">
-                            </div>
-                            <label>&nbsp;Drops: {{drops.length}}</label>
+                        <label>&nbsp;Catches: {{catches.length}}</label>
+                    </div>
+                    <div class="row">
+                        <div ng-repeat="play in plays | filter: { $: full_names, results: 'Drop' } as drops">
                         </div>
+                        <label>&nbsp;Drops: {{drops.length}}</label>
                     </div>
                 </div>
             </div>
