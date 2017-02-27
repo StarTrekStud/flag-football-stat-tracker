@@ -1,4 +1,4 @@
-<div class="panel panel-default" ng-init="getPlays()">
+<div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">View Stats
             <span class="pull-right">Filter by Player:
@@ -9,28 +9,18 @@
             </span>
         </h3>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" ng-init="getPlayers()">
             <div ng-if="full_names != selected">
-                <div ng-repeat="play in plays | filter:full_names">
+                <div ng-repeat="player in players | filter:full_names">
                     <div class="row">
                         <div class="col-md-6">
-                            <p>Full Name: <em>{{play.second_players}}</em></p>
+                            <p>Full Name: <em>{{player.full_names}}</em></p>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div ng-repeat="play in plays | filter: { $: full_names, results: 'Catch' } as catches">
-                        </div>
-                        <label>&nbsp;Catches: {{catches.length}}</label>
-                    </div>
-                    <div class="row">
-                        <div ng-repeat="play in plays | filter: { $: full_names, results: 'Drop' } as drops">
-                        </div>
-                        <label>&nbsp;Drops: {{drops.length}}</label>
                     </div>
                 </div>
             </div>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" ng-init="getPlays()">
         <div ng-if="full_names != selected">
                 <div class="row">
                     <div ng-repeat="play in plays | filter: { $: full_names, results: 'Catch' } as catches">
