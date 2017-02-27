@@ -11,9 +11,10 @@
     </div>
     <div class="panel-body">
         <div class="row">
+            <label>&nbsp;{{player.full_names}}</label>
             <div ng-repeat="play in plays | filter: { $: full_names, results: 'Catch' } as catches">
             </div>
-            <label>&nbsp;{{catches.second_players}} Catches: {{catches.length}}</label>
+            <label>&nbsp;Catches: {{catches.length}}</label>
         </div>
     </div>
 </div>
