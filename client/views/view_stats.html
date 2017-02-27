@@ -1,6 +1,6 @@
-<div class="panel panel-default" ng-init="getPlays()">
+<div class="panel panel-default" ng-init="getPlayers()">
     <div class="panel-heading">
-        <h3 class="panel-title">View Players
+        <h3 class="panel-title">View Stats
             <span class="pull-right">Filter by Player:
                 <select ng-model="full_names" ng-init="selected"
                         ng-options="player.full_names as player.full_names for player in playerList | filter:team_names">
@@ -16,35 +16,53 @@
         </h3>
     </div>
     <div class="panel-body">
-        <div class="row">
-            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Miss' } as misses">
+        <div ng-if="team_names != selected">
+            <div ng-if="full_names == selected">
+                <div ng-repeat="player in players | filter:team_names">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Team Name: <em>{{player.team_names}}</em></p>
+                            <p>Full Name: <em>{{player.full_names}}</em></p>
+                            <p>Position: <em>{{player.positions}}</em></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <label>&nbsp;Misses: {{misses.length}}</label>
+            <div ng-if="full_names != selected">
+                <div ng-repeat="player in players | filter:team_names | filter:full_names">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Team Name: <em>{{player.team_names}}</em></p>
+                            <p>Full Name: <em>{{player.full_names}}</em></p>
+                            <p>Position: <em>{{player.positions}}</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Drop' } as drops">
+        <div ng-if="team_names == selected">
+            <div ng-if="full_names == selected">
+                <div ng-repeat="player in players">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Team Name: <em>{{player.team_names}}</em></p>
+                            <p>Full Name: <em>{{player.full_names}}</em></p>
+                            <p>Position: <em>{{player.positions}}</em></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <label>&nbsp;Drops: {{drops.length}}</label>
-        </div>
-        <div class="row">
-            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Catch' } as catches">
+            <div ng-if="full_names != selected">
+                <div ng-repeat="player in players | filter:full_names">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Team Name: <em>{{player.team_names}}</em></p>
+                            <p>Full Name: <em>{{player.full_names}}</em></p>
+                            <p>Position: <em>{{player.positions}}</em></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <label>&nbsp;Catches: {{catches.length}}</label>
-        </div>
-        <div class="row">
-            <div ng-repeat="play in plays | filter: { $: full_names, results: '1 Point' } as onepoints">
-            </div>
-            <label>&nbsp;1 Point: {{onepoints.length}}</label>
-        </div>
-        <div class="row">
-            <div ng-repeat="play in plays | filter: { $: full_names, results: '2 Point' } as twopoints">
-            </div>
-            <label>&nbsp;2 Point: {{twopoints.length}}</label>
-        </div>
-        <div class="row">
-            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Touchdown' } as touchdowns">
-            </div>
-            <label>&nbsp;Touchdown: {{touchdowns.length}}</label>
         </div>
     </div>
 </div>
