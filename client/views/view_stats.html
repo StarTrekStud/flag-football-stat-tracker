@@ -13,7 +13,7 @@
         <div class="row">
             <div ng-repeat="play in plays | filter:full_names">
             </div>
-            <label>&nbsp;Name: {{play.full_names}}</label>
+            <label>&nbsp;Name: {{play.second_players}}</label>
         </div>
         <div class="row">
             <div ng-repeat="play in plays | filter: { $: full_names, results: 'Catch' } as catches">
