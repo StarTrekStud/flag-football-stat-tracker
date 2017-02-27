@@ -1,23 +1,44 @@
 <div class="panel panel-default" ng-init="getPlays()">
     <div class="panel-heading">
-        <h3 class="panel-title">View Stats
+        <h3 class="panel-title">View Players
             <span class="pull-right">Filter by Player:
-          <select ng-model="full_names">
-              <option value="" selected>All</option>
-              <option value="Andrew Nolan">Andrew Nolan</option>
-          </select>
-      </span></h3>
+                <select ng-model="full_names" ng-init="selected"
+                        ng-options="player.full_names as player.full_names for player in playerList">
+                    <option value="" selected="selected">All</option>
+                </select>
+            </span>
+        </h3>
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-1-1">
-                <label>{{full_names}}</label>
+            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Miss' } as misses">
             </div>
+            <label>&nbsp;Misses: {{misses.length}}</label>
         </div>
         <div class="row">
             <div ng-repeat="play in plays | filter: { $: full_names, results: 'Drop' } as drops">
             </div>
             <label>&nbsp;Drops: {{drops.length}}</label>
+        </div>
+        <div class="row">
+            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Catch' } as catches">
+            </div>
+            <label>&nbsp;Catches: {{catches.length}}</label>
+        </div>
+        <div class="row">
+            <div ng-repeat="play in plays | filter: { $: full_names, results: '1 Point' } as onepoints">
+            </div>
+            <label>&nbsp;1 Point: {{onepoints.length}}</label>
+        </div>
+        <div class="row">
+            <div ng-repeat="play in plays | filter: { $: full_names, results: '2 Point' } as twopoints">
+            </div>
+            <label>&nbsp;2 Point: {{twopoints.length}}</label>
+        </div>
+        <div class="row">
+            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Touchdown' } as touchdowns">
+            </div>
+            <label>&nbsp;Touchdown: {{touchdowns.length}}</label>
         </div>
     </div>
 </div>
