@@ -25,6 +25,11 @@
                             <p>Full Name: <em>{{player.full_names}}</em></p>
                             <p>Position: <em>{{player.positions}}</em></p>
                         </div>
+                        <div class="row">
+                            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Drop' } as drops">
+                            </div>
+                            <label>&nbsp;Drops: {{drops.length}}</label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,6 +40,11 @@
                             <p>Team Name: <em>{{player.team_names}}</em></p>
                             <p>Full Name: <em>{{player.full_names}}</em></p>
                             <p>Position: <em>{{player.positions}}</em></p>
+                        </div>
+                        <div class="row">
+                            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Drop' } as drops">
+                            </div>
+                            <label>&nbsp;Drops: {{drops.length}}</label>
                         </div>
                     </div>
                 </div>
@@ -49,6 +59,11 @@
                             <p>Full Name: <em>{{player.full_names}}</em></p>
                             <p>Position: <em>{{player.positions}}</em></p>
                         </div>
+                        <div class="row">
+                            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Drop' } as drops">
+                            </div>
+                            <label>&nbsp;Drops: {{drops.length}}</label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,6 +74,11 @@
                             <p>Team Name: <em>{{player.team_names}}</em></p>
                             <p>Full Name: <em>{{player.full_names}}</em></p>
                             <p>Position: <em>{{player.positions}}</em></p>
+                        </div>
+                        <div class="row">
+                            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Drop' } as drops">
+                            </div>
+                            <label>&nbsp;Drops: {{drops.length}}</label>
                         </div>
                     </div>
                 </div>
