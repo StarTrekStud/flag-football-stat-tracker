@@ -18,5 +18,10 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div ng-repeat="play in plays | filter: { $: full_names, results: 'Drop' } as drops">
+            </div>
+            <label>&nbsp;Drops: {{drops.length}}</label>
+        </div>
     </div>
 </div>
