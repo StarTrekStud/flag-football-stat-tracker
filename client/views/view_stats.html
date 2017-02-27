@@ -10,26 +10,6 @@
         </h3>
     </div>
     <div class="panel-body">
-            <div ng-if="full_names == selected">
-                <div ng-repeat="play in plays">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p>Full Name: <em>{{play.second_players}}</em></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div ng-repeat="play in plays | filter: { $: full_names, results: 'Catch' } as catches">
-                        </div>
-                        <label>&nbsp;Catches: {{catches.length}}</label>
-                    </div>
-                    <div class="row">
-                        <div ng-repeat="play in plays | filter: { $: full_names, results: 'Drop' } as drops">
-                        </div>
-                        <label>&nbsp;Drops: {{drops.length}}</label>
-                    </div>
-                </div>
-            </div>
-            <div ng-if="full_names != selected">
                 <div ng-repeat-="play in plays | filter:full_names">
                     <div class="row">
                         <div class="col-md-6">
@@ -47,6 +27,5 @@
                         <label>&nbsp;Drops: {{drops.length}}</label>
                     </div>
                 </div>
-            </div>
     </div>
 </div>
