@@ -10,12 +10,8 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            <div ng-repeat="play in plays | filter:full_names | orderBy: '-create_date' ">
-                <div class="col-1-1">
-                    <div class="col-1-1">
-                        <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.second_players}}</a>
-                    </div>
-                </div>
+            <div class="col-1-1">
+                <label>&nbsp;Name: {{play.second_players}}</label>
             </div>
         </div>
         <div class="row">
