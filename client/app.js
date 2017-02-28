@@ -7,11 +7,11 @@ myApp.config(function($routeProvider){
 	})
 	.when('/admins', {
 		controller:'PlaysController',
-		templateUrl: 'views/view_admins.html'
+		templateUrl: 'views/administration.html'
 	})
-	.when('/stats', {
+	.when('/statistics', {
 		controller:'PlaysController',
-		templateUrl: 'views/view_stats.html'
+		templateUrl: 'views/statistics.html'
 	})
 	.when('/teams', {
 		controller:'TeamsController',
