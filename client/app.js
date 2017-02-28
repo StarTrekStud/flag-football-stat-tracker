@@ -3,7 +3,7 @@ var myApp = angular.module('myApp',['ngRoute']);
 myApp.config(function($routeProvider){
 	$routeProvider.when('/', {
 		controller:'PlaysController',
-		templateUrl: 'views/view_admins.html'
+		templateUrl: 'views/add_play.html'
 	})
 	.when('/admins', {
 		controller:'PlaysController',
