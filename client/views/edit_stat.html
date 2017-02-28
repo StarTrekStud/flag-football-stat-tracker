@@ -6,22 +6,90 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-12">
-      <form ng-submit="updateStat()" ng-init="getStat()">
-        <div class="form-group">
-          <label>Stat</label>
-          <input type="text" class="form-control" ng-required="required" ng-model="stat.stat_names" placeholder="Stat">
-        </div>
-        <div class="form-group">
-          <label>Colors</label>
-          <input type="text" class="form-control" ng-model="stat.stat_colors" placeholder="Primary / Secondary">
-        </div>
-        <div class="form-group">
-          <label>Mascot</label>
-          <input type="text" class="form-control" ng-model="stat.stat_mascots" placeholder="Mascot">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-    </div>
+        <form ng-submit="updateStat()">
+          <div class="form-group">
+            <label>Season</label>
+            <input type="text" class="form-control" ng-model="stat.seasons" placeholder="Season">
+          </div>
+          <div class="form-group">
+            <label>Game</label>
+            <input type="text" class="form-control" ng-model="stat.schedules" placeholder="Game">
+          </div>
+          <div class="form-group">
+            <label>Team</label>
+            <input type="text" class="form-control" ng-model="stat.team_names" placeholder="Team">
+          </div>
+          <div class="form-group">
+            <label>Player</label>
+            <input type="text" class="form-control" ng-model="stat.full_names" placeholder="Player">
+          </div>
+          <div class="form-group">
+            <label>Throws</label>
+            <input type="number" class="form-control" ng-model="stat.throws" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Completions</label>
+            <input type="number" class="form-control" ng-model="stat.completions" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Thrown 1 Points</label>
+            <input type="number" class="form-control" ng-model="stat.thrown_one_points" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Thrown 2 Points</label>
+            <input type="number" class="form-control" ng-model="stat.thrown_two_points" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Thrown Touchdowns</label>
+            <input type="number" class="form-control" ng-model="stat.thrown_touchdowns" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Thrown Interceptions</label>
+            <input type="number" class="form-control" ng-model="stat.thrown_interceptions" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Sacks Taken</label>
+            <input type="number" class="form-control" ng-model="stat.sacks_taken" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Catches</label>
+            <input type="number" class="form-control" ng-model="stat.catches" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Drops</label>
+            <input type="number" class="form-control" ng-model="stat.drops" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>1 Points</label>
+            <input type="number" class="form-control" ng-model="stat.one_points" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>2 Points</label>
+            <input type="number" class="form-control" ng-model="stat.two_points" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Touchdowns</label>
+            <input type="number" class="form-control" ng-model="stat.touchdowns" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Interceptions</label>
+            <input type="number" class="form-control" ng-model="stat.interceptions" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Safeties</label>
+            <input type="number" class="form-control" ng-model="stat.Safeties" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Sacks</label>
+            <input type="number" class="form-control" ng-model="stat.Sacks" placeholder="#">
+          </div>
+          <div class="form-group">
+            <label>Tackles</label>
+            <input type="number" class="form-control" ng-model="stat.throws" placeholder="#">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

@@ -2,15 +2,65 @@ var mongoose = require('mongoose');
 
 // Stat Schema
 var statSchema = mongoose.Schema({
-	stat_names:{
-		type: String,
-        required: true
-	},
-	stat_colors:{
+	seasons:{
 		type: String
 	},
-	stat_mascots:{
+	schedules:{
 		type: String
+	},
+	team_names:{
+		type: String
+	},
+	full_names:{
+		type: String
+	},
+	throws:{
+		type: Number
+	},
+	completions:{
+		type: Number
+	},
+	thrown_one_points:{
+		type: Number
+	},
+	thrown_two_points:{
+		type: Number
+	},
+	thrown_touchdowns:{
+		type: Number
+	},
+	thrown_interceptions:{
+		type: Number
+	},
+	sacks_taken:{
+		type: Number
+	},
+	catches:{
+		type: Number
+	},
+	drops:{
+		type: Number
+	},
+	one_points:{
+		type: Number
+	},
+	two_points:{
+		type: Number
+	},
+	touchdowns:{
+		type: Number
+	},
+	interceptions:{
+		type: Number
+	},
+	safeties:{
+		type: Number
+	},
+	sacks:{
+		type: Number
+	},
+	tackles:{
+		type: Number
 	},
 	create_date:{
 		type: String
@@ -43,9 +93,26 @@ module.exports.addStat = function(stat, callback){
 module.exports.updateStat = function(id, stat, options, callback){
 	var query = {_id: id};
 	var update = {
-		stat_names: stat.stat_names,
-		stat_colors: stat.stat_colors,
-		stat_mascots: stat.stat_mascots
+		seasons: stat.seasons,
+		schedules: stat.schedules,
+		team_names: stat.team_names,
+		full_names: stat.full_names,
+		throws: stat.throws,
+		completions: stat.completions,
+		thrown_one_points: stat.thrown_one_points,
+		thrown_two_points: stat.thrown_two_points,
+		thrown_touchdowns: stat.thrown_touchdowns,
+		thrown_interceptions: stat.thrown_interceptions,
+		sacks_taken: stat.sacks_taken,
+		catches: stat.catches,
+		drops: stat.drops,
+		one_points: stat.one_points,
+		two_points: stat.two_points,
+		touchdowns: stat.touchdowns,
+		interceptions: stat.interceptions,
+		safeties: stat.safeties,
+		sacks: stat.sacks,
+		tackles: stat.tackles
 	}
 	Stat.findOneAndUpdate(query, update, options, callback);
 }
