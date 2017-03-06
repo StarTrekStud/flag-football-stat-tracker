@@ -11,7 +11,7 @@
     </div>
     <div class="panel-body" ng-init="getPlayers()">
         <div ng-if="full_names != selected">
-            <div ng-repeat="player in players | filter:full_names">
+            <div ng-repeat="player in players | filter:full_names | orderBy:catches.length">
                 <div class="row">
                     <div class="col-md-6">
                         <p>Full Name: <em>{{player.full_names}}</em></p>
