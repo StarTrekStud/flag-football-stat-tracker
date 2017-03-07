@@ -5,11 +5,6 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-10">
-          <div ng-app="myApp">
-              <div ng-controller="MyCtrl">
-                  {{date | date:'yyyy-MM-dd'}}
-              </div>
-          </div>
           <form ng-submit="addPlay()">
             <div class="form-group">
                 <label>Schedule</label>
@@ -51,6 +46,9 @@
         </div>
     </div>
   </div>
+</div>
+<div ng-app ng-controller="Ctrl">
+    {{date | date:'yyyy-MM-dd'}}
 </div>
 <div class="panel panel-default" ng-init="getPlays()">
     <div class="panel-body">

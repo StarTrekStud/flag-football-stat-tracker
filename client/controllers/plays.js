@@ -3,7 +3,10 @@ var myApp = angular.module('myApp');
 myApp.controller('PlaysController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('PlaysController loaded...');
 
-    $scope.date = new Date();
+    function Ctrl($scope)
+    {
+        $scope.date = new Date();
+    }
 
     $scope.schedules = null;
     $scope.scheduleList = [];
