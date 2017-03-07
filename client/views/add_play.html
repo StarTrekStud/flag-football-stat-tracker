@@ -6,8 +6,7 @@
     <div class="row">
       <div class="col-md-10">
           <form ng-submit="addPlay()">
-              <span>Date Of Birth: {{DateOfBirth | date:"dd-MM-yyyy"}}</span>
-              <input type="text" datepicker-popup="dd/MM/yyyy" ng-model="DateOfBirth" class="form-control" />
+              <span>Date: {{date | date:'yyyy-MM-dd'}}</span>
             <div class="form-group">
                 <label>Schedule</label>
                 <select ng-model="play.schedules" ng-required="required" ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList">
