@@ -3,11 +3,7 @@ var myApp = angular.module('myApp');
 myApp.controller('PlaysController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('PlaysController loaded...');
 
-    .filter('currentdate',['$filter',  function($filter) {
-        return function() {
-            return $filter('date')(new Date(), 'yyyy-MM-dd');
-        };
-    }])
+    $scope.date = new Date();
 
     $scope.schedules = null;
     $scope.scheduleList = [];
