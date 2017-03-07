@@ -5,7 +5,9 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-10">
-          <span date-now="MM/dd/yyyy"></span>
+          <div ng-app="myApp">
+              <div>{{'' | currentdate}}</div>
+          </div>
           <form ng-submit="addPlay()">
             <div class="form-group">
                 <label>Schedule</label>

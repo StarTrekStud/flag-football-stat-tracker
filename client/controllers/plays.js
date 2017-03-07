@@ -3,12 +3,10 @@ var myApp = angular.module('myApp');
 myApp.controller('PlaysController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('PlaysController loaded...');
 
-    .directive('dateNow', ['$filter', function($filter) {
-      return {
-        link: function( $scope, $element, $attrs) {
-          $element.text($filter('date')(new Date(), $attrs.dateNow));
-        }
-      };
+    .filter('currentdate',['$filter',  function($filter) {
+        return function() {
+            return $filter('date')(new Date(), 'yyyy-MM-dd');
+        };
     }])
 
     $scope.schedules = null;
