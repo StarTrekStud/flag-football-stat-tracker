@@ -19,12 +19,12 @@
                 </div>
                 <div ng-init="getPlays()">
                         <div class="row">
-                            <div ng-repeat="play in plays | filter: { second_players: full_names, results: 'Catch' } as catches">
+                            <div ng-repeat="play in plays | filter: { second_players: full_names, second_player_results: 'Catch' } as catches">
                             </div>
                             <label>&nbsp;Catches: {{catches.length}}</label>
                         </div>
                         <div class="row">
-                            <div ng-repeat="play in plays | filter: { second_players: full_names, results: 'Drop' } as drops">
+                            <div ng-repeat="play in plays | filter: { second_players: full_names, second_player_results: 'Drop' } as drops">
                             </div>
                             <label>&nbsp;Drops: {{drops.length}}</label>
                         </div>
@@ -40,12 +40,12 @@
                 </div>
                 <div ng-init="getPlays()">
                         <div class="row">
-                            <div ng-repeat="play in plays | filter: { second_players: player.full_names, results: 'Catch' } as catches">
+                            <div ng-repeat="play in plays | filter: { second_players: player.full_names, second_player_results: 'Catch' } as catches">
                             </div>
                             <label>&nbsp;Catches: {{catches.length}}</label>
                         </div>
                         <div class="row">
-                            <div ng-repeat="play in plays | filter: { second_players: player.full_names, results: 'Drop' } as drops">
+                            <div ng-repeat="play in plays | filter: { second_players: player.full_names, second_player_results: 'Drop' } as drops">
                             </div>
                             <label>&nbsp;Drops: {{drops.length}}</label>
                         </div>
