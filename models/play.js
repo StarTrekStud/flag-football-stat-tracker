@@ -12,9 +12,15 @@ var playSchema = mongoose.Schema({
 	second_players:{
 		type: String
 	},
-	results:{
+	third_players:{
+	    type: String
+	},
+	second_player_results:{
 		type: String
 	},
+	third_player_results:{
+		type: String
+	}
 	create_date:{
 		type: String
 	}
@@ -49,7 +55,9 @@ module.exports.updatePlay = function(id, play, options, callback){
 		schedules: play.schedules,
 		first_players: play.first_players,
 		second_players: play.second_players,
-		results: play.results
+		third_players: play.third_players,
+		second_player_results: play.second_player_results,
+		third_player_results: play.third_player_results
 	}
 	Play.findOneAndUpdate(query, update, options, callback);
 }

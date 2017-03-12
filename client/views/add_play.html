@@ -4,7 +4,7 @@
   </div>
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-11">
           <form ng-submit="addPlay()">
               <span>Date: {{date | date:'M/d/yyyy, h'}}</span>
             <div class="form-group">
@@ -13,7 +13,7 @@
                     <option value="">Select Game</option>
                 </select>
             </div>
-              <div class="col-sm-4">
+              <div class="col-sm-2">
                   <div class="form-group">
                       <label>First Player</label>
                       <label data-ng-repeat="player in playerList">
@@ -22,7 +22,7 @@
                       </label>
                   </div>
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-2">
                   <div class="form-group">
                       <label>Second Player</label>
                       <label data-ng-repeat="player in playerList">
@@ -31,11 +31,29 @@
                       </label>
                   </div>
               </div>
-              <div class="col-sm-3">
+              <div class="col-sm-2">
                   <div class="form-group">
-                      <label>Result</label>
+                      <label>Second Player Result</label>
                       <label data-ng-repeat="result in resultList">
-                          <input type="radio" value="{{result.result_names}}" ng-model="play.results" />
+                          <input type="radio" value="{{result.result_names}}" ng-model="play.second_player_results" />
+                          {{result.result_names}}
+                      </label>
+                  </div>
+              </div>
+              <div class="col-sm-2">
+                  <div class="form-group">
+                      <label>Third Player</label>
+                      <label data-ng-repeat="player in playerList">
+                          <input type="radio" value="{{player.full_names}}" ng-model="play.third_players" />
+                          {{player.full_names}}
+                      </label>
+                  </div>
+              </div>
+              <div class="col-sm-2">
+                  <div class="form-group">
+                      <label>Third Player Result</label>
+                      <label data-ng-repeat="result in resultList">
+                          <input type="radio" value="{{result.result_names}}" ng-model="play.third_player_results" />
                           {{result.result_names}}
                       </label>
                   </div>
