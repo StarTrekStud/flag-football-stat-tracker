@@ -20,7 +20,7 @@ var playSchema = mongoose.Schema({
 	},
 	third_player_results:{
 		type: String
-	}
+	},
 	create_date:{
 		type: String
 	}
