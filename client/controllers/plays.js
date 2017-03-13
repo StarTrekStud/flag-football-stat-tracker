@@ -5,16 +5,11 @@ myApp.controller('PlaysController', ['$scope', '$http', '$location', '$routePara
 
     $scope.date = new Date();
 
-    $scope.schedules = null;
-    $scope.scheduleList = [];
-
-    $http({
-            method: 'GET',
-            url: '/api/schedules',
-            data: { applicationId: 3 }
-        }).success(function (response) {
-        $scope.scheduleList = response;
-    });
+	$scope.getPlayers = function(){
+		$http.get('/api/players').success(function(response){
+			$scope.players = response;
+		});
+	}
 
     $scope.players = null;
     $scope.playerList = [];
@@ -38,11 +33,16 @@ myApp.controller('PlaysController', ['$scope', '$http', '$location', '$routePara
         $scope.teamList = response;
     });
 
-	$scope.getPlayers = function(){
-		$http.get('/api/players').success(function(response){
-			$scope.players = response;
-		});
-	}
+    $scope.schedules = null;
+    $scope.scheduleList = [];
+
+    $http({
+            method: 'GET',
+            url: '/api/schedules',
+            data: { applicationId: 3 }
+        }).success(function (response) {
+        $scope.scheduleList = response;
+    });
 
     $scope.results = null;
     $scope.resultList = [];
