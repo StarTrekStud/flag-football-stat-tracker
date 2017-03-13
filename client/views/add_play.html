@@ -35,7 +35,7 @@
                   <div class="form-group">
                       <label>Second Player Result</label>
                       <label data-ng-repeat="result in resultList">
-                          <input type="radio" value="{{result.result_names}}" ng-model="play.second_player_results" />
+                          <input type="radio" value="{{result.result_names}}" ng-model="play.offensive_results" />
                           {{result.result_names}}
                       </label>
                   </div>
@@ -53,7 +53,7 @@
                   <div class="form-group">
                       <label>Third Player Result</label>
                       <label data-ng-repeat="result in resultList">
-                          <input type="radio" value="{{result.result_names}}" ng-model="play.third_player_results" />
+                          <input type="radio" value="{{result.result_names}}" ng-model="play.defensive_results" />
                           {{result.result_names}}
                       </label>
                   </div>
