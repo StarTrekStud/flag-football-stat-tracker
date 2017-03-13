@@ -15,7 +15,7 @@
             </div>
               <div class="col-sm-2">
                   <div class="form-group">
-                      <label>Offensive Player</label>
+                      <label>Quarterback</label>
                       <label data-ng-repeat="player in playerList">
                           <input type="radio" value="{{player.full_names}}" ng-model="play.quarterbacks" />
                           {{player.full_names}}
@@ -24,7 +24,7 @@
               </div>
               <div class="col-sm-2">
                   <div class="form-group">
-                      <label>Offensive Player</label>
+                      <label>Receiver</label>
                       <label data-ng-repeat="player in playerList">
                           <input type="radio" value="{{player.full_names}}" ng-model="play.offensive_players" />
                           {{player.full_names}}
@@ -42,7 +42,7 @@
               </div>
               <div class="col-sm-2">
                   <div class="form-group">
-                      <label>Defensive Player</label>
+                      <label>Defender</label>
                       <label data-ng-repeat="player in playerList">
                           <input type="radio" value="{{player.full_names}}" ng-model="play.defensive_players" />
                           {{player.full_names}}
