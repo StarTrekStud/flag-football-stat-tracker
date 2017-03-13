@@ -6,19 +6,19 @@ var playSchema = mongoose.Schema({
 		type: String,
         required: true
 	},
-	first_players:{
+	quarterbacks:{
 		type: String
 	},
-	second_players:{
+	offensive_players:{
 		type: String
 	},
-	third_players:{
+	offensive_results:{
+		type: String
+	},
+	defensive_players:{
 	    type: String
 	},
-	second_player_results:{
-		type: String
-	},
-	third_player_results:{
+	defensive_results:{
 		type: String
 	},
 	create_date:{
@@ -53,11 +53,11 @@ module.exports.updatePlay = function(id, play, options, callback){
 	var query = {_id: id};
 	var update = {
 		schedules: play.schedules,
-		first_players: play.first_players,
-		second_players: play.second_players,
-		third_players: play.third_players,
-		second_player_results: play.second_player_results,
-		third_player_results: play.third_player_results
+		quarterbacks: play.quarterbacks,
+		offensive_players: play.offensive_players,
+		offensive_results: play.offensive_results,
+		defensive_players: play.defensive_players,
+		defensive_results: play.defensive_results
 	}
 	Play.findOneAndUpdate(query, update, options, callback);
 }

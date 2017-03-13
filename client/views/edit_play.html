@@ -18,43 +18,43 @@
           <div class="form-group">
             <label>First Player</label>
             <label data-ng-repeat="player in playerList">
-              <input type="radio" value="{{player.full_names}}" ng-model="play.first_players" />
+              <input type="radio" value="{{player.full_names}}" ng-model="play.quarterbacks" />
               {{player.full_names}}
             </label>
           </div>
         </div>
         <div class="col-sm-2">
           <div class="form-group">
-            <label>Second Player</label>
+            <label>Offensive Player</label>
             <label data-ng-repeat="player in playerList">
-              <input type="radio" value="{{player.full_names}}" ng-model="play.second_players" />
+              <input type="radio" value="{{player.full_names}}" ng-model="play.offensive_players" />
               {{player.full_names}}
             </label>
           </div>
         </div>
         <div class="col-sm-2">
           <div class="form-group">
-            <label>Second Player Result</label>
+            <label>Offensive Result</label>
             <label data-ng-repeat="result in resultList">
-              <input type="radio" value="{{result.result_names}}" ng-model="play.second_player_results" />
+              <input type="radio" value="{{result.result_names}}" ng-model="play.offensive_results" />
               {{result.result_names}}
             </label>
           </div>
         </div>
         <div class="col-sm-2">
           <div class="form-group">
-            <label>Third Player</label>
+            <label>Defensive Player</label>
             <label data-ng-repeat="player in playerList">
-              <input type="radio" value="{{player.full_names}}" ng-model="play.third_players" />
+              <input type="radio" value="{{player.full_names}}" ng-model="play.defensive_players" />
               {{player.full_names}}
             </label>
           </div>
         </div>
         <div class="col-sm-2">
           <div class="form-group">
-            <label>Third Player Result</label>
+            <label>Defensive Result</label>
             <label data-ng-repeat="result in resultList">
-              <input type="radio" value="{{result.result_names}}" ng-model="play.third_player_results" />
+              <input type="radio" value="{{result.result_names}}" ng-model="play.defensive_results" />
               {{result.result_names}}
             </label>
           </div>

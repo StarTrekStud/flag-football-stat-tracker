@@ -17,7 +17,7 @@
                   <div class="form-group">
                       <label>First Player</label>
                       <label data-ng-repeat="player in playerList">
-                          <input type="radio" value="{{player.full_names}}" ng-model="play.first_players" />
+                          <input type="radio" value="{{player.full_names}}" ng-model="play.quarterbacks" />
                           {{player.full_names}}
                       </label>
                   </div>
@@ -26,7 +26,7 @@
                   <div class="form-group">
                       <label>Second Player</label>
                       <label data-ng-repeat="player in playerList">
-                          <input type="radio" value="{{player.full_names}}" ng-model="play.second_players" />
+                          <input type="radio" value="{{player.full_names}}" ng-model="play.offensive_players" />
                           {{player.full_names}}
                       </label>
                   </div>
@@ -44,7 +44,7 @@
                   <div class="form-group">
                       <label>Third Player</label>
                       <label data-ng-repeat="player in playerList">
-                          <input type="radio" value="{{player.full_names}}" ng-model="play.third_players" />
+                          <input type="radio" value="{{player.full_names}}" ng-model="play.defensive_players" />
                           {{player.full_names}}
                       </label>
                   </div>
@@ -72,7 +72,7 @@
             <div ng-repeat="play in plays | orderBy: '-create_date' ">
                 <div ng-if="play.create_date.indexOf(play.schedules) > -1">
                     <div class="col-1-1">
-                        <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.first_players}} | {{play.second_players}} | {{play.second_player_results}} | {{play.third_players}} | {{play.third_player_results}}</a>
+                        <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.quarterbacks}} | {{play.offensive_players}} | {{play.offensive_results}} | {{play.defensive_players}} | {{play.defensive_results}}</a>
                     </div>
                 </div>
             </div>
