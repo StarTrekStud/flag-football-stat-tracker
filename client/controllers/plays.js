@@ -1,11 +1,9 @@
 var myApp = angular.module('myApp');
 
-myApp.controller('PlaysController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
+myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', '$routeParams', function($scope, $filter, $http, $location, $routeParams){
 	console.log('PlaysController loaded...');
 
-    scope.getDatetime = function() {
-      return (new Date).toLocaleFormat("%A, %B %e, %Y");
-    };
+    $scope.formatDate = $filter('date')(new Date(),'yyyy-MM-dd');
 
 	$scope.getPlayers = function(){
 		$http.get('/api/players').success(function(response){
