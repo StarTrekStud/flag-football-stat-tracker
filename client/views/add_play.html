@@ -9,7 +9,7 @@
               <span>Date: {{date}}</span>
             <div class="form-group">
                 <label>Schedule</label>
-                <select ng-model="play.schedules" ng-required="required" ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:'3/12/2017', times: '6'}">
+                <select ng-model="play.schedules" ng-required="required" ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:date, times:time}">
                     <option value="">Select Game</option>
                 </select>
             </div>
