@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-11">
           <form ng-submit="addPlay()">
-              <label ng-bind="formatDate(date) |  date:'MM/dd/yyyy'"></label>
+              <label ng-bind="formatDate()"></label>
             <div class="form-group">
                 <label>Schedule</label>
                 <select ng-model="play.schedules" ng-required="required" ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:'3/12/2017', times: '6'}">
