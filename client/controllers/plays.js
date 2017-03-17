@@ -3,8 +3,7 @@ var myApp = angular.module('myApp');
 myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', '$routeParams', function($scope, $filter, $http, $location, $routeParams){
 	console.log('PlaysController loaded...');
 
-    $scope.date = $filter('date')(new Date(),'M/d/yyyy');
-    $scope.time = $filter('time')(new Date(),'H');
+    $scope.date = $filter('date')(new Date(),'M/d/yyyy, H');
 
 	$scope.getPlayers = function(){
 		$http.get('/api/players').success(function(response){
