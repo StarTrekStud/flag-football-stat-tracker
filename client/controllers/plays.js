@@ -4,7 +4,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 	console.log('PlaysController loaded...');
 
     $scope.formattedDate = $filter('date')(new Date(),'M/d/yyyy');
-    $scope.formattedTime = $filter('date')(new Date(),'H');
+    $scope.formattedTime = $filter('date')(new Date(),'h');
 
 	$scope.getPlayers = function(){
 		$http.get('/api/players').success(function(response){
