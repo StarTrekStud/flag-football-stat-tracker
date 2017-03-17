@@ -6,10 +6,10 @@
     <div class="row">
       <div class="col-md-11">
           <form ng-submit="addPlay()">
-              <span>Date: {{formattedDate}}</span>
+              <span>Date: {{formattedDate}}, {{formattedTime}}</span>
             <div class="form-group">
                 <label>Schedule</label>
-                <select ng-model="play.schedules" ng-required="required" ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times: '6'}">
+                <select ng-model="play.schedules" ng-required="required" ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
                     <option value="">Select Game</option>
                 </select>
             </div>
