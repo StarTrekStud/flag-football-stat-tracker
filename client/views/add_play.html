@@ -1,7 +1,14 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">Add Play</h3>
-  </div>
+    <div class="panel-heading">
+        <h3 class="panel-title">Add Plays
+            <span class="pull-right">Offense:
+                <select ng-model="teams" ng-init="selected"
+                        ng-options="team.team_names as team.team_names for team in teamList">
+                    <option value="" selected="selected">All</option>
+                </select>
+            </span>
+        </h3>
+    </div>
   <div class="panel-body">
     <div class="row">
       <div class="col-md-11">
