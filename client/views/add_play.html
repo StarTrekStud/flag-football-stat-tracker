@@ -16,9 +16,10 @@
               </div>
               <div class="form-group">
                   <label>Schedule</label>
-                  <select ng-model="play.schedules" ng-required="required" ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
-                      <option value="">Select Game</option>
-                  </select>
+                  <label data-ng-repeat="schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
+                      <input type="radio" value="{{schedule.dates}} + ', ' + {{schedule.times}}" ng-model="play.schedules" />
+                      {{schedule.dates}} + ', ' + {{schedule.times}}
+                  </label>
               </div>
               <div class="col-sm-2">
                   <div class="form-group">
