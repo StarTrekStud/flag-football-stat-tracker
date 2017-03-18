@@ -9,16 +9,22 @@ var playSchema = mongoose.Schema({
 	quarterbacks:{
 		type: String
 	},
-	offensive_players:{
-		type: String
-	},
-	offensive_results:{
-		type: String
-	},
-	defensive_players:{
+	receiver_teams:{
 	    type: String
 	},
-	defensive_results:{
+	receivers:{
+		type: String
+	},
+	receiver_results:{
+		type: String
+	},
+	defender_teams:{
+	    type: String
+	},
+	defenders:{
+	    type: String
+	},
+	defender_results:{
 		type: String
 	},
 	create_date:{
@@ -54,10 +60,12 @@ module.exports.updatePlay = function(id, play, options, callback){
 	var update = {
 		schedules: play.schedules,
 		quarterbacks: play.quarterbacks,
-		offensive_players: play.offensive_players,
-		offensive_results: play.offensive_results,
-		defensive_players: play.defensive_players,
-		defensive_results: play.defensive_results
+		receiver_teams: play.receiver_teams,
+		receivers: play.receivers,
+		receiver_results: play.receiver_results,
+		defender_teams: play.defender_teams,
+		defenders: play.defenders,
+		defender_results: play.defender_results
 	}
 	Play.findOneAndUpdate(query, update, options, callback);
 }

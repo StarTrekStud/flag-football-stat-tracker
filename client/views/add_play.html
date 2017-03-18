@@ -9,16 +9,16 @@
           <form ng-submit="addPlay()">
               <div class="form-group">
                   <label>Offense</label>
-                  <select ng-model="teams" ng-init="selected"
-                          ng-options="team.team_names as team.team_names for team in teamList">
-                      <option value="" selected="selected">All</option>
-                  </select>>
+                  <label data-ng-repeat="team in teamList | filter:{team_names:schedule.homes}">
+                      <input type="radio" value="{{team.team_names}}" ng-model="play.teams" />
+                      {{team.team_names}}
+                  </label>
               </div>
               <div class="form-group">
                   <label>Schedule</label>
                   <label data-ng-repeat="schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
                       <input type="radio" value="{{schedule.dates}} + ', ' + {{schedule.times}}" ng-model="play.schedules" />
-                      {{schedule.dates}} + ', ' + {{schedule.times}}
+                      {{schedule.dates}}, {{schedule.times}}
                   </label>
               </div>
               <div class="col-sm-2">
@@ -34,16 +34,16 @@
                   <div class="form-group">
                       <label>Receiver</label>
                       <label data-ng-repeat="player in playerList">
-                          <input type="radio" value="{{player.full_names}}" ng-model="play.offensive_players" />
+                          <input type="radio" value="{{player.full_names}}" ng-model="play.receivers" />
                           {{player.full_names}}
                       </label>
                   </div>
               </div>
               <div class="col-sm-2">
                   <div class="form-group">
-                      <label>Offensive Result</label>
+                      <label>Receiver Result</label>
                       <label data-ng-repeat="result in resultList | filter:{offense:'true'}">
-                          <input type="radio" value="{{result.result_names}}" ng-model="play.offensive_results" />
+                          <input type="radio" value="{{result.result_names}}" ng-model="play.receiver_results" />
                           {{result.result_names}}
                       </label>
                   </div>
@@ -52,16 +52,16 @@
                   <div class="form-group">
                       <label>Defender</label>
                       <label data-ng-repeat="player in playerList">
-                          <input type="radio" value="{{player.full_names}}" ng-model="play.defensive_players" />
+                          <input type="radio" value="{{player.full_names}}" ng-model="play.defenders" />
                           {{player.full_names}}
                       </label>
                   </div>
               </div>
               <div class="col-sm-2">
                   <div class="form-group">
-                      <label>Defensive Result</label>
+                      <label>Defender Result</label>
                       <label data-ng-repeat="result in resultList | filter:{defense:'true'}">
-                          <input type="radio" value="{{result.result_names}}" ng-model="play.defensive_results" />
+                          <input type="radio" value="{{result.result_names}}" ng-model="play.defender_results" />
                           {{result.result_names}}
                       </label>
                   </div>
@@ -80,7 +80,7 @@
             <div ng-repeat="play in plays | orderBy: '-create_date' ">
                 <div ng-if="play.create_date.indexOf(play.schedules) > -1">
                     <div class="col-1-1">
-                        <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.quarterbacks}} | {{play.offensive_players}} | {{play.offensive_results}} | {{play.defensive_players}} | {{play.defensive_results}}</a>
+                        <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.quarterbacks}} | {{play.receivers}} | {{play.receiver_results}} | {{play.defenders}} | {{play.defender_results}}</a>
                     </div>
                 </div>
             </div>
