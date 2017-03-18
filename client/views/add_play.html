@@ -17,21 +17,21 @@
               <div class="form-group">
                   <label>Offense</label>
                   <label data-ng-repeat="team in teamList">
-                      <input type="radio" value="{{team.team_names}}" ng-model="play.receiver_teams" />
+                      <input type="radio" value="{{team.team_names}}" ng-model="receiver_teams" />
                       {{team.team_names}}
                   </label>
               </div>
               <div class="form-group">
                   <label>Defense</label>
                   <label data-ng-repeat="team in teamList">
-                      <input type="radio" value="{{team.team_names}}" ng-model="play.defender_teams" />
+                      <input type="radio" value="{{team.team_names}}" ng-model="defender_teams" />
                       {{team.team_names}}
                   </label>
               </div>
               <div class="col-sm-2">
                   <div class="form-group">
                       <label>Quarterback</label>
-                      <label data-ng-repeat="player in playerList | filter:{team_names:'The VSP Veyekings'}">
+                      <label data-ng-repeat="player in playerList | filter:{team_names:receiver_teams}">
                           <input type="radio" value="{{player.full_names}}" ng-model="play.quarterbacks" />
                           {{player.full_names}}
                       </label>
