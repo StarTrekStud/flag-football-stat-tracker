@@ -27,7 +27,7 @@
                 <label>Quarterback</label>
                 <select size = "2" ng-model="quarterbacks"
                         ng-options="player.full_names as player.full_names for player in playerList | filter:receiver_teams">
-                    <option value="" selected="selected">All</option>
+                    <option value="">$first</option>
                 </select>
             </div>
         </div>
@@ -36,7 +36,16 @@
                 <label>Receiver</label>
                 <select size = "2" ng-model="receivers"
                         ng-options="player.full_names as player.full_names for player in playerList | filter:receiver_teams">
-                    <option value="" selected="selected">All</option>
+                    <option value="">$first</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label>Receiver Results</label>
+                <select size = "2" ng-model="receiver_results"
+                        ng-options="result.result_names as result.result_names for result in resultList">
+                    <option value="">$first</option>
                 </select>
             </div>
         </div>
@@ -45,7 +54,16 @@
                 <label>Defender</label>
                 <select size = "2" ng-model="defenders"
                         ng-options="player.full_names as player.full_names for player in playerList | filter:defender_teams">
-                    <option value="" selected="selected">All</option>
+                    <option value="">$first</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label>Defender Results</label>
+                <select size = "2" ng-model="defender_results"
+                        ng-options="result.result_names as result.result_names for result in resultList">
+                    <option value="">$first</option>
                 </select>
             </div>
         </div>
