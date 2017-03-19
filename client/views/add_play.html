@@ -32,10 +32,10 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Quarterback</label>
-                                <select size = "2" ng-model="play.quarterbacks"
-                                        ng-options="player.full_names as player.full_names for player in playerList | filter:play.receiver_teams">
-                                    <option value="" ng-show="false"></option>
-                                </select>
+                                <label data-ng-repeat="player in playerList | filter:{full_names:play.receiver_teams}">
+                                    <input type="radio" value="{{player.full_names}}" ng-model="play.quarterbacks" />
+                                    {{player.full_names}}
+                                </label>
                             </div>
                         </div>
                         <div class="col-sm-2">
