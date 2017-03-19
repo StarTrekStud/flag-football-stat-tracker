@@ -17,9 +17,9 @@
                 </select>
             </span>
         <span class="pull-right">Schedule:
-                <select size = "1" ng-model="schedules">
-                        <option ng-repeat="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}" ng-selected="$first">
-                    {{schedule.dates}}, {{schedule.times}}</option>
+                <select size = "1" ng-model="schedules"
+                        ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
+                    <option value="" selected="selected">All</option>
                 </select>
             </span>
         <div class="col-sm-2">
@@ -34,10 +34,11 @@
         <div class="col-sm-2">
             <div class="form-group">
                 <label>Defender</label>
-                <label data-ng-repeat="player in playerList | filter:defender_teams">
-                    <input type="radio" value="{{player.full_names}}" ng-model="play.receivers" />
+                <select ng-model="defenders">
+                    <option data-ng-repeat="player.full_names as player.full_names for player in playerList | filter:defender_teams" value="$first">
                     {{player.full_names}}
-                </label>
+                    </option>
+                </select>
             </div>
         </div>
     </div>
