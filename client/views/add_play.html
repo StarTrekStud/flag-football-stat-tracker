@@ -31,7 +31,7 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Quarterback</label>
-                                <label data-ng-repeat="player in playerList | filter:play.receiver_teams">">
+                                <label data-ng-repeat="player in playerList | filter:play.receiver_teams">
                                     <input type="radio" value="{{player.full_names}}" ng-model="play.quarterbacks" />
                                     {{player.full_names}}
                                 </label>
@@ -40,10 +40,10 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Receiver</label>
-                                <select size = "2" ng-model="play.receivers"
-                                        ng-options="player.full_names as player.full_names for player in playerList | filter:play.receiver_teams">
-                                    <option value="" ng-show="false"></option>
-                                </select>
+                                <label data-ng-repeat="player in playerList | filter:play.receiver_teams">
+                                    <input type="radio" value="{{player.full_names}}" ng-model="play.receivers" />
+                                    {{player.full_names}}
+                                </label>
                             </div>
                         </div>
                         <div class="col-sm-2">
@@ -58,10 +58,10 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Defender</label>
-                                <select size = "2" ng-model="play.defenders"
-                                        ng-options="player.full_names as player.full_names for player in playerList | filter:play.defender_teams">
-                                    <option value="" ng-show="false"></option>
-                                </select>
+                                <label data-ng-repeat="player in playerList | filter:play.defender_teams">
+                                    <input type="radio" value="{{player.full_names}}" ng-model="play.defenders" />
+                                    {{player.full_names}}
+                                </label>
                             </div>
                         </div>
                         <div class="col-sm-2">
