@@ -50,7 +50,7 @@
                             <div class="form-group">
                                 <label>Receiver Results</label>
                                 <select size = "6" ng-model="play.receiver_results"
-                                        ng-options="result.result_names as result.result_names for result in resultList">
+                                        ng-options="result.result_names as result.result_names for result in resultList | filter:{offense:'true'}">
                                     <option value="" ng-show="false"></option>
                                 </select>
                             </div>
@@ -68,7 +68,7 @@
                             <div class="form-group">
                                 <label>Defender Results</label>
                                 <select size = "6" ng-model="play.defender_results"
-                                        ng-options="result.result_names as result.result_names for result in resultList">
+                                        ng-options="result.result_names as result.result_names for result in resultList | filter:{defense:'true'}">
                                     <option value="" ng-show="false"></option>
                                 </select>
                             </div>
