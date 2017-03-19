@@ -5,19 +5,19 @@
     </div>
     <div class="panel-body">
         <div class="row">
-        <span class="pull-right">Defense:
+        <span>Defense:
             <select size = "2" ng-model="defender_teams" ng-init="selected"
                         ng-options="team.team_names as team.team_names for team in teamList">
                     <option value="" ng-show="false"></option>
             </select>
         </span>
-        <span class="pull-right">Offense:
+        <span>Offense:
             <select size = "2" ng-model="receiver_teams"
                         ng-options="team.team_names as team.team_names for team in teamList">
                     <option value="" ng-show="false"></option>
             </select>
         </span>
-        <span class="pull-right">Schedule:
+        <span>Schedule:
             <select size = "2" ng-model="schedules"
                         ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
                     <option value="" ng-show="false"></option>
@@ -46,7 +46,7 @@
             <div class="col-sm-2">
                 <div class="form-group">
                     <label>Receiver Results</label>
-                    <select size = "2" ng-model="receiver_results"
+                    <select size = "4" ng-model="receiver_results"
                             ng-options="result.result_names as result.result_names for result in resultList">
                         <option value="" ng-show="false"></option>
                     </select>
@@ -64,7 +64,7 @@
             <div class="col-sm-2">
                 <div class="form-group">
                     <label>Defender Results</label>
-                    <select size = "2" ng-model="defender_results"
+                    <select size = "4" ng-model="defender_results"
                             ng-options="result.result_names as result.result_names for result in resultList">
                         <option value="" ng-show="false"></option>
                     </select>
