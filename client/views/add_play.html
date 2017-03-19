@@ -33,7 +33,7 @@
                             <div class="form-group">
                                 <label>Quarterback</label>
                                 <select size = "2" ng-model="play.quarterbacks"
-                                        ng-options="player.full_names as player.full_names for player in playerList | filter:{full_names:play.receiver_teams}">
+                                        ng-options="player.full_names as player.full_names for player in playerList | filter:play.receiver_teams">
                                     <option value="" ng-show="false"></option>
                                 </select>
                             </div>
