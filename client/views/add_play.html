@@ -8,21 +8,24 @@
             <div class="col-md-11">
                 <form ng-submit="addPlay()">
                     <div class="row">
-                        <label>Schedule:</label>
+                        <span>Schedule:
                             <select size = "2" ng-model="play.schedules"
                                     ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
                                     <option value="" ng-show="false"></option>
                             </select>
-                        <label>Offense:</label>
-                            <select size = "2" ng-model="play.receiver_teams"
+                        </span>
+                        <span>Offense:
+                            <select size = "4" ng-model="play.receiver_teams"
                                     ng-options="team.team_names as team.team_names for team in teamList">
                                     <option value="" ng-show="false"></option>
                             </select>
-                        <label>Defense:</label>
-                            <select size = "2" ng-model="play.defender_teams"
+                        </span>
+                        <span>Defense:
+                            <select size = "4" ng-model="play.defender_teams"
                                     ng-options="team.team_names as team.team_names for team in teamList">
                                     <option value="" ng-show="false"></option>
                             </select>
+                        </span>
                     </div>
                     <div class="row">
                         <div class="col-sm-2">
