@@ -16,7 +16,7 @@
                         </span>
                         <span>Offense:
 
-                        <div data-ng-repeat="team.team_names as team.team_names for team in teamList">
+                        <div data-ng-repeat="team in teamList">
                             <input type="radio" value="{{team.team_names}}" ng-model="play.receiver_teams" name="play.receiver_teams" />
                             {{team.team_names}}
                         </div>
