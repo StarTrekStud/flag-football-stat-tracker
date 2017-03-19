@@ -5,69 +5,91 @@
     </div>
     <div class="panel-body">
         <div class="row">
-        <span>Defense:
-            <select size = "2" ng-model="defender_teams" ng-init="selected"
-                        ng-options="team.team_names as team.team_names for team in teamList">
-                    <option value="" ng-show="false"></option>
-            </select>
-        </span>
-        <span>Offense:
-            <select size = "2" ng-model="receiver_teams"
-                        ng-options="team.team_names as team.team_names for team in teamList">
-                    <option value="" ng-show="false"></option>
-            </select>
-        </span>
-        <span>Schedule:
-            <select size = "2" ng-model="schedules"
-                        ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
-                    <option value="" ng-show="false"></option>
-            </select>
-        </span>
+            <div class="col-md-11">
+                <form ng-submit="addPlay()">
+                    <div class="row">
+                        <span>Schedule:
+                            <select size = "2" ng-model="schedules"
+                                    ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
+                                    <option value="" ng-show="false"></option>
+                            </select>
+                        </span>
+                        <span>Offense:
+                            <select size = "2" ng-model="receiver_teams"
+                                    ng-options="team.team_names as team.team_names for team in teamList">
+                                    <option value="" ng-show="false"></option>
+                            </select>
+                        </span>
+                        <span>Defense:
+                            <select size = "2" ng-model="defender_teams" ng-init="selected"
+                                        ng-options="team.team_names as team.team_names for team in teamList">
+                                    <option value="" ng-show="false"></option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Quarterback</label>
+                                <select size = "2" ng-model="quarterbacks"
+                                        ng-options="player.full_names as player.full_names for player in playerList | filter:receiver_teams">
+                                    <option value="" ng-show="false"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Receiver</label>
+                                <select size = "2" ng-model="receivers"
+                                        ng-options="player.full_names as player.full_names for player in playerList | filter:receiver_teams">
+                                    <option value="" ng-show="false"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Receiver Results</label>
+                                <select size = "4" ng-model="receiver_results"
+                                        ng-options="result.result_names as result.result_names for result in resultList">
+                                    <option value="" ng-show="false"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Defender</label>
+                                <select size = "2" ng-model="defenders"
+                                        ng-options="player.full_names as player.full_names for player in playerList | filter:defender_teams">
+                                    <option value="" ng-show="false"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Defender Results</label>
+                                <select size = "4" ng-model="defender_results"
+                                        ng-options="result.result_names as result.result_names for result in resultList">
+                                    <option value="" ng-show="false"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
+    </div>
+</div>
+<div class="panel panel-default" ng-init="getPlays()">
+    <div class="panel-body">
         <div class="row">
-            <div class="col-sm-2">
-                <div class="form-group">
-                    <label>Quarterback</label>
-                    <select size = "2" ng-model="quarterbacks"
-                            ng-options="player.full_names as player.full_names for player in playerList | filter:receiver_teams">
-                        <option value="" ng-show="false"></option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="form-group">
-                    <label>Receiver</label>
-                    <select size = "2" ng-model="receivers"
-                            ng-options="player.full_names as player.full_names for player in playerList | filter:receiver_teams">
-                        <option value="" ng-show="false"></option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="form-group">
-                    <label>Receiver Results</label>
-                    <select size = "4" ng-model="receiver_results"
-                            ng-options="result.result_names as result.result_names for result in resultList">
-                        <option value="" ng-show="false"></option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="form-group">
-                    <label>Defender</label>
-                    <select size = "2" ng-model="defenders"
-                            ng-options="player.full_names as player.full_names for player in playerList | filter:defender_teams">
-                        <option value="" ng-show="false"></option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="form-group">
-                    <label>Defender Results</label>
-                    <select size = "4" ng-model="defender_results"
-                            ng-options="result.result_names as result.result_names for result in resultList">
-                        <option value="" ng-show="false"></option>
-                    </select>
+            <div ng-repeat="play in plays | orderBy: '-create_date' ">
+                <div ng-if="play.create_date.indexOf(play.schedules) > -1">
+                    <div class="col-1-1">
+                        <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.quarterbacks}} | {{play.receivers}} | {{play.receiver_results}} | {{play.defenders}} | {{play.defender_results}}</a>
+                    </div>
                 </div>
             </div>
         </div>
