@@ -15,10 +15,10 @@
                             </select>
                         </span>
                         <span>Offense:
-                  <label data-ng-repeat="team in teamList">
-                      <input type="radio" value="{{team.team_names}}" ng-model="play.receiver_teams" />
-                      {{team.team_names}}
-                  </label>
+                            <select size = "4" ng-model="play.receiver_teams"
+                                    ng-options="team.team_names as team.team_names for team in teamList">
+                                    <option value="" ng-show="false"></option>
+                            </select>
                         </span>
                         <span>Defense:
                             <select size = "4" ng-model="play.defender_teams"
