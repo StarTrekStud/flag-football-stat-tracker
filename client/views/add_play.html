@@ -1,95 +1,22 @@
-<div class="panel panel-primary">
+<div class="panel panel-default" ng-init="getPlayers()">
     <div class="panel-heading">
-        <h3 class="panel-title">Add Plays
+        <h3 class="panel-title">View Players
+            <span class="pull-right">Filter by Team:
+                <select ng-model="team_names" ng-init="selected"
+                        ng-options="team.team_names as team.team_names for team in teamList">
+                    <option value="" selected="selected">All</option>
+                </select>
+            </span>
         </h3>
     </div>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-md-11">
-          <form ng-submit="addPlay()">
-              <div class="form-group">
-                  <label>Schedule</label>
-                  <label data-ng-repeat="schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
-                      <input type="radio" value="{{schedule.dates}} + ', ' + {{schedule.times}}" ng-model="play.schedules" />
-                      {{schedule.dates}}, {{schedule.times}}
-                  </label>
-              </div>
-              <div class="form-group">
-                  <label>Offense</label>
-                  <label data-ng-repeat="team in teamList">
-                      <input type="radio" value="{{team.team_names}}" ng-model="play.receiver_teams" />
-                      {{team.team_names}}
-                  </label>
-              </div>
-              <div class="form-group">
-                  <label>Defense</label>
-                  <label data-ng-repeat="team in teamList">
-                      <input type="radio" value="{{team.team_names}}" ng-model="play.defender_teams" />
-                      {{team.team_names}}
-                  </label>
-              </div>
-              <div class="col-sm-2">
-                  <div class="form-group">
-                      <label>Quarterback</label>
-                      <label data-ng-repeat="player in playerList">
-                          <input type="radio" value="{{player.full_names}}" ng-model="play.quarterbacks" />
-                          {{player.full_names}}
-                      </label>
-                  </div>
-              </div>
-              <div class="col-sm-2">
-                  <div class="form-group">
-                      <label>Receiver</label>
-                      <label data-ng-repeat="player in playerList">
-                          <input type="radio" value="{{player.full_names}}" ng-model="play.receivers" />
-                          {{player.full_names}}
-                      </label>
-                  </div>
-              </div>
-              <div class="col-sm-2">
-                  <div class="form-group">
-                      <label>Receiver Result</label>
-                      <label data-ng-repeat="result in resultList | filter:{offense:'true'}">
-                          <input type="radio" value="{{result.result_names}}" ng-model="play.receiver_results" />
-                          {{result.result_names}}
-                      </label>
-                  </div>
-              </div>
-              <div class="col-sm-2">
-                  <div class="form-group">
-                      <label>Defender</label>
-                      <label data-ng-repeat="player in playerList">
-                          <input type="radio" value="{{player.full_names}}" ng-model="play.defenders" />
-                          {{player.full_names}}
-                      </label>
-                  </div>
-              </div>
-              <div class="col-sm-2">
-                  <div class="form-group">
-                      <label>Defender Result</label>
-                      <label data-ng-repeat="result in resultList | filter:{defense:'true'}">
-                          <input type="radio" value="{{result.result_names}}" ng-model="play.defender_results" />
-                          {{result.result_names}}
-                      </label>
-                  </div>
-              </div>
-              <div class="col-sm-1">
-                  <button type="submit" class="btn btn-default">Submit</button>
-              </div>
-          </form>
-        </div>
-    </div>
-  </div>
-</div>
-<div class="panel panel-default" ng-init="getPlays()">
     <div class="panel-body">
-        <div class="row">
-            <div ng-repeat="play in plays | orderBy: '-create_date' ">
-                <div ng-if="play.create_date.indexOf(play.schedules) > -1">
-                    <div class="col-1-1">
-                        <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.quarterbacks}} | {{play.receivers}} | {{play.receiver_results}} | {{play.defenders}} | {{play.defender_results}}</a>
-                    </div>
-                </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <label>Receiver</label>
+                <label data-ng-repeat="player in playerList | filter:team_names">
+                    <input type="radio" value="{{player.full_names}}" ng-model="play.receivers" />
+                    {{player.full_names}}
+                </label>
             </div>
         </div>
     </div>
