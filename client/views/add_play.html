@@ -17,9 +17,9 @@
                 </select>
             </span>
         <span class="pull-right">Schedule:
-                <select size = "1" ng-model="schedules"
-                        ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
-                    <option value="" selected="selected">All</option>
+                <select size = "1" ng-model="schedules">
+                        <option ng-repeat="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}" ng-selected="$first">
+                    {{schedule.dates}}, {{schedule.times}}</option>
                 </select>
             </span>
         <div class="col-sm-2">
