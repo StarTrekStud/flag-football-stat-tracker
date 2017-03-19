@@ -9,19 +9,19 @@
                 <form ng-submit="addPlay()">
                     <div class="row">
                         <span>Schedule:
-                            <select size = "2" ng-model="schedules"
+                            <select size = "2" ng-model="play.schedules"
                                     ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
                                     <option value="" ng-show="false"></option>
                             </select>
                         </span>
                         <span>Offense:
-                            <select size = "2" ng-model="receiver_teams"
+                            <select size = "2" ng-model="play.receiver_teams"
                                     ng-options="team.team_names as team.team_names for team in teamList">
                                     <option value="" ng-show="false"></option>
                             </select>
                         </span>
                         <span>Defense:
-                            <select size = "2" ng-model="defender_teams" ng-init="selected"
+                            <select size = "2" ng-model="play.defender_teams" ng-init="selected"
                                         ng-options="team.team_names as team.team_names for team in teamList">
                                     <option value="" ng-show="false"></option>
                             </select>
@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <label>Quarterback</label>
                                 <select size = "2" ng-model="play.quarterbacks"
-                                        ng-options="player.full_names as player.full_names for player in playerList | filter:receiver_teams">
+                                        ng-options="player.full_names as player.full_names for player in playerList | filter:play.receiver_teams">
                                     <option value="" ng-show="false"></option>
                                 </select>
                             </div>
@@ -41,7 +41,7 @@
                             <div class="form-group">
                                 <label>Receiver</label>
                                 <select size = "2" ng-model="play.receivers"
-                                        ng-options="player.full_names as player.full_names for player in playerList | filter:receiver_teams">
+                                        ng-options="player.full_names as player.full_names for player in playerList | filter:play.receiver_teams">
                                     <option value="" ng-show="false"></option>
                                 </select>
                             </div>
@@ -49,7 +49,7 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Receiver Results</label>
-                                <select size = "5" ng-model="play.receiver_results"
+                                <select size = "6" ng-model="play.receiver_results"
                                         ng-options="result.result_names as result.result_names for result in resultList">
                                     <option value="" ng-show="false"></option>
                                 </select>
@@ -59,7 +59,7 @@
                             <div class="form-group">
                                 <label>Defender</label>
                                 <select size = "2" ng-model="play.defenders"
-                                        ng-options="player.full_names as player.full_names for player in playerList | filter:defender_teams">
+                                        ng-options="player.full_names as player.full_names for player in playerList | filter:play.defender_teams">
                                     <option value="" ng-show="false"></option>
                                 </select>
                             </div>
@@ -67,7 +67,7 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Defender Results</label>
-                                <select size = "5" ng-model="play.defender_results"
+                                <select size = "6" ng-model="play.defender_results"
                                         ng-options="result.result_names as result.result_names for result in resultList">
                                     <option value="" ng-show="false"></option>
                                 </select>
