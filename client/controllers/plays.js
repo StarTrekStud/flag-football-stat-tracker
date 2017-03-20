@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp');
 
-myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', '$routeParams', function($scope, $filter, $http, $location, $routeParams){
+myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', '$routeParams', 'PlayerService', function($scope, $filter, $http, $location, $routeParams, PlayerService){
 	console.log('PlaysController loaded...');
 
     $scope.formattedDate = $filter('date')(new Date(),'M/d/yyyy');
@@ -9,7 +9,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 	$scope.getPlayers = function(){
 		$http.get('/api/players').success(function(response){
 			$scope.players = response;
-			playerService.getSetPlays(response);
+			this.PlayerService.getSetPlays(response);
 		});
 	}
 
