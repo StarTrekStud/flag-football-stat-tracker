@@ -28,6 +28,7 @@ myApp.service('PlayerService', function () {
             player.stats = {};
             player.stats.catches = 0;
             player.stats.drops = 0;
+            player.stats.tackles = 0;
         }
 
         for (var a = 0; a < plays.length; a++) {
@@ -37,6 +38,8 @@ myApp.service('PlayerService', function () {
                 getPlayerByName(play.receivers).stats.catches++;
             }else if(play.receiver_results === "Drop"){
                 getPlayerByName(play.receivers).stats.drops++;
+            }else if(play.defender_results === "Tackle"){
+                getPlayerByname(play.defenders).stats.tackles++;
             }
         }
     }
