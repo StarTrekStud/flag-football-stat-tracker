@@ -43,7 +43,7 @@ myApp.service('PlayerService', function () {
             }
 
             if(play.defender_results === "Tackle"){
-                getPlayerByname(play.defenders).stats.tackles++;
+                getPlayerByName(play.defenders).stats.tackles++;
             }
         }
     }
