@@ -1,66 +1,18 @@
 var myApp = angular.module('myApp',['ngRoute']);
 
 myApp.config(function($routeProvider){
-
 	$routeProvider.when('/', {
-		controller:'PlayersController',
-		templateUrl: 'views/statistics.html'
+		controller:'PlaysController',
+		templateUrl: 'views/add_play.html'
 	})
-
-
-
-	.when('/statistics', {
-		controller:'PlayersController',
-		templateUrl: 'views/statistics.html'
-	})
-
-
-
 	.when('/admins', {
 		controller:'PlaysController',
 		templateUrl: 'views/administration.html'
 	})
-
-
-
-	.when('/plays', {
+	.when('/statistics', {
 		controller:'PlaysController',
-		templateUrl: 'views/plays.html'
+		templateUrl: 'views/statistics.html'
 	})
-	.when('/plays/details/:id',{
-		controller:'PlaysController',
-		templateUrl: 'views/play_details.html'
-	})
-	.when('/plays/add',{
-		controller:'PlaysController',
-		templateUrl: 'views/add_play.html'
-	})
-	.when('/plays/edit/:id',{
-		controller:'PlaysController',
-		templateUrl: 'views/edit_play.html'
-	})
-
-
-
-	.when('/players', {
-		controller:'PlayersController',
-		templateUrl: 'views/players.html'
-	})
-	.when('/players/details/:id',{
-		controller:'PlayersController',
-		templateUrl: 'views/player_details.html'
-	})
-	.when('/players/add',{
-		controller:'PlayersController',
-		templateUrl: 'views/add_player.html'
-	})
-	.when('/players/edit/:id',{
-		controller:'PlayersController',
-		templateUrl: 'views/edit_player.html'
-	})
-
-
-
 	.when('/teams', {
 		controller:'TeamsController',
 		templateUrl: 'views/teams.html'
@@ -77,9 +29,6 @@ myApp.config(function($routeProvider){
 		controller:'TeamsController',
 		templateUrl: 'views/edit_team.html'
 	})
-
-
-
 	.when('/schedules', {
 		controller:'SchedulesController',
 		templateUrl: 'views/schedules.html'
@@ -96,9 +45,38 @@ myApp.config(function($routeProvider){
 		controller:'SchedulesController',
 		templateUrl: 'views/edit_schedule.html'
 	})
-
-
-
+	.when('/players', {
+		controller:'PlayersController',
+		templateUrl: 'views/players.html'
+	})
+	.when('/players/details/:id',{
+		controller:'PlayersController',
+		templateUrl: 'views/player_details.html'
+	})
+	.when('/players/add',{
+		controller:'PlayersController',
+		templateUrl: 'views/add_player.html'
+	})
+	.when('/players/edit/:id',{
+		controller:'PlayersController',
+		templateUrl: 'views/edit_player.html'
+	})
+	.when('/plays', {
+		controller:'PlaysController',
+		templateUrl: 'views/plays.html'
+	})
+	.when('/plays/details/:id',{
+		controller:'PlaysController',
+		templateUrl: 'views/play_details.html'
+	})
+	.when('/plays/add',{
+		controller:'PlaysController',
+		templateUrl: 'views/add_play.html'
+	})
+	.when('/plays/edit/:id',{
+		controller:'PlaysController',
+		templateUrl: 'views/edit_play.html'
+	})
 	.when('/results', {
 		controller:'ResultsController',
 		templateUrl: 'views/results.html'
@@ -115,11 +93,23 @@ myApp.config(function($routeProvider){
 		controller:'ResultsController',
 		templateUrl: 'views/edit_result.html'
 	})
-
-
-
+	.when('/stats', {
+		controller:'StatsController',
+		templateUrl: 'views/stats.html'
+	})
+	.when('/stats/details/:id',{
+		controller:'StatsController',
+		templateUrl: 'views/stat_details.html'
+	})
+	.when('/stats/add',{
+		controller:'StatsController',
+		templateUrl: 'views/add_stat.html'
+	})
+	.when('/stats/edit/:id',{
+		controller:'StatsController',
+		templateUrl: 'views/edit_stat.html'
+	})
 	.otherwise({
 		redirectTo: '/'
 	});
-
 });
