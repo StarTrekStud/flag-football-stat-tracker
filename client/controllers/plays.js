@@ -176,6 +176,8 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         if($scope.teamFilter !== 'All'){
             filterObj['team_names'] = $scope.teamFilter;
         }
+
+        return filterObj;
     }
 
 }]);
