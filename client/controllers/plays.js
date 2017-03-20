@@ -21,7 +21,6 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     });
 
 
-
     $scope.getPlayers = function () {
         return playerService.getSetPlayers();
     }
@@ -104,11 +103,18 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         });
     }
 
-    $scope.getFilteredPlayers = function(){
-        if($scope.selected === 'All'){
+    $scope.getFilteredPlayers = function () {
+        if ($scope.selected === 'All') {
             return playerService.getSetPlayers();
-        }else{
-            return playerService.getPlayerByName($scope.selected);
+        } else {
+            for (var a = 0; a < playerService.getSetPlayers(); a++) {
+                if (playerService.getSetPlayers[a].full_names === $scope.selected) {
+                    return playerService.getSetPlayers[a];
+                }
+            }
+
+
+            return null;
         }
     }
 

@@ -33,14 +33,14 @@ myApp.service('PlayerService', function () {
             var play = plays[a];
 
             if(play.receiver_results === "Catch"){
-                this.getPlayerByName(play.receivers).catches++;
+                getPlayerByName(play.receivers).catches++;
             }else if(player.receiver_results === "Drop"){
-                this.getPlayerByName(play.receivers).drops++;
+                getPlayerByName(play.receivers).drops++;
             }
         }
     }
 
-    this.getPlayerByName = function(str) {
+    getPlayerByName = function(str) {
         for (var a = 0; a < players.length; a++) {
             var player = players[a];
             if (player.full_names === str) {
