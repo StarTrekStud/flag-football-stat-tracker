@@ -6,6 +6,11 @@
                     <option value="All" selected="selected == All">All</option>
                     <option ng-repeat="player in getPlayers()" value="{{player.full_names}}">{{player.full_names}}</option>
                 </select>
+
+                <span class="pull-right">Sort:
+                 <select ng-model="sort">
+                    <option ng-repeat="stat in getPlayers()[0].stats.keys()" value="{{player.full_names}}">{{player.full_names}}</option>
+                </select>
             </span>
         </h3>
     </div>
