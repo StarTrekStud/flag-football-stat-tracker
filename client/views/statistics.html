@@ -1,18 +1,18 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Statistics
-            <span class="pull-right">Filter by Player:
-                <select ng-model="selected">
-                    <option value="All">All</option>
-                    <option ng-repeat="player in getPlayers()"
-                            value="{{player.full_names}}">{{player.full_names}}</option>
-                </select>
-            </span>
             <span class="pull-right">Sort
                  <select ng-model="sort">
                      <option value="None">None</option>
                     <option ng-repeat="stat in getAllStatsOptions()"
                             value="{{stat}}">{{stat}}</option>
+                </select>
+            </span>
+            <span class="pull-right">Players:
+                <select ng-model="selected">
+                    <option value="All">All</option>
+                    <option ng-repeat="player in getPlayers()"
+                            value="{{player.full_names}}">{{player.full_names}}</option>
                 </select>
             </span>
             <span class="pull-right">Teams:
@@ -39,11 +39,5 @@
                 </div>
             </div>
         </div>
-
     </div>
-
-    {{selected}}
-    {{playerService.getSetPlayers() | json}}
-    {{playerService.getSetPlays() | json}}
-
 </div>
