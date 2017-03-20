@@ -5,10 +5,10 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.formattedTime = $filter('date')(new Date(), 'h');
     $scope.playerService = playerService;
 
-    $scope.selected = 'All';
-    $scope.sort = 'None';
     $scope.teamFilter = 'All';
     $scope.nameFilter = '';
+    $scope.selected = 'All';
+    $scope.sort = 'names';
 
     $http.get('/api/players').success(function (response) {
         $scope.players = response;
@@ -20,7 +20,6 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         });
     });
 
-
     $scope.getPlayers = function () {
         return playerService.getSetPlayers();
     }
@@ -28,7 +27,6 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.getPlays = function () {
         return playerService.getSetPlayers();
     }
-
 
     $scope.players = null;
     $scope.playerList = [];
@@ -73,7 +71,6 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     }).success(function (response) {
         $scope.resultList = response;
     });
-
 
     $scope.getPlay = function () {
         var id = $routeParams.id;
@@ -140,7 +137,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 
         var orderBys = [];
 
-        if ($scope.sort !== 'None') {
+        if ($scope.sort !== 'names') {
             orderBys.push('-stats.' + $scope.sort);
         }
 
@@ -150,7 +147,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     }
 
     $scope.getStats = function (player) {
-        if ($scope.sort === 'None') {
+        if ($scope.sort === 'names') {
             return !!player.stats ? Object.keys(player.stats) : [];
         } else {
             return [$scope.sort];
