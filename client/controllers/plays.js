@@ -121,7 +121,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.getAllStatsOptions = function () {
         var list = [];
 
-        for (var a = 0; a < playerService.getSetPlayers(); a++) {
+        for (var a = 0; a < playerService.getSetPlayers().length; a++) {
             var player = playerService.getSetPlayers()[a];
 
             var keys = Object.keys(player.stats);
