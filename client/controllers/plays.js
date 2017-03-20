@@ -178,10 +178,6 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
             filterObj['team_names'] = $scope.teamFilter;
         }
 
-        if(!!$scope.nameFilter && $scope.nameFilter.length == 0){
-            filterObj['full_names'] = $scope.nameFilter;
-        }
-
         return filterObj;
     }
 
