@@ -9,7 +9,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 
     $scope.selected = 'All';
     $scope.sort = 'None';
-    $scope.teamFilter = 'None';
+    $scope.teamFilter = 'All';
 
     $http.get('/api/players').success(function (response) {
         $scope.players = response;
@@ -124,12 +124,13 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 
         for (var a = 0; a < playerService.getSetPlayers().length; a++) {
             var player = playerService.getSetPlayers()[a];
-
-            var keys = Object.keys(player.stats);
-            for (var b = 0; b < keys.length; b++) {
-                var key = keys[b];
-                if (list.indexOf(key) == -1) {
-                    list.push(key);
+            if(!!player.stats){
+                var keys = Object.keys(player.stats);
+                for (var b = 0; b < keys.length; b++) {
+                    var key = keys[b];
+                    if (list.indexOf(key) == -1) {
+                        list.push(key);
+                    }
                 }
             }
         }
@@ -172,7 +173,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.filterResults = function(){
         var filterObj = {};
 
-        if($scope.teamFilter !== 'None'){
+        if($scope.teamFilter !== 'All'){
             filterObj['team_names'] = $scope.teamFilter;
         }
     }
