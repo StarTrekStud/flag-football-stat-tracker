@@ -10,6 +10,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.selected = 'All';
     $scope.sort = 'None';
     $scope.teamFilter = 'All';
+    $scope.nameFilter = '';
 
     $http.get('/api/players').success(function (response) {
         $scope.players = response;
@@ -175,6 +176,10 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 
         if($scope.teamFilter !== 'All'){
             filterObj['team_names'] = $scope.teamFilter;
+        }
+
+        if(!!$scope.nameFilter && $scope.nameFilter.length == 0){
+            filterObj['full_names'] = $scope.nameFilter;
         }
 
         return filterObj;

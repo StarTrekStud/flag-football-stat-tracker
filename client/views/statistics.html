@@ -25,6 +25,13 @@
         </h3>
     </div>
     <div class="panel-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-3">
+                    <input ng-model="nameFilter" placeholder="Search for Player">
+                </div>
+            </div>
+        </div>
         <div ng-if="full_names != selected">
             <div ng-repeat="player in getFilteredPlayers() | orderBy: getOrderBy() | filter: filterResults() ">
                 <div class="row">
