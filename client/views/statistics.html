@@ -15,11 +15,18 @@
                             value="{{stat}}">{{stat}}</option>
                 </select>
             </span>
+            <span class="pull-right">Teams:
+                <select ng-model="teamFilter">
+                    <option value="All">None</option>
+                    <option ng-repeat="team in getTeamNames()"
+                            value="{{team}}">{{team}}</option>
+                </select>
+            </span>
         </h3>
     </div>
     <div class="panel-body">
         <div ng-if="full_names != selected">
-            <div ng-repeat="player in getFilteredPlayers() | orderBy: getOrderBy() ">
+            <div ng-repeat="player in getFilteredPlayers() | orderBy: getOrderBy() | filter: filterResults() ">
                 <div class="row">
                     <div class="col-md-6">
                         <p>Full Name: <em>{{player.full_names}}</em></p>
