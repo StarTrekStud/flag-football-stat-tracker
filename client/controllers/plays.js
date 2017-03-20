@@ -105,7 +105,11 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     }
 
     $scope.getFilteredPlayers = function(){
-        return playerService.getSetPlayers();
+        if($scope.selected === 'All'){
+            return playerService.getSetPlayers();
+        }else{
+            return playerService.getPlayerByName($scope.selected);
+        }
     }
 
 }]);

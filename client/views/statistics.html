@@ -22,9 +22,7 @@
                             <label>&nbsp;Catches: {{player.catches}}</label>
                         </div>
                         <div class="row">
-                            <div ng-repeat="play in plays | filter: { receivers: full_names, receiver_results: 'Drop' } as drops">
-                            </div>
-                            <label>&nbsp;Drops: {{drops.length}}</label>
+                            <label>&nbsp;Drops: {{player.drops}}</label>
                         </div>
                 </div>
             </div>
