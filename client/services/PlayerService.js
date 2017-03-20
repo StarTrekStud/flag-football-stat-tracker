@@ -7,7 +7,7 @@ myApp.service('PlayerService', function () {
         if (!!val) {
             players = val;
         } else {
-            return this.players;
+            return players;
         }
     }
 
@@ -18,7 +18,7 @@ myApp.service('PlayerService', function () {
             plays = val;
             populatePlays();
         } else {
-            return this.plays;
+            return plays;
         }
     }
 
