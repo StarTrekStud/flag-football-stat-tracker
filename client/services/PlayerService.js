@@ -25,17 +25,18 @@ myApp.service('PlayerService', function () {
     function populatePlays() {
         for (var a = 0; a < players.length; a++) {
             var player = players[a];
-            player.catches = 0;
-            player.drops = 0;
+            player.stats = {};
+            player.stats.catches = 0;
+            player.stats.drops = 0;
         }
 
         for (var a = 0; a < plays.length; a++) {
             var play = plays[a];
 
             if(play.receiver_results === "Catch"){
-                getPlayerByName(play.receivers).catches++;
+                getPlayerByName(play.receivers).stats.catches++;
             }else if(player.receiver_results === "Drop"){
-                getPlayerByName(play.receivers).drops++;
+                getPlayerByName(play.receivers).stats.drops++;
             }
         }
     }
