@@ -11,9 +11,7 @@ myApp.service('PlayerService', function () {
         }
     }
 
-
     this.getSetPlays = function (val) {
-
         if (!!val) {
             plays = val;
             populatePlays();
@@ -42,7 +40,6 @@ myApp.service('PlayerService', function () {
 
         for (var a = 0; a < plays.length; a++) {
             var play = plays[a];
-
             if(play.receiver_results === "Catch"){
                 getPlayerByName(play.receivers).stats.catches++;
             }
@@ -88,7 +85,6 @@ myApp.service('PlayerService', function () {
                 return player;
             }
         }
-
         return null;
     }
 
