@@ -107,9 +107,9 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         if ($scope.selected === 'All') {
             return playerService.getSetPlayers();
         } else {
-            for (var a = 0; a < playerService.getSetPlayers(); a++) {
-                if (playerService.getSetPlayers[a].full_names === $scope.selected) {
-                    return playerService.getSetPlayers[a];
+            for (var a = 0; a < playerService.getSetPlayers().length; a++) {
+                if (playerService.getSetPlayers()[a].full_names === $scope.selected) {
+                    return playerService.getSetPlayers()[a];
                 }
             }
 
