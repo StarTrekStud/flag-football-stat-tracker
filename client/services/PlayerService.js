@@ -32,7 +32,7 @@ myApp.service('PlayerService', function () {
             var play = plays[a];
 
             if(play.receiver_results === "Catch"){
-                getPlayerByName(play.receivers.catches++);
+                getPlayerByName(play.receivers).catches++;
             }
         }
     }
