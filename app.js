@@ -9,11 +9,10 @@ app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
 
 Team = require('./models/team');
-Schedule = require('./models/schedule')
-Player = require('./models/player')
+Schedule = require('./models/schedule');
+Player = require('./models/player');
 Play = require('./models/play');
 Result = require('./models/result');
-Stat = require('./models/stat');
 
 // Connect to Mongoose
 mongoose.connect(process.env.MONGODB_URI);
@@ -268,54 +267,6 @@ app.delete('/api/results/:_id', function(req, res){
 	});
 });
 
-app.get('/api/stats', function(req, res){
-	Stat.getStats(function(err, stats){
-		if(err){
-			throw err;
-		}
-		res.json(stats);
-	});
-});
-
-app.get('/api/stats/:_id', function(req, res){
-	Stat.getStatById(req.params._id, function(err, stat){
-		if(err){
-			throw err;
-		}
-		res.json(stat);
-	});
-});
-
-app.post('/api/stats', function(req, res){
-	var stat = req.body;
-	Stat.addStat(stat, function(err, stat){
-		if(err){
-			throw err;
-		}
-		res.json(stat);
-	});
-});
-
-app.put('/api/stats/:_id', function(req, res){
-	var id = req.params._id;
-	var stat = req.body;
-	Stat.updateStat(id, stat, {}, function(err, stat){
-		if(err){
-			throw err;
-		}
-		res.json(stat);
-	});
-});
-
-app.delete('/api/stats/:_id', function(req, res){
-	var id = req.params._id;
-	Stat.removeStat(id, function(err, stat){
-		if(err){
-			throw err;
-		}
-		res.json(stat);
-	});
-});
 
 //app.listen(3000);
 //console.log('Running on port 3000...');

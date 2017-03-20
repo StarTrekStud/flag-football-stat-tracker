@@ -93,22 +93,6 @@ myApp.config(function($routeProvider){
 		controller:'ResultsController',
 		templateUrl: 'views/edit_result.html'
 	})
-	.when('/stats', {
-		controller:'StatsController',
-		templateUrl: 'views/stats.html'
-	})
-	.when('/stats/details/:id',{
-		controller:'StatsController',
-		templateUrl: 'views/stat_details.html'
-	})
-	.when('/stats/add',{
-		controller:'StatsController',
-		templateUrl: 'views/add_stat.html'
-	})
-	.when('/stats/edit/:id',{
-		controller:'StatsController',
-		templateUrl: 'views/edit_stat.html'
-	})
 	.otherwise({
 		redirectTo: '/'
 	});
