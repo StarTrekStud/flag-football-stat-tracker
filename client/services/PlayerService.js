@@ -3,7 +3,7 @@ myApp.service('PlayerService', function(){
     this.players = [];
     this.plays = [];
 
-    this.getSetPlayers(val){
+    this.getSetPlayers = function(val){
         if(!!val){
             this.players = val;
         }else{
@@ -12,7 +12,7 @@ myApp.service('PlayerService', function(){
     }
 
 
-    this.getSetPlays(val){
+    this.getSetPlays = function(val){
         if(!!val){
             this.plays = val;
         }else{
