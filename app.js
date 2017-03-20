@@ -19,155 +19,10 @@ mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
-	res.send('Please use /api/add_play');
+	res.send('Please use /api/statistics');
 });
 
-app.get('/api/teams', function(req, res){
-	Team.getTeams(function(err, teams){
-		if(err){
-			throw err;
-		}
-		res.json(teams);
-	});
-});
 
-app.get('/api/teams/:_id', function(req, res){
-	Team.getTeamById(req.params._id, function(err, team){
-		if(err){
-			throw err;
-		}
-		res.json(team);
-	});
-});
-
-app.post('/api/teams', function(req, res){
-	var team = req.body;
-	Team.addTeam(team, function(err, team){
-		if(err){
-			throw err;
-		}
-		res.json(team);
-	});
-});
-
-app.put('/api/teams/:_id', function(req, res){
-	var id = req.params._id;
-	var team = req.body;
-	Team.updateTeam(id, team, {}, function(err, team){
-		if(err){
-			throw err;
-		}
-		res.json(team);
-	});
-});
-
-app.delete('/api/teams/:_id', function(req, res){
-	var id = req.params._id;
-	Team.removeTeam(id, function(err, team){
-		if(err){
-			throw err;
-		}
-		res.json(team);
-	});
-});
-
-app.get('/api/schedules', function(req, res){
-	Schedule.getSchedules(function(err, schedules){
-		if(err){
-			throw err;
-		}
-		res.json(schedules);
-	});
-});
-
-app.get('/api/schedules/:_id', function(req, res){
-	Schedule.getScheduleById(req.params._id, function(err, schedule){
-		if(err){
-			throw err;
-		}
-		res.json(schedule);
-	});
-});
-
-app.post('/api/schedules', function(req, res){
-	var schedule = req.body;
-	Schedule.addSchedule(schedule, function(err, schedule){
-		if(err){
-			throw err;
-		}
-		res.json(schedule);
-	});
-});
-
-app.put('/api/schedules/:_id', function(req, res){
-	var id = req.params._id;
-	var schedule = req.body;
-	Schedule.updateSchedule(id, schedule, {}, function(err, schedule){
-		if(err){
-			throw err;
-		}
-		res.json(schedule);
-	});
-});
-
-app.delete('/api/schedules/:_id', function(req, res){
-	var id = req.params._id;
-	Schedule.removeSchedule(id, function(err, schedule){
-		if(err){
-			throw err;
-		}
-		res.json(schedule);
-	});
-});
-
-app.get('/api/players', function(req, res){
-	Player.getPlayers(function(err, players){
-		if(err){
-			throw err;
-		}
-		res.json(players);
-	});
-});
-
-app.get('/api/players/:_id', function(req, res){
-	Player.getPlayerById(req.params._id, function(err, player){
-		if(err){
-			throw err;
-		}
-		res.json(player);
-	});
-});
-
-app.post('/api/players', function(req, res){
-	var player = req.body;
-	Player.addPlayer(player, function(err, player){
-		if(err){
-			throw err;
-		}
-		res.json(player);
-	});
-});
-
-app.put('/api/players/:_id', function(req, res){
-	var id = req.params._id;
-	var player = req.body;
-	Player.updatePlayer(id, player, {}, function(err, player){
-		if(err){
-			throw err;
-		}
-		res.json(player);
-	});
-});
-
-app.delete('/api/players/:_id', function(req, res){
-	var id = req.params._id;
-	Player.removePlayer(id, function(err, player){
-		if(err){
-			throw err;
-		}
-		res.json(player);
-	});
-});
 
 app.get('/api/plays', function(req, res){
 	Play.getPlays(function(err, plays){
@@ -218,6 +73,161 @@ app.delete('/api/plays/:_id', function(req, res){
 	});
 });
 
+
+
+app.get('/api/players', function(req, res){
+	Player.getPlayers(function(err, players){
+		if(err){
+			throw err;
+		}
+		res.json(players);
+	});
+});
+
+app.get('/api/players/:_id', function(req, res){
+	Player.getPlayerById(req.params._id, function(err, player){
+		if(err){
+			throw err;
+		}
+		res.json(player);
+	});
+});
+
+app.post('/api/players', function(req, res){
+	var player = req.body;
+	Player.addPlayer(player, function(err, player){
+		if(err){
+			throw err;
+		}
+		res.json(player);
+	});
+});
+
+app.put('/api/players/:_id', function(req, res){
+	var id = req.params._id;
+	var player = req.body;
+	Player.updatePlayer(id, player, {}, function(err, player){
+		if(err){
+			throw err;
+		}
+		res.json(player);
+	});
+});
+
+app.delete('/api/players/:_id', function(req, res){
+	var id = req.params._id;
+	Player.removePlayer(id, function(err, player){
+		if(err){
+			throw err;
+		}
+		res.json(player);
+	});
+});
+
+
+
+app.get('/api/teams', function(req, res){
+	Team.getTeams(function(err, teams){
+		if(err){
+			throw err;
+		}
+		res.json(teams);
+	});
+});
+
+app.get('/api/teams/:_id', function(req, res){
+	Team.getTeamById(req.params._id, function(err, team){
+		if(err){
+			throw err;
+		}
+		res.json(team);
+	});
+});
+
+app.post('/api/teams', function(req, res){
+	var team = req.body;
+	Team.addTeam(team, function(err, team){
+		if(err){
+			throw err;
+		}
+		res.json(team);
+	});
+});
+
+app.put('/api/teams/:_id', function(req, res){
+	var id = req.params._id;
+	var team = req.body;
+	Team.updateTeam(id, team, {}, function(err, team){
+		if(err){
+			throw err;
+		}
+		res.json(team);
+	});
+});
+
+app.delete('/api/teams/:_id', function(req, res){
+	var id = req.params._id;
+	Team.removeTeam(id, function(err, team){
+		if(err){
+			throw err;
+		}
+		res.json(team);
+	});
+});
+
+
+
+app.get('/api/schedules', function(req, res){
+	Schedule.getSchedules(function(err, schedules){
+		if(err){
+			throw err;
+		}
+		res.json(schedules);
+	});
+});
+
+app.get('/api/schedules/:_id', function(req, res){
+	Schedule.getScheduleById(req.params._id, function(err, schedule){
+		if(err){
+			throw err;
+		}
+		res.json(schedule);
+	});
+});
+
+app.post('/api/schedules', function(req, res){
+	var schedule = req.body;
+	Schedule.addSchedule(schedule, function(err, schedule){
+		if(err){
+			throw err;
+		}
+		res.json(schedule);
+	});
+});
+
+app.put('/api/schedules/:_id', function(req, res){
+	var id = req.params._id;
+	var schedule = req.body;
+	Schedule.updateSchedule(id, schedule, {}, function(err, schedule){
+		if(err){
+			throw err;
+		}
+		res.json(schedule);
+	});
+});
+
+app.delete('/api/schedules/:_id', function(req, res){
+	var id = req.params._id;
+	Schedule.removeSchedule(id, function(err, schedule){
+		if(err){
+			throw err;
+		}
+		res.json(schedule);
+	});
+});
+
+
+
 app.get('/api/results', function(req, res){
 	Result.getResults(function(err, results){
 		if(err){
@@ -266,6 +276,7 @@ app.delete('/api/results/:_id', function(req, res){
 		res.json(result);
 	});
 });
+
 
 
 //app.listen(3000);
