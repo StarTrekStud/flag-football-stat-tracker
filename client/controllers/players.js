@@ -57,4 +57,5 @@ myApp.controller('PlayersController', ['$scope', '$http', '$location', '$routePa
 			window.location.href='#/players';
 		});
 	}
+
 }]);

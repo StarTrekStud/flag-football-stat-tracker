@@ -6,6 +6,8 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.formattedDate = $filter('date')(new Date(), 'M/d/yyyy');
     $scope.formattedTime = $filter('date')(new Date(), 'h');
 
+    $scope.selected = 'All';
+
 
     $http.get('/api/players').success(function (response) {
         $scope.players = response;
@@ -17,7 +19,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         });
     });
 
-  
+
 
     $scope.getPlayers = function () {
         return playerService.getSetPlayers();
@@ -99,6 +101,10 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         $http.delete('/api/plays/' + id).success(function (response) {
             window.location.href = '#/plays';
         });
+    }
+
+    $scope.getFilteredPlayers = function(){
+        return playerService.getSetPlayers();
     }
 
 }]);
