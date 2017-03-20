@@ -10,12 +10,14 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $http.get('/api/players').success(function (response) {
         $scope.players = response;
         playerService.getSetPlayers(response);
+
+        $http.get('/api/plays').success(function (response) {
+            $scope.plays = response;
+            playerService.getSetPlays(response);
+        });
     });
 
-    $http.get('/api/plays').success(function (response) {
-        $scope.plays = response;
-        playerService.getSetPlays(response);
-    });
+  
 
     $scope.getPlayers = function () {
         return playerService.getSetPlayers();
