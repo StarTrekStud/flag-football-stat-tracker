@@ -1,5 +1,3 @@
-var myApp = angular.module('myApp');
-
 myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', '$routeParams', 'PlayerService', function ($scope, $filter, $http, $location, $routeParams, playerService) {
     console.log('PlaysController loaded...');
 

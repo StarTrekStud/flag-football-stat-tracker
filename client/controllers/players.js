@@ -1,5 +1,3 @@
-var myApp = angular.module('myApp');
-
 myApp.controller('PlayersController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('PlayersController loaded...');
 
@@ -57,6 +55,5 @@ myApp.controller('PlayersController', ['$scope', '$http', '$location', '$routePa
 			window.location.href='#/players';
 		});
 	}
-
 
 }]);

@@ -1,5 +1,3 @@
-var myApp = angular.module('myApp');
-
 myApp.controller('TeamsController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('TeamsController loaded...');
 
