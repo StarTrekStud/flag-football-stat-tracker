@@ -5,6 +5,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 
     $scope.formattedDate = $filter('date')(new Date(), 'M/d/yyyy');
     $scope.formattedTime = $filter('date')(new Date(), 'h');
+    $scope.playerService = playerService;
 
     $scope.selected = 'All';
 
