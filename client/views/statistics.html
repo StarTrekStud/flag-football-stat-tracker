@@ -9,7 +9,7 @@
             </span>
         </h3>
     </div>
-    <div class="panel-body" ng-init="getPlayers()">
+    <div class="panel-body">
         <div ng-if="full_names != selected">
             <div ng-repeat="player in players | filter:full_names">
                 <div class="row">
@@ -17,11 +17,9 @@
                         <p>Full Name: <em>{{player.full_names}}</em></p>
                     </div>
                 </div>
-                <div ng-init="getPlays()">
+                <div>
                         <div class="row">
-                            <div ng-repeat="play in plays | filter: { receivers: full_names, receiver_results: 'Catch' } as catches">
-                            </div>
-                            <label>&nbsp;Catches: {{catches.length}}</label>
+                            <label>&nbsp;Catches: {{player.catches}}</label>
                         </div>
                         <div class="row">
                             <div ng-repeat="play in plays | filter: { receivers: full_names, receiver_results: 'Drop' } as drops">
