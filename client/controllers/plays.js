@@ -8,7 +8,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.playerService = playerService;
 
     $scope.selected = 'All';
-    $scope.sort = 'Catches';
+    $scope.sort = 'catches';
 
 
     $http.get('/api/players').success(function (response) {
@@ -137,7 +137,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     }
 
     $scope.getOrderBy = function(){
-        return 'stats.' + $scope.sort;
+        return '-stats.' + $scope.sort;
     }
 
 }]);
