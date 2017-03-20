@@ -4,31 +4,33 @@
             <span class="pull-right">Filter by Player:
                 <select ng-model="selected">
                     <option value="All" selected="selected == All">All</option>
-                    <option ng-repeat="player in getPlayers()" value="{{player.full_names}}">{{player.full_names}}</option>
+                    <option ng-repeat="player in getPlayers()"
+                            value="{{player.full_names}}">{{player.full_names}}</option>
                 </select>
-
-                <span class="pull-right">Sort:
+            </span>
+            <span class="pull-right">Sort
                  <select ng-model="sort">
-                    <option ng-repeat="stat in getPlayers()[0].stats.keys()" value="{{player.full_names}}">{{player.full_names}}</option>
+                    <option ng-repeat="stat in getAllStatsOptions()"
+                            value="{{player.full_names}}">{{player.full_names}}</option>
                 </select>
             </span>
         </h3>
     </div>
     <div class="panel-body">
         <div ng-if="full_names != selected">
-            <div ng-repeat="player in getFilteredPlayers() ">
+            <div ng-repeat="player in getFilteredPlayers() | orderBy: getOrderBy() ">
                 <div class="row">
                     <div class="col-md-6">
                         <p>Full Name: <em>{{player.full_names}}</em></p>
                     </div>
                 </div>
                 <div>
-                        <div class="row">
-                            <label>&nbsp;Catches: {{player.stats.catches}}</label>
-                        </div>
-                        <div class="row">
-                            <label>&nbsp;Drops: {{player.stats.drops}}</label>
-                        </div>
+                    <div class="row">
+                        <label>&nbsp;Catches: {{player.stats.catches}}</label>
+                    </div>
+                    <div class="row">
+                        <label>&nbsp;Drops: {{player.stats.drops}}</label>
+                    </div>
                 </div>
             </div>
         </div>

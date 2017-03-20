@@ -118,4 +118,22 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         }
     }
 
+    $scope.getAllStatsOptions = function () {
+        var list = [];
+
+        for (var a = 0; a < playerService.getSetPlayers(); a++) {
+            var player = playerService.getSetPlayers()[a];
+
+            var keys = Object.keys(player.stats);
+            for (var b = 0; b < keys.length; b++) {
+                var key = player.stat[keys[b]];
+
+                if (list.indexOf(key) == -1) {
+                    list.push(key);
+                }
+            }
+        }
+        return list;
+    }
+
 }]);
