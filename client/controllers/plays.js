@@ -152,7 +152,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 
     $scope.getStats = function (player) {
         if ($scope.sort === 'None') {
-            return Object.keys(player.stats);
+            return !!player.stats ? Object.keys(player.stats) : [];
         } else {
             return [$scope.sort];
         }
