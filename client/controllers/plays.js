@@ -1,26 +1,39 @@
 var myApp = angular.module('myApp');
 
-myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', '$routeParams', 'PlayerService', function($scope, $filter, $http, $location, $routeParams, PlayerService){
-	console.log('PlaysController loaded...');
+myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', '$routeParams', 'PlayerService', function ($scope, $filter, $http, $location, $routeParams, playerService) {
+    console.log('PlaysController loaded...');
 
-    $scope.formattedDate = $filter('date')(new Date(),'M/d/yyyy');
-    $scope.formattedTime = $filter('date')(new Date(),'h');
+    $scope.formattedDate = $filter('date')(new Date(), 'M/d/yyyy');
+    $scope.formattedTime = $filter('date')(new Date(), 'h');
 
-	$scope.getPlayers = function(){
-		$http.get('/api/players').success(function(response){
-			$scope.players = response;
-			this.PlayerService.getSetPlays(response);
-		});
-	}
+
+    $http.get('/api/players').success(function (response) {
+        $scope.players = response;
+        playerService.getSetPlayers(response);
+    });
+
+    $http.get('/api/plays').success(function (response) {
+        $scope.plays = response;
+        playerService.getSetPlays(response);
+    });
+
+    $scope.getPlayers = function () {
+        return playerService.getSetPlayers();
+    }
+
+    $scope.getPlays = function () {
+        return playerService.getSetPlayers();
+    }
+
 
     $scope.players = null;
     $scope.playerList = [];
 
     $http({
-            method: 'GET',
-            url: '/api/players',
-            data: { applicationId: 3 }
-        }).success(function (response) {
+        method: 'GET',
+        url: '/api/players',
+        data: {applicationId: 3}
+    }).success(function (response) {
         $scope.playerList = response;
     });
 
@@ -28,10 +41,10 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.teamList = [];
 
     $http({
-            method: 'GET',
-            url: '/api/teams',
-            data: { applicationId: 3 }
-        }).success(function (response) {
+        method: 'GET',
+        url: '/api/teams',
+        data: {applicationId: 3}
+    }).success(function (response) {
         $scope.teamList = response;
     });
 
@@ -39,10 +52,10 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.scheduleList = [];
 
     $http({
-            method: 'GET',
-            url: '/api/schedules',
-            data: { applicationId: 3 }
-        }).success(function (response) {
+        method: 'GET',
+        url: '/api/schedules',
+        data: {applicationId: 3}
+    }).success(function (response) {
         $scope.scheduleList = response;
     });
 
@@ -50,44 +63,40 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.resultList = [];
 
     $http({
-            method: 'GET',
-            url: '/api/results',
-            data: { applicationId: 3 }
-        }).success(function (response) {
+        method: 'GET',
+        url: '/api/results',
+        data: {applicationId: 3}
+    }).success(function (response) {
         $scope.resultList = response;
     });
 
-	$scope.getPlays = function(){
-		$http.get('/api/plays').success(function(response){
-			$scope.plays = response;
-		});
-	}
 
-	$scope.getPlay = function(){
-		var id = $routeParams.id;
-		$http.get('/api/plays/'+id).success(function(response){
-			$scope.play = response;
-		});
-	}
+    $scope.getPlay = function () {
+        var id = $routeParams.id;
+        $http.get('/api/plays/' + id).success(function (response) {
+            $scope.play = response;
+        });
+    }
 
-	$scope.addPlay = function(){
-		console.log($scope.play);
-		$http.post('/api/plays/', $scope.play).success(function(response){
-			window.location.href='#/plays/add';
-			window.location.reload();
-		});
-	}
+    $scope.addPlay = function () {
+        console.log($scope.play);
+        $http.post('/api/plays/', $scope.play).success(function (response) {
+            window.location.href = '#/plays/add';
+            window.location.reload();
+        });
+    }
 
-	$scope.updatePlay = function(){
-		var id = $routeParams.id;
-		$http.put('/api/plays/'+id, $scope.play).success(function(response){
-			window.location.href='#/plays';
-		});
-	}
+    $scope.updatePlay = function () {
+        var id = $routeParams.id;
+        $http.put('/api/plays/' + id, $scope.play).success(function (response) {
+            window.location.href = '#/plays';
+        });
+    }
 
-	$scope.removePlay = function(id){
-		$http.delete('/api/plays/'+id).success(function(response){
-			window.location.href='#/plays';
-		});
-	}
+    $scope.removePlay = function (id) {
+        $http.delete('/api/plays/' + id).success(function (response) {
+            window.location.href = '#/plays';
+        });
+    }
+
 }]);
