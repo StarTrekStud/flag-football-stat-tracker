@@ -36,9 +36,13 @@ myApp.service('PlayerService', function () {
 
             if(play.receiver_results === "Catch"){
                 getPlayerByName(play.receivers).stats.catches++;
-            }else if(play.receiver_results === "Drop"){
+            }
+
+            if(play.receiver_results === "Drop"){
                 getPlayerByName(play.receivers).stats.drops++;
-            }else if(play.defender_results === "Tackle"){
+            }
+
+            if(play.defender_results === "Tackle"){
                 getPlayerByname(play.defenders).stats.tackles++;
             }
         }
