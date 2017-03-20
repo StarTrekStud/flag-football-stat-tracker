@@ -109,7 +109,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         } else {
             for (var a = 0; a < playerService.getSetPlayers().length; a++) {
                 if (playerService.getSetPlayers()[a].full_names === $scope.selected) {
-                    return playerService.getSetPlayers()[a];
+                    return [playerService.getSetPlayers()[a]];
                 }
             }
 
@@ -126,8 +126,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 
             var keys = Object.keys(player.stats);
             for (var b = 0; b < keys.length; b++) {
-                var key = player.stat[keys[b]];
-
+                var key = keys[b];
                 if (list.indexOf(key) == -1) {
                     list.push(key);
                 }
