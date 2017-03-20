@@ -26,8 +26,17 @@ myApp.service('PlayerService', function () {
         for (var a = 0; a < players.length; a++) {
             var player = players[a];
             player.stats = {};
+            player.stats.incompletes = 0;
+            player.stats.throws = 0;
             player.stats.catches = 0;
+            player.stats.misses = 0;
             player.stats.drops = 0;
+            player.stats.onepoints = 0;
+            player.stats.twopoints = 0;
+            player.stats.touchdowns = 0;
+            player.stats.interceptions = 0;
+            player.stats.safeties = 0;
+            player.stats.sacks = 0;
             player.stats.tackles = 0;
         }
 
@@ -38,8 +47,32 @@ myApp.service('PlayerService', function () {
                 getPlayerByName(play.receivers).stats.catches++;
             }
 
+            if(play.receiver_results === "Miss"){
+                getPlayerByName(play.receivers).stats.misses++;
+            }
+
             if(play.receiver_results === "Drop"){
                 getPlayerByName(play.receivers).stats.drops++;
+            }
+
+            if(play.receiver_results === "1 Point"){
+                getPlayerByName(play.receivers).stats.onepoints++;
+            }
+
+            if(play.receiver_results === "2 Point"){
+                getPlayerByName(play.receivers).stats.twopoints++;
+            }
+
+            if(play.receiver_results === "Interception"){
+                getPlayerByName(play.receivers).stats.interceptions++;
+            }
+
+            if(play.receiver_results === "Safety"){
+                getPlayerByName(play.receivers).stats.safeties++;
+            }
+
+            if(play.receiver_results === "Sack"){
+                getPlayerByName(play.receivers).stats.sacks++;
             }
 
             if(play.defender_results === "Tackle"){
