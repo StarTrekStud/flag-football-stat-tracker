@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp');
 
-myApp.controller('PlayersController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
+myApp.controller('PlayersController', ['$scope', '$http', '$location', '$routeParams', 'PlayerService', function($scope, $http, $location, $routeParams, playerService){
 	console.log('PlayersController loaded...');
 
     $scope.players = null;
@@ -12,6 +12,7 @@ myApp.controller('PlayersController', ['$scope', '$http', '$location', '$routePa
             data: { applicationId: 3 }
         }).success(function (response) {
         $scope.playerList = response;
+        this.playerService.getSetPlayers(response);
     });
 
     $scope.teams = null;
