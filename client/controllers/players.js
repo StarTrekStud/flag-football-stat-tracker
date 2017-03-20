@@ -58,8 +58,4 @@ myApp.controller('PlayersController', ['$scope', '$http', '$location', '$routePa
 		});
 	}
 
-	$scope.getOrderBy = function(){
-		return 'stats.' + $scope.sort;
-	}
-
 }]);
