@@ -10,6 +10,7 @@
             </span>
             <span class="pull-right">Sort
                  <select ng-model="sort">
+                     <option value="None">None</option>
                     <option ng-repeat="stat in getAllStatsOptions()"
                             value="{{stat}}">{{stat}}</option>
                 </select>
@@ -25,11 +26,8 @@
                     </div>
                 </div>
                 <div>
-                    <div class="row">
-                        <label>&nbsp;Catches: {{player.stats.catches}}</label>
-                    </div>
-                    <div class="row">
-                        <label>&nbsp;Drops: {{player.stats.drops}}</label>
+                    <div class="row" ng-repeat="stat in getStats(player)">
+                        <label>&nbsp;{{stat + ": " + player.stats[stat]}}</label>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.playerService = playerService;
 
     $scope.selected = 'All';
-    $scope.sort = 'catches';
+    $scope.sort = 'None';
 
 
     $http.get('/api/players').success(function (response) {
@@ -136,8 +136,25 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         return list;
     }
 
-    $scope.getOrderBy = function(){
-        return '-stats.' + $scope.sort;
+    $scope.getOrderBy = function () {
+
+        var orderBys = [];
+
+        if ($scope.sort !== 'None') {
+            orderBys.push('-stats.' + $scope.sort);
+        }
+
+
+        orderBys.push('full_names');
+        return orderBys;
+    }
+
+    $scope.getStats = function (player) {
+        if ($scope.sort === 'None') {
+            return Object.keys(player.stats);
+        } else {
+            return $scope.sort;
+        }
     }
 
 }]);
