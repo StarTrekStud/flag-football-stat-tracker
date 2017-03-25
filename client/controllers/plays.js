@@ -29,7 +29,8 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     }
 
     $scope.play = {
-        defender_teams: 'The VSP Veyekings'
+        receiver_teams: '',
+        defender_teams: ''
     };
 
     $scope.players = null;
