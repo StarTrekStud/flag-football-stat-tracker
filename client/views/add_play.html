@@ -10,7 +10,7 @@
                     <div class="row">
                         <span>Schedule:
                             <div data-ng-repeat="schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
-                                <input type="radio" ng-value="schedule.dates" ng-model="play.schedules"/> {{schedule.dates}}, {{schedule.times}}
+                                <input type="radio" ng-value="{schedule.dates, schedule.times}" ng-model="play.schedules"/> {{schedule.dates}}, {{schedule.times}}
                             </div>
                         </span>
                         <span>Offense:
@@ -65,7 +65,7 @@
                             <div class="form-group">
                                 <label>Defender Results</label>
                                 <label data-ng-repeat="result in resultList | filter:{defense:'true'}">
-                                    <input type="radio" value="{{result.result_names}}" ng-model="play.receiver_results" />
+                                    <input type="radio" value="{{result.result_names}}" ng-model="play.defender_results" />
                                     {{result.result_names}}
                                 </label>
                             </div>
