@@ -15,12 +15,12 @@
                         </span>
                         <span>Offense:
                             <div data-ng-repeat="team in teamList">
-                                <input type="radio" ng-model="play.receiver_teams"/> {{team.team_names}}
+                                <input type="radio" ng-value="team.team_names" ng-model="play.receiver_teams"/> {{team.team_names}}
                             </div>
                         </span>
                         <span>Defense:
                             <div data-ng-repeat="team in teamList">
-                                <input type="radio" ng-model="play.defender_teams"/> {{team.team_names}}
+                                <input type="radio" ng-value="team.team_names" ng-model="play.defender_teams"/> {{team.team_names}}
                             </div>
                         </span>
                     </div>
