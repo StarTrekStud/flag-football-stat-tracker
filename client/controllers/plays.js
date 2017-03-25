@@ -28,10 +28,6 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         return playerService.getSetPlayers();
     }
 
-    $scope.newReceiver = function(receiver) {
-       console.log(receiver);
-    }
-
     $scope.newDefender = function(defender) {
        console.log(defender);
     }
