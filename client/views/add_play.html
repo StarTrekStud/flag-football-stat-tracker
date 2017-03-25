@@ -49,7 +49,7 @@
                             <div class="form-group">
                                 <label>Receiver Results</label>
                                 <label data-ng-repeat="result in resultList | filter:{offense:'true'}">
-                                    <input type="radio" value="{{result.result_names}}" ng-model="play.receiver_results" />
+                                    <input type="radio" value="{{result_names}}" ng-model="play.receiver_results" />
                                     {{player.full_names}}
                                 </label>
                             </div>
