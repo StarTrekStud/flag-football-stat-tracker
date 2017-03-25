@@ -20,13 +20,11 @@
                                     <option value="" ng-show="false"></option>
                             </select>
                         </span>
-                        <div ng-controller="filterPlayersByTeam">
-                            <span>Defense:
-                                <div data-ng-repeat="team in teamList">
-                                    <input type="radio" ng-value="team.team_names" ng-model="play.defender_teams" ng-change="newValue(team.team_names)" /> {{team.team_names}}
-                                </div>
-                            </span>
-                        </div>
+                        <span>Defense:
+                            <div data-ng-repeat="team in teamList">
+                                <input type="radio" ng-value="team.team_names" ng-model="play.defender_teams" name="defender_teams" /> {{team.team_names}}
+                            </div>
+                        </span>
                     </div>
                     <div class="row">
                         <div class="col-sm-2">
@@ -59,7 +57,7 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Defender</label>
-                                <label data-ng-repeat="player in playerList | filter:{ team_names:{{playerByTeam}} }">
+                                <label data-ng-repeat="player in playerList | filter:play.defender_teams">
                                     <input type="radio" value="{{player.full_names}}" ng-model="play.defenders" />
                                     {{player.full_names}}
                                 </label>
