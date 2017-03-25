@@ -28,6 +28,10 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         return playerService.getSetPlayers();
     }
 
+    $scope.newValue = function(value) {
+       console.log(value);
+    }
+
     $scope.players = null;
     $scope.playerList = [];
 
