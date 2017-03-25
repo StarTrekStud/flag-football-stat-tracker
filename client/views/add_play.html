@@ -49,8 +49,8 @@
                             <div class="form-group">
                                 <label>Receiver Results</label>
                                 <label data-ng-repeat="result in resultList | filter:{offense:'true'}">
-                                    <input type="radio" value="{{result_names}}" ng-model="play.receiver_results" />
-                                    {{player.full_names}}
+                                    <input type="radio" value="{{result.result_names}}" ng-model="play.receiver_results" />
+                                    {{result.result_names}}
                                 </label>
                             </div>
                         </div>
@@ -66,10 +66,10 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Defender Results</label>
-                                <select size = "7" ng-model="play.defender_results"
-                                        ng-options="result.result_names as result.result_names for result in resultList | filter:{defense:'true'}">
-                                    <option value="" ng-show="false"></option>
-                                </select>
+                                <label data-ng-repeat="result in resultList | filter:{defense:'true'}">
+                                    <input type="radio" value="{{result.result_names}}" ng-model="play.receiver_results" />
+                                    {{result.result_names}}
+                                </label>
                             </div>
                         </div>
                         <div class="col-sm-1">
