@@ -10,17 +10,17 @@
                     <div class="row">
                         <span>Schedule:
                             <div data-ng-repeat="schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
-                                <input type="radio" ng-value="schedule.dates, schedule.times" ng-model="play.schedules" name="schedules"/> {{schedule.dates}}, {{schedule.times}}
+                                <input type="radio" ng-model="play.schedules"/> {{schedule.dates}}, {{schedule.times}}
                             </div>
                         </span>
                         <span>Offense:
                             <div data-ng-repeat="team in teamList">
-                                <input type="radio" ng-value="team.team_names" ng-model="play.receiver_teams" name="receiver_teams"/> {{team.team_names}}
+                                <input type="radio" ng-model="play.receiver_teams"/> {{team.team_names}}
                             </div>
                         </span>
                         <span>Defense:
                             <div data-ng-repeat="team in teamList">
-                                <input type="radio" ng-value="team.team_names" ng-model="play.defender_teams" name="defender_teams"/> {{team.team_names}}
+                                <input type="radio" ng-model="play.defender_teams"/> {{team.team_names}}
                             </div>
                         </span>
                     </div>
