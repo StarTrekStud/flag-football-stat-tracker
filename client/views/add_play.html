@@ -9,10 +9,9 @@
                 <form ng-submit="addPlay()">
                     <div class="row">
                         <span>Schedule:
-                            <select size = "2" ng-model="play.schedules"
-                                    ng-options="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
-                                    <option value="" ng-show="false"></option>
-                            </select>
+                            <div data-ng-repeat="schedule.dates + ', ' + schedule.times as schedule.dates + ', ' + schedule.times for schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
+                                <input type="radio" ng-value="schedule.dates, schedule.times" ng-model="play.schedules" name="schedules"/> {{schedule.dates}}, {{schedule.times}}
+                            </div>
                         </span>
                         <span>Offense:
                             <div data-ng-repeat="team in teamList">
