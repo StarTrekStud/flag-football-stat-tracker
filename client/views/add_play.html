@@ -48,7 +48,7 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Receiver Results</label>
-                                <label data-ng-repeat="result.result_names as result.result_names for result in resultList | filter:{offense:'true'}">
+                                <label data-ng-repeat="result in resultList | filter:{offense:'true'}">
                                     <input type="radio" value="{{result.result_names}}" ng-model="play.receiver_results" />
                                     {{player.full_names}}
                                 </label>
