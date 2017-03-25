@@ -48,10 +48,10 @@
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Receiver Results</label>
-                                <select size = "6" ng-model="play.receiver_results"
-                                        ng-options="result.result_names as result.result_names for result in resultList | filter:{offense:'true'}">
-                                    <option value="" ng-show="false"></option>
-                                </select>
+                                <label data-ng-repeat="result.result_names as result.result_names for result in resultList | filter:{offense:'true'}">
+                                    <input type="radio" value="{{result.result_names}}" ng-model="play.receiver_results" />
+                                    {{player.full_names}}
+                                </label>
                             </div>
                         </div>
                         <div class="col-sm-2">
