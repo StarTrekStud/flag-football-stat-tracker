@@ -29,7 +29,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     }
 
     $scope.play = {
-        schedules: formattedDate + ', ' + formattedTime,
+        schedules: '',
         receiver_teams: '',
         defender_teams: ''
     };
