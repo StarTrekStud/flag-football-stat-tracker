@@ -28,6 +28,10 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         return playerService.getSetPlayers();
     }
 
+    $scope.play = {
+        defender_teams: 'The VSP Veyekings'
+    };
+
     $scope.players = null;
     $scope.playerList = [];
 
