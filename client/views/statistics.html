@@ -1,12 +1,12 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Statistics
-            <span class="pull-right">Sort
-                 <select ng-model="sort">
-                     <option value="names">names</option>
-                     <option ng-repeat="stat in getAllStatsOptions()"
-                            value="{{stat}}">{{stat}}</option>
-                 </select>
+        <h3 class="panel-title">Statistics:
+            <span class="pull-right">Teams:
+                <select ng-model="teamFilter">
+                    <option value="All">All</option>
+                    <option ng-repeat="team in getTeamNames()"
+                            value="{{team}}">{{team}}</option>
+                </select>
             </span>
             <span class="pull-right">Players:
                 <select ng-model="selected">
@@ -15,12 +15,12 @@
                             value="{{player.full_names}}">{{player.full_names}}</option>
                 </select>
             </span>
-            <span class="pull-right">Teams:
-                <select ng-model="teamFilter">
-                    <option value="All">All</option>
-                    <option ng-repeat="team in getTeamNames()"
-                            value="{{team}}">{{team}}</option>
-                </select>
+            <span class="pull-right">Sort
+                 <select ng-model="sort">
+                     <option value="names">names</option>
+                     <option ng-repeat="stat in getAllStatsOptions()"
+                             value="{{stat}}">{{stat}}</option>
+                 </select>
             </span>
         </h3>
     </div>
