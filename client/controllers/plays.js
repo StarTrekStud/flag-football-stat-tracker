@@ -3,6 +3,8 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 
     $scope.formattedDate = $filter('date')(new Date(), 'M/d/yyyy');
     $scope.formattedTime = $filter('date')(new Date(), 'h');
+    $scope.formattedDateAndTime = $scope.formattedDate + ', ' + $scope.formattedTime;
+
     $scope.playerService = playerService;
 
     $scope.teamFilter = 'All';
@@ -27,6 +29,12 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.getPlays = function () {
         return playerService.getSetPlayers();
     }
+
+    $scope.play = {
+        receiver_teams: '',
+        defender_teams: '',
+        quarterbacks:''
+    };
 
     $scope.players = null;
     $scope.playerList = [];

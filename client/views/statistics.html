@@ -1,11 +1,11 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Statistics
-            <span class="pull-right">Sort
-                 <select ng-model="sort">
-                     <option value="names">names</option>
-                    <option ng-repeat="stat in getAllStatsOptions()"
-                            value="{{stat}}">{{stat}}</option>
+        <h3 class="panel-title">Statistics:
+            <span class="pull-right">Teams:
+                <select ng-model="teamFilter">
+                    <option value="All">All</option>
+                    <option ng-repeat="team in getTeamNames()"
+                            value="{{team}}">{{team}}</option>
                 </select>
             </span>
             <span class="pull-right">Players:
@@ -15,12 +15,12 @@
                             value="{{player.full_names}}">{{player.full_names}}</option>
                 </select>
             </span>
-            <span class="pull-right">Teams:
-                <select ng-model="teamFilter">
-                    <option value="All">All</option>
-                    <option ng-repeat="team in getTeamNames()"
-                            value="{{team}}">{{team}}</option>
-                </select>
+            <span class="pull-right">Sort
+                 <select ng-model="sort">
+                     <option value="names">names</option>
+                     <option ng-repeat="stat in getAllStatsOptions()"
+                             value="{{stat}}">{{stat}}</option>
+                 </select>
             </span>
         </h3>
     </div>
@@ -28,14 +28,10 @@
         <div ng-if="full_names != selected">
             <div ng-repeat="player in getFilteredPlayers() | orderBy: getOrderBy() | filter: filterResults() ">
                 <div class="row">
-                    <div class="col-md-6">
-                        <p>Full Name: <em>{{player.full_names}}</em></p>
-                    </div>
+                    <p><a class="btn btn-primary" href="#/players/details/{{player._id}}">Full Name: <em>{{player.full_names}}</em></a></p>
                 </div>
-                <div>
-                    <div class="row" ng-repeat="stat in getStats(player)">
-                        <label>&nbsp;{{stat + ": " + player.stats[stat]}}</label>
-                    </div>
+                <div class="row" ng-repeat="stat in getStats(player)">
+                    <label>&nbsp;{{stat + ": " + player.stats[stat]}}</label><br><br>
                 </div>
             </div>
         </div>
