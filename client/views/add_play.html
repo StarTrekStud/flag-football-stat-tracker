@@ -9,7 +9,7 @@
                         </div>
                     </span>
                     <span>Offense:<br><br>
-                        <div data-ng-repeat="team in teamList">
+                        <div data-ng-repeat="team in teamList | filter:schedule.homes">
                             <label><input type="radio" ng-value="team.team_names" ng-model="play.receiver_teams"/>{{team.team_names}}</label><br><br>
                         </div>
                     </span>

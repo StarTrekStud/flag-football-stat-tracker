@@ -36,6 +36,11 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         defender_teams: ''
     };
 
+    $scope.schedule = {
+        homes: '',
+        aways: ''
+    }
+
     $scope.players = null;
     $scope.playerList = [];
 
