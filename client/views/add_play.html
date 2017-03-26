@@ -1,9 +1,4 @@
-<div class="panel panel-default" ng-init="getPlayers()">
-    <div class="panel-heading">
-        <h3 class="panel-title">Add Plays
-        </h3>
-    </div>
-    <div class="panel-body">
+<div ng-init="getPlayers()">
         <div class="row">
             <div class="col-md-11">
                 <form ng-submit="addPlay()">
@@ -77,10 +72,8 @@
                 </form>
             </div>
         </div>
-    </div>
 </div>
-<div class="panel panel-default" ng-init="getPlays()">
-    <div class="panel-body">
+<div ng-init="getPlays()">
         <div class="row">
             <div ng-repeat="play in plays | orderBy: '-create_date' ">
                 <div ng-if="play.create_date.indexOf(play.schedules) > -1">
@@ -90,5 +83,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
