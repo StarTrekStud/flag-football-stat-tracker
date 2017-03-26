@@ -1,7 +1,14 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Statistics:
-            <span class="pull-right">Schedule:
+            <span class="pull-right">Date:
+                <select ng-model="dateFilter">
+                    <option value="All">All</option>
+                    <option ng-repeat="date in getAllDates()"
+                            value="{{date}}">{{date}}</option>
+                </select>
+            </span>
+            <span class="pull-right">Season:
                 <select ng-model="scheduleFilter">
                     <option value="All">All</option>
                     <option ng-repeat="season in getAllSchedules()"
