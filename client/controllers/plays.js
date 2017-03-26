@@ -11,6 +11,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.nameFilter = '';
     $scope.selected = 'All';
     $scope.sort = 'names';
+    $scope.scheduleFilter = 'All';
 
     $http.get('/api/players').success(function (response) {
         $scope.players = response;
