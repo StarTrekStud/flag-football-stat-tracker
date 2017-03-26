@@ -1,6 +1,4 @@
 <div ng-init="getPlayers()">
-        <div class="row">
-            <div class="col-md-11">
                 <form ng-submit="addPlay()">
                     <div class="row">
                         <span>Schedule:
@@ -22,11 +20,11 @@
                     <div class="row">
                         <div class="col-sm-2">
                             <div class="form-group">
-                                <label>Quarterback</label>
-                                <label data-ng-repeat="player in playerList | filter:play.receiver_teams">
-                                    <input type="radio" value="{{player.full_names}}" ng-model="play.quarterbacks" />
-                                    {{player.full_names}}
-                                </label>
+                                <span>Quarterback:
+                                    <div data-ng-repeat="player in playerList | filter:play.receiver_teams">
+                                        <input type="radio" value="{{player.full_names}}" ng-model="play.quarterbacks"/>{{player.full_names}}
+                                    </div>
+                                </span>
                             </div>
                         </div>
                         <div class="col-sm-2">
@@ -70,8 +68,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
 </div>
 <div ng-init="getPlays()">
         <div class="row">
