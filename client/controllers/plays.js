@@ -188,4 +188,29 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         return filterObj;
     }
 
+    $scope.getAllSchedules = function(){
+        var schedules = playerService.getSetSchedules();
+        var plays = playerService.getSetPlays();
+
+        var applicaple = [];
+
+        for(var a = 0; a < plays.length; a++){
+            var curPlay = plays[a];
+
+            var date = curPlay.schedules.split(',')[0].trim();
+
+            for(var b = 0; b < schedules.length; b++){
+                var curSchedule = schedules[b];
+
+                if(curSchedule.dates === date){
+                    if(applicaple.indexOf(curSchedule.seasons) == -1){
+                        applicaple.push(curSchedule.seasons);
+                    }
+                }
+            }
+        }
+
+        return applicaple;
+    }
+
 }]);
