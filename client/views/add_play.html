@@ -14,7 +14,7 @@
                         </div>
                     </span>
                     <span>Defense:<br><br>
-                        <div data-ng-repeat="team in teamList | filter:{team_names:!play.receiver_teams}">
+                        <div data-ng-repeat="team in teamList | filter:play.receiver_teams">
                             <label><input type="radio" ng-value="team.team_names" ng-model="play.defender_teams"/>{{team.team_names}}</label><br><br>
                         </div>
                     </span>
