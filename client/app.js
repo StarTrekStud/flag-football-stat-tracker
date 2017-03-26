@@ -4,112 +4,112 @@ myApp.config(function($routeProvider){
 
 	$routeProvider.when('/', {
 		controller:'PlaysController',
-		templateUrl: 'stats/statistics.html'
+		templateUrl: 'views/statistics.html'
 	})
 
 	.when('/admins', {
 		controller:'PlaysController',
-		templateUrl: 'admins/administration.html'
+		templateUrl: 'views/administration.html'
 	})
 
 	.when('/statistics', {
 		controller:'PlaysController',
-		templateUrl: 'stats/statistics.html'
+		templateUrl: 'views/statistics.html'
 	})
 
 
 
 	.when('/plays', {
 		controller:'PlaysController',
-		templateUrl: 'plays/plays.html'
+		templateUrl: 'views/plays.html'
 	})
 	.when('/plays/details/:id',{
 		controller:'PlaysController',
-		templateUrl: 'plays/play_details.html'
+		templateUrl: 'views/play_details.html'
 	})
 	.when('/plays/add',{
 		controller:'PlaysController',
-		templateUrl: 'plays/add_play.html'
+		templateUrl: 'views/add_play.html'
 	})
 	.when('/plays/edit/:id',{
 		controller:'PlaysController',
-		templateUrl: 'plays/edit_play.html'
+		templateUrl: 'views/edit_play.html'
 	})
 
 
 
 	.when('/players', {
 		controller:'PlayersController',
-		templateUrl: 'players/players.html'
+		templateUrl: 'views/players.html'
 	})
 	.when('/players/details/:id',{
 		controller:'PlayersController',
-		templateUrl: 'players/player_details.html'
+		templateUrl: 'views/player_details.html'
 	})
 	.when('/players/add',{
 		controller:'PlayersController',
-		templateUrl: 'players/add_player.html'
+		templateUrl: 'views/add_player.html'
 	})
 	.when('/players/edit/:id',{
 		controller:'PlayersController',
-		templateUrl: 'players/edit_player.html'
+		templateUrl: 'views/edit_player.html'
 	})
 
 
 
 	.when('/teams', {
 		controller:'TeamsController',
-		templateUrl: 'teams/teams.html'
+		templateUrl: 'views/teams.html'
 	})
 	.when('/teams/details/:id',{
 		controller:'TeamsController',
-		templateUrl: 'teams/team_details.html'
+		templateUrl: 'views/team_details.html'
 	})
 	.when('/teams/add',{
 		controller:'TeamsController',
-		templateUrl: 'teams/add_team.html'
+		templateUrl: 'views/add_team.html'
 	})
 	.when('/teams/edit/:id',{
 		controller:'TeamsController',
-		templateUrl: 'teams/edit_team.html'
+		templateUrl: 'views/edit_team.html'
 	})
 
 
 
 	.when('/schedules', {
 		controller:'SchedulesController',
-		templateUrl: 'schedules/schedules.html'
+		templateUrl: 'views/schedules.html'
 	})
 	.when('/schedules/details/:id',{
 		controller:'SchedulesController',
-		templateUrl: 'schedules/schedule_details.html'
+		templateUrl: 'views/schedule_details.html'
 	})
 	.when('/schedules/add',{
 		controller:'SchedulesController',
-		templateUrl: 'schedules/add_schedule.html'
+		templateUrl: 'views/add_schedule.html'
 	})
 	.when('/schedules/edit/:id',{
 		controller:'SchedulesController',
-		templateUrl: 'schedules/edit_schedule.html'
+		templateUrl: 'views/edit_schedule.html'
 	})
 
 
 
 	.when('/results', {
 		controller:'ResultsController',
-		templateUrl: 'results/results.html'
+		templateUrl: 'views/results.html'
 	})
 	.when('/results/details/:id',{
 		controller:'ResultsController',
-		templateUrl: 'results/result_details.html'
+		templateUrl: 'views/result_details.html'
 	})
 	.when('/results/add',{
 		controller:'ResultsController',
-		templateUrl: 'results/add_result.html'
+		templateUrl: 'views/add_result.html'
 	})
 	.when('/results/edit/:id',{
 		controller:'ResultsController',
-		templateUrl: 'results/edit_result.html'
+		templateUrl: 'views/edit_result.html'
 	})
 
 

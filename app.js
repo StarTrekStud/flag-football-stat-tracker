@@ -5,14 +5,14 @@ var mongoose = require('mongoose');
 
 app.set('port', (process.env.PORT || 5000));
 
-app.use(express.static(__dirname+'/components'));
+app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
 
-Play = require('./plays/play');
-Player = require('./players/player');
-Team = require('./teams/team');
-Schedule = require('./schedules/schedule');
-Result = require('./results/result');
+Team = require('./models/team');
+Schedule = require('./models/schedule');
+Player = require('./models/player');
+Play = require('./models/play');
+Result = require('./models/result');
 
 // Connect to Mongoose
 mongoose.connect(process.env.MONGODB_URI);
