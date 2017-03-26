@@ -14,6 +14,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.scheduleFilter = 'All';
     $scope.weekFilter = 'All';
     $scope.dateFilter = 'All';
+    $scope.getDateFilter = 'All';
 
     $http.get('/api/players').success(function (response) {
         $scope.players = response;
@@ -226,6 +227,26 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
             var curPlay = plays[a];
 
             var date = curPlay.schedules.split(',')[0].trim();
+
+            if(dates.indexOf(date) != -1){
+                dates.push(date);
+            }
+
+        }
+
+        return dates;
+
+    }
+
+    $scope.getAllGames = function(){
+
+        var dates = [];
+        var plays = playerService.getSetPlays();
+
+        for(var a = 0; a < plays.length; a++){
+            var curPlay = plays[a];
+
+            var date = curPlay.schedules.split(',')[1].trim();
 
             if(dates.indexOf(date) != -1){
                 dates.push(date);
