@@ -10,7 +10,7 @@
                     <div class="row">
                         <span>Schedule:
                             <div data-ng-repeat="schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
-                                <input type="radio" ng-value="formattedDate, formattedTime" ng-model="play.schedules"/> {{schedule.dates}}, {{schedule.times}}
+                                <input type="radio" ng-value="formattedDateAndTime" ng-model="play.schedules"/> {{schedule.dates}}, {{schedule.times}}
                             </div>
                         </span>
                         <span>Offense:
