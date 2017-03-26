@@ -28,13 +28,17 @@
 	display: table-row-group;
 }
 
-span {
+label {
     background:#aaa;
     color:#fff;
     border-radius:8px;
     padding:1em;
     margin:1em;
     cursor:pointer;
+}
+
+label:hover {
+    background:#ccc;
 }
 
 input {
