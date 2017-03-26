@@ -228,7 +228,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 
             var date = curPlay.schedules.split(',')[0].trim();
 
-            if(dates.indexOf(date) != -1){
+            if(dates.indexOf(date) == -1){
                 dates.push(date);
             }
 
@@ -248,7 +248,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 
             var date = curPlay.schedules.split(',')[1].trim();
 
-            if(dates.indexOf(date) != -1){
+            if(dates.indexOf(date) == -1){
                 dates.push(date);
             }
 
