@@ -3,54 +3,54 @@
         <form ng-submit="addPlay()">
             <div class="divTableRow">
                 <div class="divTableCell">
-                    <span>Schedule:
+                    <span>Schedule:<br>
                         <div data-ng-repeat="schedule in scheduleList | filter:{dates:formattedDate, times:formattedTime}">
-                            <label><input type="radio" ng-value="formattedDateAndTime" ng-model="play.schedules"/>{{schedule.dates}}, {{schedule.times}}</label><br><br>
+                            <label><input type="radio" ng-value="formattedDateAndTime" ng-model="play.schedules"/>{{schedule.dates}}, {{schedule.times}}</label><br><br><br>
                         </div>
                     </span>
-                    <span>Offense:
+                    <span>Offense:<br>
                         <div data-ng-repeat="team in teamList">
-                            <label><input type="radio" ng-value="team.team_names" ng-model="play.receiver_teams"/>{{team.team_names}}</label><br><br>
+                            <label><input type="radio" ng-value="team.team_names" ng-model="play.receiver_teams"/>{{team.team_names}}</label><br><br><br>
                         </div>
                     </span>
-                    <span>Defense:
+                    <span>Defense:<br>
                         <div data-ng-repeat="team in teamList">
-                            <label><input type="radio" ng-value="team.team_names" ng-model="play.defender_teams"/>{{team.team_names}}</label><br><br>
+                            <label><input type="radio" ng-value="team.team_names" ng-model="play.defender_teams"/>{{team.team_names}}</label><br><br><br>
                         </div>
                     </span>
                 </div>
                 <div class="divTableCell">
-                    <span>Quarterback:
+                    <span>Quarterback:<br>
                         <div data-ng-repeat="player in playerList | filter:play.receiver_teams">
-                            <label><input type="radio" value="{{player.full_names}}" ng-model="play.quarterbacks"/>{{player.full_names}}</label><br><br>
+                            <label><input type="radio" value="{{player.full_names}}" ng-model="play.quarterbacks"/>{{player.full_names}}</label><br><br><br>
                         </div>
                     </span>
                 </div>
                 <div class="divTableCell">
-                    <span>Receiver:
+                    <span>Receiver:<br>
                         <div data-ng-repeat="player in playerList | filter:play.receiver_teams">
-                            <label><input type="radio" value="{{player.full_names}}" ng-model="play.receivers"/>{{player.full_names}}</label><br><br>
+                            <label><input type="radio" value="{{player.full_names}}" ng-model="play.receivers"/>{{player.full_names}}</label><br><br><br>
                         </div>
                     </span>
                 </div>
                 <div class="divTableCell">
-                    <span>Receiver Results:
+                    <span>Receiver Results:<br>
                         <div data-ng-repeat="result in resultList | filter:{offense:'true'}">
-                            <label><input type="radio" value="{{result.result_names}}" ng-model="play.receiver_results"/>{{result.result_names}}</label><br><br>
+                            <label><input type="radio" value="{{result.result_names}}" ng-model="play.receiver_results"/>{{result.result_names}}</label><br><br><br>
                         </div>
                     </span>
                 </div>
                 <div class="divTableCell">
-                    <span>
+                    <span>Defender:<br>
                         <div data-ng-repeat="player in playerList | filter:play.defender_teams">
-                            <label><input type="radio" value="{{player.full_names}}" ng-model="play.defenders"/>{{player.full_names}}</label><br><br>
+                            <label><input type="radio" value="{{player.full_names}}" ng-model="play.defenders"/>{{player.full_names}}</label><br><br><br>
                         </div>
                     </span>
                 </div>
                 <div class="divTableCell">
-                    <span>Defender Results
+                    <span>Defender Results:<br>
                         <div data-ng-repeat="result in resultList | filter:{defense:'true'}">
-                            <label><input type="radio" value="{{result.result_names}}" ng-model="play.defender_results"/>{{result.result_names}}</label><br><br>
+                            <label><input type="radio" value="{{result.result_names}}" ng-model="play.defender_results"/>{{result.result_names}}</label><br><br><br>
                         </div>
                     </span>
                 </div>
