@@ -14,7 +14,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.scheduleFilter = 'All';
     $scope.weekFilter = 'All';
     $scope.dateFilter = 'All';
-    $scope.getDateFilter = 'All';
+    $scope.gameFilter = 'All';
 
     $http.get('/api/players').success(function (response) {
         $scope.players = response;
@@ -117,6 +117,9 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     }
 
     $scope.getFilteredPlayers = function () {
+
+
+
         if ($scope.selected === 'All') {
             return playerService.getSetPlayers();
         } else {
