@@ -44,3 +44,9 @@ label:hover {
 input {
     margin-right:1em;
 }
+
+.radio{
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
