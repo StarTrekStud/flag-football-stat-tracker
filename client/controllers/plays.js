@@ -32,6 +32,8 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 
     $scope.play = {
         schedules: '',
+        receivers: '',
+        defenders: '',
         receiver_teams: '',
         defender_teams: '',
         quarterbacks:''
