@@ -4,9 +4,9 @@
             <span class="pull-right">Sort
                  <select ng-model="sort">
                      <option value="names">names</option>
-                    <option ng-repeat="stat in getAllStatsOptions()"
+                     <option ng-repeat="stat in getAllStatsOptions()"
                             value="{{stat}}">{{stat}}</option>
-                </select>
+                 </select>
             </span>
             <span class="pull-right">Players:
                 <select ng-model="selected">
@@ -34,7 +34,7 @@
                 </div>
                 <div>
                     <div class="row" ng-repeat="stat in getStats(player)">
-                        <label>&nbsp;{{stat + ": " + player.stats[stat]}}</label>
+                        <label>&nbsp;{{stat + ": " + player.stats[stat]}}</label><br><br>
                     </div>
                 </div>
             </div>
