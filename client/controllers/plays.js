@@ -59,7 +59,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     });
 
     $http.get('/api/schedules').success(function(response){
-        $scope.schedules = response;
+        playerService.getSetSchedules( response );
     });
 
     $scope.schedules = null;
