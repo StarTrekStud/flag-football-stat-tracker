@@ -33,13 +33,9 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.play = {
         schedules: '',
         receiver_teams: '',
-        defender_teams: ''
+        defender_teams: '',
+        quarterbacks:''
     };
-
-    $scope.schedule = {
-        homes: '',
-        aways: ''
-    }
 
     $scope.players = null;
     $scope.playerList = [];
