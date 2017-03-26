@@ -50,6 +50,10 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
         $scope.teamList = response;
     });
 
+    $http.get('/api/schedules').success(function(response){
+        $scope.schedules = response;
+    });
+
     $scope.schedules = null;
     $scope.scheduleList = [];
 

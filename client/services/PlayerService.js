@@ -2,6 +2,15 @@ myApp.service('PlayerService', function () {
 
     var players = [];
     var plays = [];
+    var schedules = [];
+
+    this.getSetSchedules = function(val){
+        if(!!val){
+            schedules = val;
+        }else{
+            return schedules;
+        }
+    }
 
     this.getSetPlayers = function (val) {
         if (!!val) {
