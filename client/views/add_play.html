@@ -28,7 +28,7 @@
                 </div>
                 <div class="divTableCell">
                     <span>Receiver:<br><br>
-                        <div data-ng-repeat="player in playerList | filter:play.receiver_teams, '!' + play.quarterbacks">
+                        <div data-ng-repeat="player in playerList | filter:play.receiver_teams | filter:'!' + play.quarterbacks">
                             <label><input type="radio" value="{{player.full_names}}" ng-model="play.receivers"/>{{player.full_names}}</label><br><br>
                         </div>
                     </span>
