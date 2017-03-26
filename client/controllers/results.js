@@ -14,6 +14,7 @@ myApp.controller('ResultsController', ['$scope', '$http', '$location', '$routePa
 		});
 	}
 
+/*
 	$scope.addResult = function(){
 		console.log($scope.result);
 		$http.post('/api/results/', $scope.result).success(function(response){
@@ -33,4 +34,6 @@ myApp.controller('ResultsController', ['$scope', '$http', '$location', '$routePa
 			window.location.href='#/results';
 		});
 	}
+*/
+
 }]);
