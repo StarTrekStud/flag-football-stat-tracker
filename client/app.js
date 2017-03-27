@@ -30,7 +30,7 @@ myApp.config(function($routeProvider){
 
 
 	.when('/players', {
-		controller:'PlayersController',
+		controller:'PlaysController',
 		templateUrl: 'views/players.html'
 	})
 	.when('/players/details/:id',{
