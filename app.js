@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
-	res.send('Please use /api/stats');
+	res.send('Please use /api/players');
 });
 
 

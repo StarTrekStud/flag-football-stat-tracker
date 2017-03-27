@@ -1,100 +1,62 @@
-<div class="panel panel-default" ng-init="getPlayers()">
+<div class="panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">View Players
-            <span class="pull-right">Filter by Player:
-                <select ng-model="full_names" ng-init="selected"
-                        ng-options="player.full_names as player.full_names for player in playerList | filter:team_names">
-                    <option value="" selected="selected">All</option>
+        <h3 class="panel-title">Stats:
+            <!--
+            <span class="pull-right">Season:
+                <select ng-model="scheduleFilter">
+                    <option value="All">All</option>
+                    <option ng-repeat="season in getAllSchedules()"
+                            value="{{season}}">{{season}}</option>
                 </select>
             </span>
-            <span class="pull-right">Filter by Team:
-                <select ng-model="team_names" ng-init="selected"
-                        ng-options="team.team_names as team.team_names for team in teamList">
-                    <option value="" selected="selected">All</option>
+            <span class="pull-right">Week:
+                <select ng-model="dateFilter">
+                    <option value="All">All</option>
+                    <option ng-repeat="date in getAllDates()"
+                            value="{{date}}">{{date}}</option>
                 </select>
+            </span>
+            <span class="pull-right">Game:
+                <select ng-model="gameFilter">
+                    <option value="All">All</option>
+                    <option ng-repeat="game in getAllGames()"
+                            value="{{game}}">{{game}}</option>
+                </select>
+            </span>
+            -->
+            <span class="pull-right">Teams:
+                <select ng-model="teamFilter">
+                    <option value="All">All</option>
+                    <option ng-repeat="team in getTeamNames()"
+                            value="{{team}}">{{team}}</option>
+                </select>
+            </span>
+            <span class="pull-right">Players:
+                <select ng-model="selected">
+                    <option value="All">All</option>
+                    <option ng-repeat="player in getPlayers()"
+                            value="{{player.full_names}}">{{player.full_names}}</option>
+                </select>
+            </span>
+            <span class="pull-right">Sort
+                 <select ng-model="sort">
+                     <option value="names">names</option>
+                     <option ng-repeat="stat in getAllStatsOptions()"
+                             value="{{stat}}">{{stat}}</option>
+                 </select>
             </span>
         </h3>
-  </div>
-  <div class="panel-body">
-      <div ng-if="team_names != selected">
-          <div ng-if="full_names == selected">
-              <div ng-repeat="player in players | filter:team_names">
-                  <div class="row">
-                      <div class="col-md-6">
-                          <p>Team Name: <em>{{player.team_names}}</em></p>
-                          <p>Full Name: <em>{{player.full_names}}</em></p>
-                          <p>Position: <em>{{player.positions}}</em></p>
-                          <p>Height: <em>{{player.heights}}</em></p>
-                          <p>Weight: <em>{{player.weights}}</em></p>
-                          <p>Birth Date: <em>{{player.birth_dates}}</em></p>
-                          <p>Birth Place: <em>{{player.birth_places}}</em></p>
-                          <p>School: <em>{{player.schools}}</em></p>
-                          <p>Joined VSP: <em>{{player.joined_vsp}}</em></p>
-                          <p>Joined League: <em>{{player.joined_league}}</em></p>
-                          <a class="btn btn-primary" href="#/players/details/{{player._id}}">View Details</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div ng-if="full_names != selected">
-              <div ng-repeat="player in players | filter:team_names | filter:full_names">
-                  <div class="row">
-                      <div class="col-md-6">
-                          <p>Team Name: <em>{{player.team_names}}</em></p>
-                          <p>Full Name: <em>{{player.full_names}}</em></p>
-                          <p>Position: <em>{{player.positions}}</em></p>
-                          <p>Height: <em>{{player.heights}}</em></p>
-                          <p>Weight: <em>{{player.weights}}</em></p>
-                          <p>Birth Date: <em>{{player.birth_dates}}</em></p>
-                          <p>Birth Place: <em>{{player.birth_places}}</em></p>
-                          <p>School: <em>{{player.schools}}</em></p>
-                          <p>Joined VSP: <em>{{player.joined_vsp}}</em></p>
-                          <p>Joined League: <em>{{player.joined_league}}</em></p>
-                          <a class="btn btn-primary" href="#/players/details/{{player._id}}">View Details</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div ng-if="team_names == selected">
-          <div ng-if="full_names == selected">
-              <div ng-repeat="player in players">
-                  <div class="row">
-                      <div class="col-md-6">
-                          <p>Team Name: <em>{{player.team_names}}</em></p>
-                          <p>Full Name: <em>{{player.full_names}}</em></p>
-                          <p>Position: <em>{{player.positions}}</em></p>
-                          <p>Height: <em>{{player.heights}}</em></p>
-                          <p>Weight: <em>{{player.weights}}</em></p>
-                          <p>Birth Date: <em>{{player.birth_dates}}</em></p>
-                          <p>Birth Place: <em>{{player.birth_places}}</em></p>
-                          <p>School: <em>{{player.schools}}</em></p>
-                          <p>Joined VSP: <em>{{player.joined_vsp}}</em></p>
-                          <p>Joined League: <em>{{player.joined_league}}</em></p>
-                          <a class="btn btn-primary" href="#/players/details/{{player._id}}">View Details</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div ng-if="full_names != selected">
-              <div ng-repeat="player in players | filter:full_names">
-                  <div class="row">
-                      <div class="col-md-6">
-                          <p>Team Name: <em>{{player.team_names}}</em></p>
-                          <p>Full Name: <em>{{player.full_names}}</em></p>
-                          <p>Position: <em>{{player.positions}}</em></p>
-                          <p>Height: <em>{{player.heights}}</em></p>
-                          <p>Weight: <em>{{player.weights}}</em></p>
-                          <p>Birth Date: <em>{{player.birth_dates}}</em></p>
-                          <p>Birth Place: <em>{{player.birth_places}}</em></p>
-                          <p>School: <em>{{player.schools}}</em></p>
-                          <p>Joined VSP: <em>{{player.joined_vsp}}</em></p>
-                          <p>Joined League: <em>{{player.joined_league}}</em></p>
-                          <a class="btn btn-primary" href="#/players/details/{{player._id}}">View Details</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+    </div>
+    <div class="panel-body">
+        <div ng-if="full_names != selected">
+            <div ng-repeat="player in getFilteredPlayers() | orderBy: getOrderBy() | filter: filterResults() ">
+                <div class="row">
+                    <p><a class="btn btn-primary" href="#/players/details/{{player._id}}">Full Name: <em>{{player.full_names}}</em></a></p>
+                </div>
+                <div class="row" ng-repeat="stat in getStats(player)">
+                    <label>&nbsp;{{stat + ": " + player.stats[stat]}}</label><br><br>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
