@@ -1,5 +1,5 @@
 <a href="#/">Go Back</a>
-<div class="panel-primary">
+<div class="panel-primary" ng-init="getPlayer()">
     <div class="panel-body">
         <div class="row">
             <ul class="list-group">
@@ -21,7 +21,7 @@
                     <p><a class="btn btn-primary" href="#/players/details/{{player._id}}">Full Name: <em>{{player.full_names}}</em></a>
                     </p>
                 </div>
-                <div class="row" ng-repeat="stat in getStats({{player.full_names}})">
+                <div class="row" ng-repeat="stat in getStats(player.full_names)">
                     <label>&nbsp;{{stat + ": " + player.stats[stat]}}</label><br><br>
                 </div>
             </div>
