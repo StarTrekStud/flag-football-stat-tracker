@@ -106,13 +106,13 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.updatePlay = function () {
         var id = $routeParams.id;
         $http.put('/api/plays/' + id, $scope.play).success(function (response) {
-            window.location.href = '#/plays';
+            window.location.href = '#/plays/add';
         });
     }
 
     $scope.removePlay = function (id) {
         $http.delete('/api/plays/' + id).success(function (response) {
-            window.location.href = '#/plays';
+            window.location.href = '#/plays/add';
         });
     }
 
