@@ -23,10 +23,6 @@ myApp.config(function($routeProvider){
 		controller:'PlaysController',
 		templateUrl: 'views/plays.html'
 	})
-	.when('/plays/details/:id',{
-		controller:'PlaysController',
-		templateUrl: 'views/play_details.html'
-	})
 	.when('/plays/add',{
 		controller:'PlaysController',
 		templateUrl: 'views/add_play.html'

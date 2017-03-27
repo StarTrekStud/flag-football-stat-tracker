@@ -67,7 +67,7 @@
         <div ng-init="getPlays()">
             <div ng-repeat="play in plays | orderBy: '-create_date' ">
                 <div ng-if="play.create_date.indexOf(play.schedules) > -1">
-                    <a class="btn btn-primary" href="#/plays/details/{{play._id}}">{{play.create_date}} | {{play.quarterbacks}} | {{play.receivers}} | {{play.receiver_results}} | {{play.defenders}} | {{play.defender_results}}</a>
+                    <a class="btn btn-primary" href="#/plays/edit/{{play._id}}">{{play.create_date}} | {{play.quarterbacks}} | {{play.receivers}} | {{play.receiver_results}} | {{play.defenders}} | {{play.defender_results}}</a>
                 </div>
             </div>
         </div>
