@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
-	res.send('Please use /api/statistics');
+	res.send('Please use /api/stats');
 });
 
 
@@ -246,6 +246,9 @@ app.get('/api/results/:_id', function(req, res){
 	});
 });
 
+
+
+/*
 app.post('/api/results', function(req, res){
 	var result = req.body;
 	Result.addResult(result, function(err, result){
@@ -276,6 +279,7 @@ app.delete('/api/results/:_id', function(req, res){
 		res.json(result);
 	});
 });
+*/
 
 
 

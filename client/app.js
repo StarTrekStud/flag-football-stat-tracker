@@ -4,17 +4,17 @@ myApp.config(function($routeProvider){
 
 	$routeProvider.when('/', {
 		controller:'PlaysController',
-		templateUrl: 'views/statistics.html'
+		templateUrl: 'views/stats.html'
 	})
 
 	.when('/admins', {
 		controller:'PlaysController',
-		templateUrl: 'views/administration.html'
+		templateUrl: 'views/admins.html'
 	})
 
-	.when('/statistics', {
+	.when('/stats', {
 		controller:'PlaysController',
-		templateUrl: 'views/statistics.html'
+		templateUrl: 'views/stats.html'
 	})
 
 
@@ -94,7 +94,7 @@ myApp.config(function($routeProvider){
 	})
 
 
-
+/*
 	.when('/results', {
 		controller:'ResultsController',
 		templateUrl: 'views/results.html'
@@ -111,6 +111,7 @@ myApp.config(function($routeProvider){
 		controller:'ResultsController',
 		templateUrl: 'views/edit_result.html'
 	})
+*/
 
 
 

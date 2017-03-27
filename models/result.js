@@ -34,6 +34,7 @@ module.exports.getResultById = function(id, callback){
 	Result.findById(id, callback);
 }
 
+/*
 // Add Result
 module.exports.addResult = function(result, callback){
 	Result.create(result, callback);
@@ -56,3 +57,4 @@ module.exports.removeResult = function(id, callback){
 	var query = {_id: id};
 	Result.remove(query, callback);
 }
+*/
