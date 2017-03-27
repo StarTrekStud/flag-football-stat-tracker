@@ -1,0 +1,23 @@
+<a href="#/plays/add">Go Back</a>
+<div class="panel panel-primary" ng-init="getPlay()">
+  <div class="panel-heading">
+    <h3 class="panel-title"></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-8">
+        <ul class="list-group">
+          <li class="list-group-item">Schedule: <em>{{play.schedules}}</em></li>
+          <li class="list-group-item">Quarterback: <em>{{play.quarterbacks}}</em></li>
+          <li class="list-group-item">Receiver: <em>{{play.receivers}}</em></li>
+          <li class="list-group-item">Receiver Result: <em>{{play.receiver_results}}</em></li>
+          <li class="list-group-item">Defender: <em>{{play.defenders}}</em></li>
+          <li class="list-group-item">Defender Result: <em>{{play.defender_results}}</em></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pull-right">
+        <a href="#/plays/edit/{{play._id}}">Edit</a>  |  <a href="#" ng-click="removePlay(play._id)">Delete</a>
+    </div>
+  </div>
+</div>
