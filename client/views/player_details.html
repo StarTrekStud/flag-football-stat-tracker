@@ -16,14 +16,8 @@
             </ul>
         </div>
         <div class="row">
-            <div ng-repeat="player in getFilteredPlayers() | orderBy: getOrderBy() | filter: filterResults() ">
-                <div class="row">
-                    <p><a class="btn btn-primary" href="#/players/details/{{player._id}}">Full Name: <em>{{player.full_names}}</em></a>
-                    </p>
-                </div>
-                <div class="row" ng-repeat="stat in getStats(player.full_names)">
-                    <label>&nbsp;{{stat + ": " + player.stats[stat]}}</label><br><br>
-                </div>
+            <div class="row" ng-repeat="stat in getStats(player.full_names)">
+                <label>&nbsp;{{stat + ": " + player.stats[stat]}}</label><br><br>
             </div>
         </div>
     </div>
