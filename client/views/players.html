@@ -40,7 +40,10 @@
             </span>
             <span class="pull-right">Sort
                  <select ng-model="sort">
+                                                               <option value="none">none</option>
+
                      <option value="names">names</option>
+
                      <option ng-repeat="stat in getAllStatsOptions()"
                              value="{{stat}}">{{stat}}</option>
                  </select>
@@ -53,7 +56,7 @@
                 <div class="row">
                     <p><a class="btn btn-primary" href="#/players/details/{{player._id}}">Full Name: <em>{{player.full_names}}</em></a></p>
                 </div>
-                <div class="row" ng-repeat="stat in getStats(player)">
+                <div class="row" ng-repeat="stat in getStats(player)" ng-if="sort != 'none'">
                     <label>&nbsp;{{stat + ": " + player.stats[stat]}}</label><br><br>
                 </div>
             </div>
