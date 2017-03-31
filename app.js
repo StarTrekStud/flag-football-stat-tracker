@@ -1,12 +1,12 @@
 var express = require('express');
-var cors = require('cors');
+/*var cors = require('cors');*/
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 app.set('port', (process.env.PORT || 5000));
 
-app.use(cors());
+/*app.use(cors());*/
 app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
 
