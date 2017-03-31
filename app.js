@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 
 app.set('port', (process.env.PORT || 5000));
 
+app.use(cors());
 app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
 
@@ -144,6 +145,7 @@ app.get('/api/teams/:_id', function(req, res){
 	});
 });
 
+/*
 app.post('/api/teams', function(req, res){
 	var team = req.body;
 	Team.addTeam(team, function(err, team){
@@ -174,7 +176,7 @@ app.delete('/api/teams/:_id', function(req, res){
 		res.json(team);
 	});
 });
-
+*/
 
 
 app.get('/api/schedules', function(req, res){
@@ -216,6 +218,7 @@ app.put('/api/schedules/:_id', function(req, res){
 	});
 });
 
+/*
 app.delete('/api/schedules/:_id', function(req, res){
 	var id = req.params._id;
 	Schedule.removeSchedule(id, function(err, schedule){
@@ -225,7 +228,7 @@ app.delete('/api/schedules/:_id', function(req, res){
 		res.json(schedule);
 	});
 });
-
+*/
 
 
 app.get('/api/results', function(req, res){

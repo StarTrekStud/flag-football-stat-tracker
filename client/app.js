@@ -47,7 +47,7 @@ myApp.config(function($routeProvider){
 	})
 
 
-
+/*
 	.when('/teams', {
 		controller:'TeamsController',
 		templateUrl: 'views/teams.html'
@@ -64,7 +64,7 @@ myApp.config(function($routeProvider){
 		controller:'TeamsController',
 		templateUrl: 'views/edit_team.html'
 	})
-
+*/
 
 
 	.when('/schedules', {

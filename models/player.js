@@ -10,10 +10,6 @@ var playerSchema = mongoose.Schema({
 		type: String,
         required: true
 	},
-	positions:{
-		type: String,
-        required: true
-	},
 	heights:{
 		type: Number,
         required: true
@@ -75,7 +71,6 @@ module.exports.updatePlayer = function(id, player, options, callback){
 	var update = {
 	    team_names: player.team_names,
 		full_names: player.full_names,
-		positions: player.positions,
 		heights: player.heights,
 		weights: player.weights,
 		birth_dates: player.birth_dates,

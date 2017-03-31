@@ -9,8 +9,9 @@
   "dependencies":{
   	"express":"*",
   	"body-parser":"*",
-  	"mongoose":"*"
+  	"mongoose":"*",
+    "cors":"*"
   },
-  "author": "Akhilesh Goud",
+  "author": "Dave Oji",
   "license": "MIT"
 }
