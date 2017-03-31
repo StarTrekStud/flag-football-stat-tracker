@@ -1,7 +1,7 @@
 {
-  "name": "readersparadise",
+  "name": "Flag Football Stat Tracker",
   "version": "1.0.0",
-  "description": "One stop blog with latest best selling books",
+  "description": "Flag Football Stat Tracker",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
