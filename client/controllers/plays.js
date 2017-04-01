@@ -10,7 +10,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.teamFilter = 'All';
     $scope.nameFilter = '';
     $scope.selected = 'All';
-    $scope.sort = 'none';
+    $scope.sort = 'alphabetical';
     $scope.scheduleFilter = 'All';
     $scope.weekFilter = 'All';
     $scope.dateFilter = 'All';
@@ -156,7 +156,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
 
         var orderBys = [];
 
-        if ($scope.sort !== 'names') {
+        if ($scope.sort !== 'all') {
             orderBys.push('-stats.' + $scope.sort);
         }
 
@@ -166,7 +166,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     }
 
     $scope.getStats = function (player) {
-        if ($scope.sort === 'names') {
+        if ($scope.sort === 'all') {
             return !!player.stats ? Object.keys(player.stats) : [];
         } else {
             return [$scope.sort];
