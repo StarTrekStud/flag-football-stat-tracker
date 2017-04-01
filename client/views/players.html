@@ -1,6 +1,6 @@
 <div class="panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">Stats:
+        <h3 class="panel-title">Stats:<br>
             <!--
             <span class="pull-right">Season:
                 <select ng-model="scheduleFilter">
@@ -40,16 +40,15 @@
             </span>
             <span class="pull-right">Sort
                  <select ng-model="sort">
-                                                               <option value="none">none</option>
-
+                     <option value="none">none</option>
                      <option value="names">names</option>
-
                      <option ng-repeat="stat in getAllStatsOptions()"
                              value="{{stat}}">{{stat}}</option>
                  </select>
             </span>
         </h3>
     </div>
+    <h3><br>Players:</h3>
     <div class="panel-body">
         <div ng-if="full_names != selected">
             <div ng-repeat="player in getFilteredPlayers() | orderBy: getOrderBy() | filter: filterResults() ">
