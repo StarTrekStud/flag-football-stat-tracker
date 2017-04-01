@@ -1,5 +1,5 @@
 {
-  "name": "Flag Football Stat Tracker",
+  "name": "ffst",
   "version": "1.0.0",
   "description": "Flag Football Stat Tracker",
   "main": "app.js",
