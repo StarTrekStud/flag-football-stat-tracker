@@ -1,0 +1,23 @@
+<a href="#/">Go Back</a>
+<div class="panel-primary" ng-init="getPlayer()">
+    <div class="panel-body">
+        <div class="row">
+            <ul class="list-group">
+                <li class="list-group-item">Team Name: <em>{{player.team_names}}</em></li>
+                <li class="list-group-item">Full Name: <em>{{player.full_names}}</em></li>
+                <li class="list-group-item">Height: <em>{{player.heights}}</em></li>
+                <li class="list-group-item">Weight: <em>{{player.weights}}</em></li>
+                <li class="list-group-item">Birth Date: <em>{{player.birth_dates}}</em></li>
+                <li class="list-group-item">Birth Place: <em>{{player.birth_places}}</em></li>
+                <li class="list-group-item">School: <em>{{player.schools}}</em></li>
+                <li class="list-group-item">Joined VSP: <em>{{player.joined_vsp}}</em></li>
+                <li class="list-group-item">Joined League: <em>{{player.joined_league}}</em></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="row" ng-repeat="stat in getStats(player.full_names)">
+                <label>&nbsp;{{stat + ": " + player.stats[stat]}}</label><br><br>
+            </div>
+        </div>
+    </div>
+</div>
