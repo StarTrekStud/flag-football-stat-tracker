@@ -37,6 +37,7 @@ myApp.config(function($routeProvider){
 		controller:'PlayersController',
 		templateUrl: 'views/player_details.html'
 	})
+/*
 	.when('/players/add',{
 		controller:'PlayersController',
 		templateUrl: 'views/add_player.html'
@@ -45,7 +46,7 @@ myApp.config(function($routeProvider){
 		controller:'PlayersController',
 		templateUrl: 'views/edit_player.html'
 	})
-
+*/
 
 /*
 	.when('/teams', {

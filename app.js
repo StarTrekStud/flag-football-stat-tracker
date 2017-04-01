@@ -95,6 +95,7 @@ app.get('/api/players/:_id', function(req, res){
 	});
 });
 
+/*
 app.post('/api/players', function(req, res){
 	var player = req.body;
 	Player.addPlayer(player, function(err, player){
@@ -125,7 +126,7 @@ app.delete('/api/players/:_id', function(req, res){
 		res.json(player);
 	});
 });
-
+*/
 
 
 app.get('/api/teams', function(req, res){

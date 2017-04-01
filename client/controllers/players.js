@@ -36,6 +36,7 @@ myApp.controller('PlayersController', ['$scope', '$http', '$location', '$routePa
 		});
 	}
 
+/*
 	$scope.addPlayer = function(){
 		console.log($scope.player);
 		$http.post('/api/players/', $scope.player).success(function(response){
@@ -55,5 +56,6 @@ myApp.controller('PlayersController', ['$scope', '$http', '$location', '$routePa
 			window.location.href='#/players';
 		});
 	}
+*/
 
 }]);
