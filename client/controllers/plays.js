@@ -10,7 +10,7 @@ myApp.controller('PlaysController', ['$scope', '$filter', '$http', '$location', 
     $scope.teamFilter = 'All';
     $scope.nameFilter = '';
     $scope.selected = 'All';
-    $scope.sort = 'alphabetical';
+    $scope.sort = 'none';
     $scope.scheduleFilter = 'All';
     $scope.weekFilter = 'All';
     $scope.dateFilter = 'All';
