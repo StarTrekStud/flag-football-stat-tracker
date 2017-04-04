@@ -1539,14 +1539,14 @@ module.exports = "<div class=\"container-fluid background\" style=\"padding:0;\"
 /***/ 342:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid header-container\">\n  <div class=\"row\">\n    <div class=\"col-sm-6 col-md-3\">\n     <div [routerLink]=\"['home']\"> <div class=\"title\">\n        <img src=\"../../assets/logo.png\" height=\"50px\">\n      </div>\n      <div class=\"subtitle\">\n        STAT-TRACKER by Dave Oji & Seth Vg\n      </div></div>\n    </div>\n    <div class=\"col-sm-6 col-md-9 hidden-sm-down\">\n      <div class=\"container-fluid\">\n        <div class=\"row justify-content-end\" style=\"padding-top:15px\">\n          <div class=\"col-lg-2 col-md-3 col-xs-4\">\n            <button class=\"btn btn-block btn-outline-secondary\" [routerLink]=\"['stats']\">Stats</button>\n          </div>\n          <div class=\"col-xl-2 col-md-3  col-xs-4\">\n            <button class=\"btn btn-block btn-outline-secondary\" [routerLink]=\"['teams']\">Teams</button>\n          </div>\n          <div class=\"col-xl-2 col-md-3  col-xs-4\">\n            <button class=\"btn btn-block btn-outline-secondary\" [routerLink]=\"['schedule']\">Schedule</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container-fluid header-container\">\n  <div class=\"row\">\n    <div class=\"col-sm-6 col-md-3\">\n     <div [routerLink]=\"['home']\"> <div class=\"title\">\n        <img src=\"../../assets/logo.png\" height=\"50px\">\n      </div>\n      <div class=\"subtitle\">\nSTAT-TRACKER by Dave Oji & Seth Vg\n      </div></div>\n    </div>\n    <div class=\"col-sm-6 col-md-9 hidden-sm-down\">\n      <div class=\"container-fluid\">\n        <div class=\"row justify-content-end\" style=\"padding-top:15px\">\n          <div class=\"col-lg-2 col-md-3 col-xs-4\">\n            <button class=\"btn btn-block btn-outline-secondary\" [routerLink]=\"['stats']\">Stats</button>\n          </div>\n          <div class=\"col-xl-2 col-md-3  col-xs-4\">\n            <button class=\"btn btn-block btn-outline-secondary\" [routerLink]=\"['teams']\">Teams</button>\n          </div>\n          <div class=\"col-xl-2 col-md-3  col-xs-4\">\n            <button class=\"btn btn-block btn-outline-secondary\" [routerLink]=\"['schedule']\">Schedule</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
 /***/ 343:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\n  <div class=\"card-header\">\n      VSPN.football - Home of the Flag Football STAT-TRACKER\n  </div>\n  <div class=\"card-block\">\n    <i>This website is intended for the use of VSP players in the City of Folsom Adult Flag Football League.</i>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card\">\n  <div class=\"card-header\">\n      VSPN.football - Home of the Flag Football STAT-TRACKER\n  </div>\n  <div class=\"card-block\">\n<i>This website is intended for the use of VSP players in the City of Folsom Adult Flag Football League.</i>\n  </div>\n</div>\n"
 
 /***/ }),
 
