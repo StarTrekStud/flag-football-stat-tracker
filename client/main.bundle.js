@@ -1546,7 +1546,7 @@ module.exports = "<div class=\"container-fluid header-container\">\n  <div class
 /***/ 343:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\n  <div class=\"card-header\">\n      VSPN.football - Home of the Flag Football STAT-TRACKER\n  </div>\n  <div class=\"card-block\">\n<i>This website is intended for the use of VSP players in the City of Folsom Adult Flag Football League.</i>\n  </div>\n</div>\n"
+module.exports = "<div class=\"card\">\n  <div class=\"card-header\">\n      VSPN.football - Home of the Flag Football STAT-TRACKER\n  </div>\n  <div class=\"card-block\">\n<i>This website is intended for the use of VSP players in the City of Folsom Adult Flag Football League.  Any use of this website without the VSPN’s express written consent is prohibited.</i>\n  </div>\n</div>\n"
 
 /***/ }),
 
