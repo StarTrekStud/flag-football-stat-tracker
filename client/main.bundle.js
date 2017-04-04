@@ -1,14 +1,14 @@
 webpackJsonp([1,4],{
 
-/***/ 112:
+/***/ 113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_team_service__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_plays_service__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_schedule_service__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_team_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_plays_service__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_schedule_service__ = __webpack_require__(35);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -36,8 +36,8 @@ var HomeComponent = (function () {
     HomeComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-home',
-            template: __webpack_require__(339),
-            styles: [__webpack_require__(326)]
+            template: __webpack_require__(343),
+            styles: [__webpack_require__(329)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_team_service__["a" /* TeamService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_team_service__["a" /* TeamService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_plays_service__["a" /* PlaysService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__services_plays_service__["a" /* PlaysService */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__services_schedule_service__["a" /* ScheduleService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__services_schedule_service__["a" /* ScheduleService */]) === 'function' && _d) || Object])
     ], HomeComponent);
@@ -48,11 +48,152 @@ var HomeComponent = (function () {
 
 /***/ }),
 
-/***/ 113:
+/***/ 114:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_schedule_service__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dao_PlaysDao__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_Play__ = __webpack_require__(215);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddPlaysComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var AddPlaysComponent = (function () {
+    function AddPlaysComponent(scheduleService, playerService, dao) {
+        this.scheduleService = scheduleService;
+        this.playerService = playerService;
+        this.dao = dao;
+        this.defensiveResults = ['Tackle', 'Sack', 'Safety', 'Interception', '1 Point', '2 Point', 'Touchdown'];
+        this.offensiveResults = [{ name: 'None', include: this.defensiveResults, hasDefender: true }, {
+                name: 'Catch',
+                include: ['Tackle'], hasDefender: true
+            }, {
+                name: 'Drop',
+                include: ['Interception'], hasDefender: true
+            }, {
+                name: 'Miss',
+                include: ['Interception'], hasDefender: true
+            }, {
+                name: '1 Point',
+                include: [],
+                hasDefender: false
+            }, {
+                name: '2 Point',
+                include: [],
+                hasDefender: false
+            }, {
+                name: 'Touchdown',
+                include: [],
+                hasDefender: false
+            }];
+    }
+    AddPlaysComponent.prototype.ngOnInit = function () {
+    };
+    AddPlaysComponent.prototype.getSchedules = function () {
+        return this.scheduleService.schedule;
+    };
+    AddPlaysComponent.prototype.getOffensivePlayers = function (excludeQb) {
+        if (excludeQb === void 0) { excludeQb = false; }
+        var arr = ['Unknown'];
+        for (var _i = 0, _a = this.playerService.players; _i < _a.length; _i++) {
+            var player = _a[_i];
+            if (player.team_names == this.offense && (!excludeQb || player.full_names != this.quarterback)) {
+                arr.push(player.full_names);
+            }
+        }
+        return arr;
+    };
+    AddPlaysComponent.prototype.getDefensivePlayers = function () {
+        var arr = ['Unknown'];
+        for (var _i = 0, _a = this.playerService.players; _i < _a.length; _i++) {
+            var player = _a[_i];
+            if (player.team_names == this.defense) {
+                arr.push(player.full_names);
+            }
+        }
+        return arr;
+    };
+    AddPlaysComponent.prototype.getOffensiveResults = function () {
+        return this.offensiveResults;
+    };
+    AddPlaysComponent.prototype.getDefensiveResults = function () {
+        return this.receiverResult.include.concat(['None']);
+    };
+    AddPlaysComponent.prototype.submit = function () {
+        var _this = this;
+        var play = new __WEBPACK_IMPORTED_MODULE_4__models_Play__["a" /* Play */]();
+        play.defender_results = this.defenderResult;
+        play.defender_teams = this.defense;
+        play.defenders = this.defender;
+        play.quarterbacks = this.quarterback;
+        play.receiver_results = this.receiverResult.name;
+        play.receiver_teams = this.offense;
+        play.receivers = this.receiver;
+        play.schedules = this.selectedSchedule.dates + ", " + this.selectedSchedule.times;
+        this.dao.post(play).subscribe(function (success) {
+            _this.dao.init();
+            _this.cancel();
+        }, function (err) {
+            alert("Failed" + err);
+        });
+    };
+    AddPlaysComponent.prototype.cancel = function () {
+        this.offense = null;
+        this.defense = null;
+        this.quarterback = null;
+        this.receiver = null;
+        this.receiverResult = null;
+        this.defender = null;
+        this.defenderResult = null;
+    };
+    AddPlaysComponent.prototype.setReceiverResult = function (result) {
+        this.receiverResult = result;
+        if (!result.hasDefender) {
+            this.defender = 'None';
+            this.defenderResult = 'None';
+        }
+    };
+    AddPlaysComponent.prototype.selectDefenderResult = function (result) {
+        if (result == 'None') {
+            this.defender = 'None';
+        }
+        this.defenderResult = result;
+    };
+    AddPlaysComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-add-plays',
+            template: __webpack_require__(346),
+            styles: [__webpack_require__(332)]
+        }), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_schedule_service__["a" /* ScheduleService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_schedule_service__["a" /* ScheduleService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__dao_PlaysDao__["a" /* PlaysDao */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__dao_PlaysDao__["a" /* PlaysDao */]) === 'function' && _c) || Object])
+    ], AddPlaysComponent);
+    return AddPlaysComponent;
+    var _a, _b, _c;
+}());
+//# sourceMappingURL=add-plays.component.js.map
+
+/***/ }),
+
+/***/ 115:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_plays_service__ = __webpack_require__(34);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlaysComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -64,34 +205,58 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var PlaysComponent = (function () {
-    function PlaysComponent() {
+    function PlaysComponent(playsService) {
+        this.playsService = playsService;
     }
     PlaysComponent.prototype.ngOnInit = function () {
+    };
+    PlaysComponent.prototype.getPlays = function () {
+        var playArr = [];
+        for (var _i = 0, _a = this.playsService.plays; _i < _a.length; _i++) {
+            var play = _a[_i];
+            if (this.sameTeams(play) && this.sameTime(play)) {
+                playArr.push(play);
+            }
+        }
+        return playArr;
+    };
+    PlaysComponent.prototype.sameTime = function (play) {
+        var date = play.schedules.split(", ")[0];
+        var time = play.schedules.split(", ")[1];
+        return this.schedule.dates == date && this.schedule.times == parseInt(time);
+    };
+    PlaysComponent.prototype.sameTeams = function (play) {
+        var home = this.schedule.homes;
+        var away = this.schedule.aways;
+        return (play.defender_teams == home && play.receiver_teams == away) || (play.receiver_teams == home && play.defender_teams == away);
     };
     PlaysComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-plays',
-            template: __webpack_require__(342),
-            styles: [__webpack_require__(329)]
+            template: __webpack_require__(347),
+            styles: [__webpack_require__(333)],
+            inputs: ['schedule']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_plays_service__["a" /* PlaysService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_plays_service__["a" /* PlaysService */]) === 'function' && _a) || Object])
     ], PlaysComponent);
     return PlaysComponent;
+    var _a;
 }());
 //# sourceMappingURL=plays.component.js.map
 
 /***/ }),
 
-/***/ 114:
+/***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_schedule_service__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ScheduleEvent__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_team_service__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_schedule_service__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ScheduleEvent__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_team_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(352);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ScheduleComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -148,8 +313,8 @@ var ScheduleComponent = (function () {
     ScheduleComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-schedule',
-            template: __webpack_require__(343),
-            styles: [__webpack_require__(330)]
+            template: __webpack_require__(348),
+            styles: [__webpack_require__(334)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_schedule_service__["a" /* ScheduleService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_schedule_service__["a" /* ScheduleService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_team_service__["a" /* TeamService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__services_team_service__["a" /* TeamService */]) === 'function' && _b) || Object])
     ], ScheduleComponent);
@@ -160,15 +325,15 @@ var ScheduleComponent = (function () {
 
 /***/ }),
 
-/***/ 115:
+/***/ 117:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_plays_service__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_team_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_plays_service__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_team_service__ = __webpack_require__(31);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -312,8 +477,8 @@ var StatsComponent = (function () {
     StatsComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-stats',
-            template: __webpack_require__(344),
-            styles: [__webpack_require__(331)]
+            template: __webpack_require__(349),
+            styles: [__webpack_require__(335)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_plays_service__["a" /* PlaysService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__services_plays_service__["a" /* PlaysService */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__services_team_service__["a" /* TeamService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__services_team_service__["a" /* TeamService */]) === 'function' && _d) || Object])
     ], StatsComponent);
@@ -324,13 +489,13 @@ var StatsComponent = (function () {
 
 /***/ }),
 
-/***/ 116:
+/***/ 118:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_team_service__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_team_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_player_service__ = __webpack_require__(30);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -372,8 +537,8 @@ var TeamsComponent = (function () {
     TeamsComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-teams',
-            template: __webpack_require__(345),
-            styles: [__webpack_require__(332)]
+            template: __webpack_require__(350),
+            styles: [__webpack_require__(336)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_team_service__["a" /* TeamService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_team_service__["a" /* TeamService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__services_player_service__["a" /* PlayerService */]) === 'function' && _b) || Object])
     ], TeamsComponent);
@@ -384,14 +549,14 @@ var TeamsComponent = (function () {
 
 /***/ }),
 
-/***/ 117:
+/***/ 119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BaseDao__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_player_service__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_player_service__ = __webpack_require__(30);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlayersDao; });
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -437,67 +602,14 @@ var PlayersDao = (function (_super) {
 
 /***/ }),
 
-/***/ 118:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BaseDao__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_plays_service__ = __webpack_require__(47);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlaysDao; });
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var PlaysDao = (function (_super) {
-    __extends(PlaysDao, _super);
-    function PlaysDao(http, playsService) {
-        _super.call(this);
-        this.http = http;
-        this.playsService = playsService;
-        this.path = '/plays';
-    }
-    PlaysDao.prototype.init = function () {
-        var _this = this;
-        this.http.get(this.base + this.path).map(this.extractData).subscribe(function (success) {
-            _this.playsService.plays = success;
-        }, function (err) {
-        });
-    };
-    PlaysDao = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__app_services_plays_service__["a" /* PlaysService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__app_services_plays_service__["a" /* PlaysService */]) === 'function' && _b) || Object])
-    ], PlaysDao);
-    return PlaysDao;
-    var _a, _b;
-}(__WEBPACK_IMPORTED_MODULE_0__BaseDao__["a" /* BaseDao */]));
-//# sourceMappingURL=PlaysDao.js.map
-
-/***/ }),
-
-/***/ 119:
+/***/ 120:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__BaseDao__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_schedule_service__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_schedule_service__ = __webpack_require__(35);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ScheduleDao; });
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -543,14 +655,14 @@ var ScheduleDao = (function (_super) {
 
 /***/ }),
 
-/***/ 120:
+/***/ 121:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__BaseDao__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_team_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_team_service__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamsDao; });
@@ -599,7 +711,7 @@ var TeamsDao = (function (_super) {
 
 /***/ }),
 
-/***/ 192:
+/***/ 193:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -608,20 +720,20 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 192;
+webpackEmptyContext.id = 193;
 
 
 /***/ }),
 
-/***/ 193:
+/***/ 194:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(205);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(214);
 
 
 
@@ -634,15 +746,15 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 204:
+/***/ 205:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dao_PlayersDao__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dao_TeamsDao__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dao_ScheduleDao__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dao_PlaysDao__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dao_PlayersDao__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dao_TeamsDao__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dao_ScheduleDao__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dao_PlaysDao__ = __webpack_require__(70);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -672,8 +784,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
-            template: __webpack_require__(337),
-            styles: [__webpack_require__(324)]
+            template: __webpack_require__(341),
+            styles: [__webpack_require__(327)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__dao_PlayersDao__["a" /* PlayersDao */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__dao_PlayersDao__["a" /* PlayersDao */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__dao_PlaysDao__["a" /* PlaysDao */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__dao_PlaysDao__["a" /* PlaysDao */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__dao_ScheduleDao__["a" /* ScheduleDao */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__dao_ScheduleDao__["a" /* ScheduleDao */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__dao_TeamsDao__["a" /* TeamsDao */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__dao_TeamsDao__["a" /* TeamsDao */]) === 'function' && _d) || Object])
     ], AppComponent);
@@ -684,37 +796,39 @@ var AppComponent = (function () {
 
 /***/ }),
 
-/***/ 205:
+/***/ 206:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(204);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__header_header_component__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__home_home_component__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__stats_stats_component__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__schedule_schedule_component__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__plays_plays_component__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__teams_teams_component__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_router__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_routes__ = __webpack_require__(206);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_ng2_select__ = __webpack_require__(333);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__header_header_component__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__home_home_component__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__stats_stats_component__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__schedule_schedule_component__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__plays_plays_component__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__teams_teams_component__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_router__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_routes__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_ng2_select__ = __webpack_require__(337);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_ng2_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_ng2_select__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__dao_ScheduleDao__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__dao_PlaysDao__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__dao_PlayersDao__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__dao_TeamsDao__ = __webpack_require__(120);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_team_service__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_player_service__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_plays_service__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_schedule_service__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__player_player_component__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__player_player_header_player_header_component__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_angular_calendar__ = __webpack_require__(227);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_platform_browser_animations__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__dao_ScheduleDao__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__dao_PlaysDao__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__dao_PlayersDao__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__dao_TeamsDao__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_team_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_player_service__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_plays_service__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_schedule_service__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__player_player_component__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__player_player_header_player_header_component__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_angular_calendar__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_platform_browser_animations__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__plays_add_plays_add_plays_component__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pipes_reverse_pipe__ = __webpack_require__(209);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -725,6 +839,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -765,7 +881,9 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_9__plays_plays_component__["a" /* PlaysComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__teams_teams_component__["a" /* TeamsComponent */],
                 __WEBPACK_IMPORTED_MODULE_22__player_player_component__["a" /* PlayerComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__player_player_header_player_header_component__["a" /* PlayerHeaderComponent */]
+                __WEBPACK_IMPORTED_MODULE_23__player_player_header_player_header_component__["a" /* PlayerHeaderComponent */],
+                __WEBPACK_IMPORTED_MODULE_26__plays_add_plays_add_plays_component__["a" /* AddPlaysComponent */],
+                __WEBPACK_IMPORTED_MODULE_27__pipes_reverse_pipe__["a" /* ReversePipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["BrowserModule"],
@@ -787,34 +905,37 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 206:
+/***/ 207:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__teams_teams_component__ = __webpack_require__(116);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_home_component__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stats_stats_component__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__schedule_schedule_component__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__plays_plays_component__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__teams_teams_component__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_home_component__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stats_stats_component__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__schedule_schedule_component__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__plays_plays_component__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__plays_add_plays_add_plays_component__ = __webpack_require__(114);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return appRoutes; });
 
 
 
 
 
+
 var appRoutes = [
+    { path: 'add', component: __WEBPACK_IMPORTED_MODULE_5__plays_add_plays_add_plays_component__["a" /* AddPlaysComponent */] },
     { path: 'home', component: __WEBPACK_IMPORTED_MODULE_1__home_home_component__["a" /* HomeComponent */] },
     { path: 'stats', component: __WEBPACK_IMPORTED_MODULE_2__stats_stats_component__["a" /* StatsComponent */] },
     { path: 'schedule', component: __WEBPACK_IMPORTED_MODULE_3__schedule_schedule_component__["a" /* ScheduleComponent */] },
     { path: 'teams', component: __WEBPACK_IMPORTED_MODULE_0__teams_teams_component__["a" /* TeamsComponent */] },
     { path: 'stats', component: __WEBPACK_IMPORTED_MODULE_4__plays_plays_component__["a" /* PlaysComponent */] },
-    { path: '**', component: __WEBPACK_IMPORTED_MODULE_1__home_home_component__["a" /* HomeComponent */] }
+    { path: '**', component: __WEBPACK_IMPORTED_MODULE_1__home_home_component__["a" /* HomeComponent */] },
 ];
 //# sourceMappingURL=app.routes.js.map
 
 /***/ }),
 
-/***/ 207:
+/***/ 208:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -838,8 +959,8 @@ var HeaderComponent = (function () {
     HeaderComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-header',
-            template: __webpack_require__(338),
-            styles: [__webpack_require__(325)]
+            template: __webpack_require__(342),
+            styles: [__webpack_require__(328)]
         }), 
         __metadata('design:paramtypes', [])
     ], HeaderComponent);
@@ -849,7 +970,41 @@ var HeaderComponent = (function () {
 
 /***/ }),
 
-/***/ 208:
+/***/ 209:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReversePipe; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ReversePipe = (function () {
+    function ReversePipe() {
+    }
+    ReversePipe.prototype.transform = function (value, args) {
+        return value.slice().reverse();
+    };
+    ReversePipe = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'reverse'
+        }), 
+        __metadata('design:paramtypes', [])
+    ], ReversePipe);
+    return ReversePipe;
+}());
+//# sourceMappingURL=reverse.pipe.js.map
+
+/***/ }),
+
+/***/ 210:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -873,8 +1028,8 @@ var PlayerHeaderComponent = (function () {
     PlayerHeaderComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-player-header',
-            template: __webpack_require__(340),
-            styles: [__webpack_require__(327)],
+            template: __webpack_require__(344),
+            styles: [__webpack_require__(330)],
             inputs: ['player']
         }), 
         __metadata('design:paramtypes', [])
@@ -885,7 +1040,7 @@ var PlayerHeaderComponent = (function () {
 
 /***/ }),
 
-/***/ 209:
+/***/ 211:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -909,8 +1064,8 @@ var PlayerComponent = (function () {
     PlayerComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-player',
-            template: __webpack_require__(341),
-            styles: [__webpack_require__(328)]
+            template: __webpack_require__(345),
+            styles: [__webpack_require__(331)]
         }), 
         __metadata('design:paramtypes', [])
     ], PlayerComponent);
@@ -920,11 +1075,11 @@ var PlayerComponent = (function () {
 
 /***/ }),
 
-/***/ 210:
+/***/ 212:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ScheduleEventTeamColor__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ScheduleEventTeamColor__ = __webpack_require__(213);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ScheduleEvent; });
 
 var ScheduleEvent = (function () {
@@ -939,7 +1094,7 @@ var ScheduleEvent = (function () {
 
 /***/ }),
 
-/***/ 211:
+/***/ 213:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -955,7 +1110,7 @@ var ScheduleEventTeamColor = (function () {
 
 /***/ }),
 
-/***/ 212:
+/***/ 214:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -971,155 +1126,101 @@ var environment = {
 
 /***/ }),
 
-/***/ 30:
+/***/ 215:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var TeamService = (function () {
-    function TeamService() {
-        this._teams = [];
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Play; });
+var Play = (function () {
+    function Play() {
     }
-    Object.defineProperty(TeamService.prototype, "teams", {
+    Object.defineProperty(Play.prototype, "defender_teams", {
         get: function () {
-            return this._teams;
+            return this._defender_teams;
         },
         set: function (value) {
-            this._teams = value;
+            this._defender_teams = value;
         },
         enumerable: true,
         configurable: true
     });
-    TeamService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
-        __metadata('design:paramtypes', [])
-    ], TeamService);
-    return TeamService;
+    Object.defineProperty(Play.prototype, "quarterbacks", {
+        get: function () {
+            return this._quarterbacks;
+        },
+        set: function (value) {
+            this._quarterbacks = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Play.prototype, "receiver_results", {
+        get: function () {
+            return this._receiver_results;
+        },
+        set: function (value) {
+            this._receiver_results = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Play.prototype, "receiver_teams", {
+        get: function () {
+            return this._receiver_teams;
+        },
+        set: function (value) {
+            this._receiver_teams = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Play.prototype, "receivers", {
+        get: function () {
+            return this._receivers;
+        },
+        set: function (value) {
+            this._receivers = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Play.prototype, "schedules", {
+        get: function () {
+            return this._schedules;
+        },
+        set: function (value) {
+            this._schedules = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Play.prototype, "defenders", {
+        get: function () {
+            return this._defenders;
+        },
+        set: function (value) {
+            this._defenders = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Play.prototype, "defender_results", {
+        get: function () {
+            return this._defender_results;
+        },
+        set: function (value) {
+            this._defender_results = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Play;
 }());
-//# sourceMappingURL=team.service.js.map
+//# sourceMappingURL=Play.js.map
 
 /***/ }),
 
-/***/ 324:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(14)();
-// imports
-
-
-// module
-exports.push([module.i, ".background {\n  background-color: #d6d6d6;\n  min-height: 100vh; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ 325:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(14)();
-// imports
-
-
-// module
-exports.push([module.i, ".header-container {\n  background-color: black;\n  height: 70px; }\n\n.title {\n  margin-left: 20px;\n  font-size: 35px;\n  color: #8fe1c2; }\n\n.subtitle {\n  margin-left: 60px;\n  font-size: 10px;\n  color: #d6d6d6; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ 326:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(14)();
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ 327:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(14)();
-// imports
-
-
-// module
-exports.push([module.i, ".name {\n  font-size: 30px; }\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ 328:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(14)();
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ 329:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(14)();
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ 33:
+/***/ 30:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1159,10 +1260,86 @@ var PlayerService = (function () {
 
 /***/ }),
 
-/***/ 330:
+/***/ 31:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TeamService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var TeamService = (function () {
+    function TeamService() {
+        this._teams = [];
+    }
+    Object.defineProperty(TeamService.prototype, "teams", {
+        get: function () {
+            return this._teams;
+        },
+        set: function (value) {
+            this._teams = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    TeamService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
+        __metadata('design:paramtypes', [])
+    ], TeamService);
+    return TeamService;
+}());
+//# sourceMappingURL=team.service.js.map
+
+/***/ }),
+
+/***/ 327:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(14)();
+exports = module.exports = __webpack_require__(13)();
+// imports
+
+
+// module
+exports.push([module.i, ".background {\n  background-color: #d6d6d6;\n  min-height: 100vh; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 328:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)();
+// imports
+
+
+// module
+exports.push([module.i, ".header-container {\n  background-color: black;\n  height: 70px; }\n\n.title {\n  margin-left: 20px;\n  font-size: 35px;\n  color: #8fe1c2; }\n\n.subtitle {\n  margin-left: 60px;\n  font-size: 10px;\n  color: #d6d6d6; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 329:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)();
 // imports
 
 
@@ -1177,10 +1354,28 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
+/***/ 330:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)();
+// imports
+
+
+// module
+exports.push([module.i, ".name {\n  font-size: 30px; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
 /***/ 331:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(14)();
+exports = module.exports = __webpack_require__(13)();
 // imports
 
 
@@ -1198,7 +1393,25 @@ module.exports = module.exports.toString();
 /***/ 332:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(14)();
+exports = module.exports = __webpack_require__(13)();
+// imports
+
+
+// module
+exports.push([module.i, ".scheduleChoice {\n  background-color: white;\n  border: 1px solid black;\n  margin-bottom: 10px;\n  cursor: pointer; }\n\n.noPad {\n  padding: 0; }\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 333:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)();
 // imports
 
 
@@ -1213,70 +1426,61 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 337:
-/***/ (function(module, exports) {
+/***/ 334:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"container-fluid background\" style=\"padding:0;\">\n  <app-header></app-header>\n  <div class=\"container-fluid\" style=\"margin-top:50px;\">\n    <div class=\"row justify-content-center\">\n      <div class=\"col-8\">\n        <router-outlet></router-outlet>\n      </div>\n    </div>\n  </div>\n</div>\n"
+exports = module.exports = __webpack_require__(13)();
+// imports
 
-/***/ }),
 
-/***/ 338:
-/***/ (function(module, exports) {
+// module
+exports.push([module.i, "", ""]);
 
-module.exports = "<div class=\"container-fluid header-container\">\n  <div class=\"row\">\n    <div class=\"col-6\">\n     <div [routerLink]=\"['home']\"> <div class=\"title\">\n        <img src=\"../../assets/logo.png\" height=\"50px\">\n      </div>\n      <div class=\"subtitle\">\n        By Dave Oji and Seth Vg\n      </div></div>\n    </div>\n    <div class=\"col-6\">\n      <div class=\"container-fluid\">\n        <div class=\"row justify-content-end\" style=\"padding-top:15px\">\n          <div class=\"col-2\">\n            <button class=\"btn btn-block btn-outline-secondary\" [routerLink]=\"['stats']\">Stats</button>\n          </div>\n          <div class=\"col-2\">\n            <button class=\"btn btn-block btn-outline-secondary\" [routerLink]=\"['teams']\">Teams</button>\n          </div>\n          <div class=\"col-2\">\n            <button class=\"btn btn-block btn-outline-secondary\" [routerLink]=\"['schedule']\">Schedule</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+// exports
 
-/***/ }),
 
-/***/ 339:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"card\">\n  <div class=\"card-header\">\n      Welcome to VSP Flag Football\n  </div>\n  <div class=\"card-block\">\n    The 2017 Season is fast approaching.  VSP will be fielding 3 of 5 teams in the league, so we are gaurenteed to have atleast two teams not get last place!  Should be a good season and great opportunity to meet new people!  Best of Luck VSP!\n  </div>\n</div>\n"
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 340:
-/***/ (function(module, exports) {
+/***/ 335:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"container-fluid\" class=\"playerHeaderBorder\">\n  <div class=\"row\">\n    <div class=\"col-lg-1 col-sm-3 col-md-2\">\n      <img src=\"../../../assets/profile.jpg\" style=\"max-height:100%; max-width:100%; border:2px solid black;\">\n    </div>\n    <div class=\"col-sm-9 col-lg-11 col-md-10\">\n      <div class=\"container-fluid\">\n        <div class=\"row\">\n          <div class=\"col-12 text-center name\"> {{player.full_names}}\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-2\">\n            Birth Place: {{player.birth_places}}\n          </div>\n          <div class=\"col-2\">\n            Birth Date: {{player.birth_dates}}\n          </div>\n          <div class=\"col-2\">\n            Height: {{player.heights}}\n          </div>\n          <div class=\"col-2\">\n            Weight: {{player.weights}}\n          </div>\n          <div class=\"col-2\">\n            Schools: {{player.schools}}\n          </div>\n          <div class=\"col-2\">\n            Player Since: {{player.joined_league}}\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+exports = module.exports = __webpack_require__(13)();
+// imports
 
-/***/ }),
 
-/***/ 341:
-/***/ (function(module, exports) {
+// module
+exports.push([module.i, "", ""]);
 
-module.exports = "<p>\n  player works!\n</p>\n"
+// exports
 
-/***/ }),
 
-/***/ 342:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  plays works!\n</p>\n"
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 343:
-/***/ (function(module, exports) {
+/***/ 336:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<div class=\"container-fluid\">\n  <div class=\"row text-center\">\n    <div class=\"col-md-4\">\n      <div class=\"btn-group\">\n        <div\n          class=\"btn btn-primary\"\n          mwlCalendarPreviousView\n          [view]=\"view\"\n          [(viewDate)]=\"viewDate\">\n          Previous\n        </div>\n        <div\n          class=\"btn btn-secondary\"\n          mwlCalendarToday\n          [(viewDate)]=\"viewDate\">\n          Today\n        </div>\n        <div\n          class=\"btn btn-primary\"\n          mwlCalendarNextView\n          [view]=\"view\"\n          [(viewDate)]=\"viewDate\">\n          Next\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-4\">\n      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>\n    </div>\n    <div class=\"col-md-4\">\n      <div class=\"btn-group\">\n        <div\n          class=\"btn btn-primary\"\n          (click)=\"view = 'month'\"\n          [class.active]=\"view === 'month'\">\n          Month\n        </div>\n        <div\n          class=\"btn btn-primary\"\n          (click)=\"view = 'week'\"\n          [class.active]=\"view === 'week'\">\n          Week\n        </div>\n        <div\n          class=\"btn btn-primary\"\n          (click)=\"view = 'day'\"\n          [class.active]=\"view === 'day'\">\n          Day\n        </div>\n      </div>\n    </div>\n  </div>\n  <div [ngSwitch]=\"view\">\n    <mwl-calendar-month-view\n      *ngSwitchCase=\"'month'\"\n      [viewDate]=\"viewDate\"\n      [activeDayIsOpen]=\"showEvents\" (handleEvent)=\"handleEventClick($event.event)\"\n      [events]=\"getCalendarEvents()\" (dayClicked)=\"dateClicked($event)\" [refresh]=\"refresh\">\n    </mwl-calendar-month-view>\n    <mwl-calendar-week-view\n      *ngSwitchCase=\"'week'\"\n      [viewDate]=\"viewDate\"\n      [events]=\"getCalendarEvents()\"\n      [refresh]=\"refresh\"\n      (eventClicked)=\"handleEvent('Clicked', $event.event)\">\n    </mwl-calendar-week-view>\n    <mwl-calendar-day-view\n      *ngSwitchCase=\"'day'\"\n      [viewDate]=\"viewDate\"\n      [events]=\"getCalendarEvents()\"\n      [refresh]=\"refresh\"\n      (eventClicked)=\"handleEvent('Clicked', $event.event)\">\n    </mwl-calendar-day-view>\n  </div>\n</div>\n"
+exports = module.exports = __webpack_require__(13)();
+// imports
 
-/***/ }),
 
-/***/ 344:
-/***/ (function(module, exports) {
+// module
+exports.push([module.i, "", ""]);
 
-module.exports = "<div class=\"card\">\n  <div class=\"card-header text-center\">\n    Stats\n  </div>\n  <img class=\"card-img-top\" src=\"http://community.mis.temple.edu/peeradvisors/files/2013/09/stats.jpg\"\n       alt=\"Card image cap\">\n\n  <div class=\"card-block\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-3\">\n          <label class=\"form-control-label\">Stat Type</label>\n          <select class=\"form-control\" [(ngModel)]=\"statType\" (change)=\"setDefaultSort(statType);\">\n            <option>Receiver</option>\n            <option>Defender</option>\n            <option>Quarterback</option>\n          </select>\n        </div>\n        <div class=\"col-3\">\n          <label class=\"form-control-label\">Season</label>\n          <select class=\"form-control\">\n            <option>Spring 2017</option>\n          </select>\n        </div>\n        <div class=\"col-3\">\n          <label class=\"form-control-label\">Team</label>\n          <select class=\"form-control\" [(ngModel)]=\"teamFilter\">\n            <option value=\"All\">All</option>\n            <option *ngFor=\"let team of getTeamNames()\" [value]=\"team.team_names\">{{team.team_names}}</option>\n          </select>\n        </div>\n        <div class=\"col-3\">\n          <label class=\"form-control-label\">Find Player</label>\n          <input class=\"form-control\" [(ngModel)]=\"nameFilter\">\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"card-block\">\n    <table class=\"table table-sm\">\n      <thead>\n      <tr>\n        <th></th>\n        <th>Player</th>\n        <th *ngFor=\"let stat of getApplicableStats()\">\n          <div (click)=\"sortStat = stat\" style=\"cursor:pointer; display:inline;\">{{stat}}</div>\n         <div  [hidden]=\"sortStat != stat \" style=\"display:inline;\"> <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"16\" viewBox=\"0 0 12 16\"><path fill-rule=\"evenodd\" d=\"M0 5l6 6 6-6z\"/></svg></div>\n        </th>\n\n      </tr>\n      </thead>\n      <tbody>\n      <tr *ngFor=\"let player of getPlayers()\">\n        <td scope=\"row\"><img src=\"../../assets/profile.jpg\" height=\"20px\" width=\"20px\"></td>\n        <td>{{player.full_names}}</td>\n        <td *ngFor=\"let stat of getApplicableStats()\">{{getComputedStat(stat, player)}}</td>\n\n      </tr>\n      </tbody>\n    </table>\n  </div>\n</div>\n"
+// exports
 
-/***/ }),
 
-/***/ 345:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"card\">\n  <div class=\"card-header text-center\">\n    TEAMS\n  </div>\n  <div class=\"card-header\">\n    <ul class=\"nav nav-tabs card-header-tabs\">\n      <li class=\"nav-item\" *ngFor=\"let team of getTeams()\" (click)=\"setSelectedTeam(team)\">\n        <a class=\"nav-link\" [ngClass]=\"{'active':isSelectedTeam(team)}\" style=\"cursor:pointer\">{{team.team_names}}</a>\n      </li>\n    </ul>\n  </div>\n  <div class=\"card-block\">\n      <div *ngFor=\"let player of getPlayers()\">\n        <div style=\"padding:10px; border:1px solid black; margin-top:5px;\" *ngIf=\"isPlayerOnTeam(player)\">\n            <app-player-header [player]=\"player\"></app-player-header>\n        </div>\n    </div>\n  </div>\n</div>\n"
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 47:
+/***/ 34:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1316,7 +1520,70 @@ var PlaysService = (function () {
 
 /***/ }),
 
-/***/ 48:
+/***/ 341:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid background\" style=\"padding:0;\">\n  <app-header></app-header>\n  <div class=\"container-fluid\" style=\"margin-top:10px;\">\n    <div class=\"row justify-content-center\">\n      <div class=\"col-lg-8 col-sm-12\">\n        <router-outlet></router-outlet>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ 342:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid header-container\">\n  <div class=\"row\">\n    <div class=\"col-sm-6 col-md-3\">\n     <div [routerLink]=\"['home']\"> <div class=\"title\">\n        <img src=\"../../assets/logo.png\" height=\"50px\">\n      </div>\n      <div class=\"subtitle\">\n        By Dave Oji and Seth Vg\n      </div></div>\n    </div>\n    <div class=\"col-sm-6 col-md-9 hidden-sm-down\">\n      <div class=\"container-fluid\">\n        <div class=\"row justify-content-end\" style=\"padding-top:15px\">\n          <div class=\"col-lg-2 col-md-3 col-xs-4\">\n            <button class=\"btn btn-block btn-outline-secondary\" [routerLink]=\"['stats']\">Stats</button>\n          </div>\n          <div class=\"col-xl-2 col-md-3  col-xs-4\">\n            <button class=\"btn btn-block btn-outline-secondary\" [routerLink]=\"['teams']\">Teams</button>\n          </div>\n          <div class=\"col-xl-2 col-md-3  col-xs-4\">\n            <button class=\"btn btn-block btn-outline-secondary\" [routerLink]=\"['schedule']\">Schedule</button>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ 343:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card\">\n  <div class=\"card-header\">\n      Welcome to VSP Flag Football\n  </div>\n  <div class=\"card-block\">\n    The 2017 Season is fast approaching.  VSP will be fielding 3 of 5 teams in the league, so we are gaurenteed to have atleast two teams not get last place!  Should be a good season and great opportunity to meet new people!  Best of Luck VSP!\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ 344:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\" class=\"playerHeaderBorder\">\n  <div class=\"row\">\n    <div class=\"col-lg-1 col-sm-3 col-md-2\">\n      <img src=\"../../../assets/profile.jpg\" style=\"max-height:100%; max-width:100%; border:2px solid black;\">\n    </div>\n    <div class=\"col-sm-9 col-lg-11 col-md-10\">\n      <div class=\"container-fluid\">\n        <div class=\"row\">\n          <div class=\"col-12 text-center name\"> {{player.full_names}}\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-2\">\n            Birth Place: {{player.birth_places}}\n          </div>\n          <div class=\"col-2\">\n            Birth Date: {{player.birth_dates}}\n          </div>\n          <div class=\"col-2\">\n            Height: {{player.heights}}\n          </div>\n          <div class=\"col-2\">\n            Weight: {{player.weights}}\n          </div>\n          <div class=\"col-2\">\n            Schools: {{player.schools}}\n          </div>\n          <div class=\"col-2\">\n            Player Since: {{player.joined_league}}\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ 345:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  player works!\n</p>\n"
+
+/***/ }),
+
+/***/ 346:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\n  <div class=\"row text-center\" *ngIf=\"selectedSchedule == null\">\n    <div class=\"col-sm-12\"> Select Game</div>\n    <div class=\"col-sm-12 text-left scheduleChoice\" *ngFor=\"let schedule of getSchedules()\"\n         (click)=\"selectedSchedule = schedule;\">\n      {{schedule.dates}} @ {{schedule.times}}pm<br/>\n      {{schedule.aways}} vs {{schedule.homes}}\n    </div>\n  </div>\n  <div class=\"row\" *ngIf=\"selectedSchedule != null && offense == null\">\n    <div class=\"col-sm-12\">\n      <div class=\"text-center\">Select Offense</div>\n      <div class=\"scheduleChoice\" (click)=\"offense = selectedSchedule.aways; defense=selectedSchedule.homes\"\n           style=\"padding:10px\">{{selectedSchedule.aways}}\n      </div>\n      <div class=\"scheduleChoice\" (click)=\"offense = selectedSchedule.homes; defense=selectedSchedule.aways\"\n           style=\"padding:10px\">{{selectedSchedule.homes}}\n      </div>\n    </div>\n  </div>\n  <app-plays *ngIf=\"selectedSchedule != null && offense == null\" [schedule]=\"selectedSchedule\"></app-plays>\n  <div class=\"row\" *ngIf=\"selectedSchedule != null && offense != null && quarterback == null\">\n\n    <button class=\"btn btn-outline-warning btn-block font-weight-bold\"  (click)=\"offense = null;\" style=\"margin-bottom:20px; background-color: white\">Back</button>\n\n    <div class=\"col-sm-12 text-center\">\n      Select Quarterback\n    </div>\n    <div *ngFor=\"let player of getOffensivePlayers()\" class=\"scheduleChoice col-sm-12\" style=\"padding:10px;\"\n         (click)=\"quarterback = player\">{{player}}\n    </div>\n  </div>\n\n  <div class=\"row\" *ngIf=\"selectedSchedule != null && offense != null && quarterback != null && receiver == null\">\n    <button class=\"btn btn-outline-warning btn-block font-weight-bold\"  (click)=\"quarterback = null;\" style=\"margin-bottom:20px; background-color: white\">Back</button>\n\n    <div class=\"col-sm-12 text-center\">\n      Select Reciever\n    </div>\n    <div *ngFor=\"let player of getOffensivePlayers(true)\" class=\"scheduleChoice col-sm-12\" style=\"padding:10px;\"\n         (click)=\"receiver = player\">{{player}}\n    </div>\n  </div>\n\n  <div class=\"row\"\n       *ngIf=\"selectedSchedule != null && offense != null && quarterback != null && receiver != null && receiverResult == null\">\n    <div class=\"col-sm-12 text-center\">\n      <button class=\"btn btn-outline-warning btn-block font-weight-bold\"  (click)=\"receiver = null;\" style=\"margin-bottom:20px; background-color: white\">Back</button>\n\n      Select Reciever Result\n    </div>\n    <div *ngFor=\"let result of getOffensiveResults()\" class=\"scheduleChoice col-sm-12\" style=\"padding:10px;\"\n         (click)=\"setReceiverResult(result)\">{{result.name}}\n    </div>\n  </div>\n\n  <div class=\"row\"\n       *ngIf=\"selectedSchedule != null && offense != null && quarterback != null && receiver != null && receiverResult != null && defenderResult == null\">\n    <button class=\"btn btn-outline-warning btn-block font-weight-bold\"  (click)=\"receiverResult = null;\" style=\"margin-bottom:20px; background-color: white\">Back</button>\n\n    <div class=\"col-sm-12 text-center\">\n      Select Defender Result\n    </div>\n    <div *ngFor=\"let result of getDefensiveResults()\" class=\"scheduleChoice col-sm-12\" style=\"padding:10px;\"\n         (click)=\"selectDefenderResult(result)\">{{result}}\n    </div>\n  </div>\n\n\n  <div class=\"row\"\n       *ngIf=\"selectedSchedule != null && offense != null && quarterback != null && receiver != null && receiverResult != null && defenderResult != null && defender == null\">\n    <div class=\"col-sm-12 text-center\">\n      <button class=\"btn btn-outline-warning btn-block font-weight-bold\"  (click)=\"defenderResult = null;\" style=\"margin-bottom:20px; background-color: white\">Back</button>\n\n      Select Defender\n    </div>\n    <div *ngFor=\"let player of getDefensivePlayers()\" class=\"scheduleChoice col-sm-12\" style=\"padding:10px;\"\n         (click)=\"defender = player\">{{player}}\n    </div>\n  </div>\n\n\n\n  <div class=\"row\"\n       *ngIf=\"selectedSchedule != null && offense != null && quarterback != null && receiver != null && receiverResult != null && defender != null && defenderResult != null\">\n    <div class=\"col-12\">\n      <div class=\"container-fluid noPad\">\n          <div class=\"row scheduleChoice\" style=\"cursor: default; padding:10px\">\n            <div class=\"col noPad font-weight-bold\">Quarterback</div>\n            <div class=\"col text-right noPad\">{{quarterback}}</div>\n          </div>\n      </div>\n      <div class=\"container-fluid noPad\">\n        <div class=\"row scheduleChoice\" style=\"cursor: default; padding:10px\">\n          <div class=\"col noPad font-weight-bold\">Receiver</div>\n          <div class=\"col text-right noPad\">{{receiver}}</div>\n        </div>\n      </div>\n      <div class=\"container-fluid noPad\">\n        <div class=\"row scheduleChoice\" style=\"cursor: default; padding:10px\">\n          <div class=\"col noPad font-weight-bold\">Receiver Result</div>\n          <div class=\"col text-right noPad\">{{receiverResult.name}}</div>\n        </div>\n      </div>\n      <div class=\"container-fluid noPad\">\n        <div class=\"row scheduleChoice\" style=\"cursor: default; padding:10px\">\n          <div class=\"col noPad font-weight-bold\">Defender</div>\n          <div class=\"col text-right noPad\">{{defender}}</div>\n        </div>\n      </div>\n      <div class=\"container-fluid noPad\">\n        <div class=\"row scheduleChoice\" style=\"cursor: default; padding:10px\">\n          <div class=\"col noPad font-weight-bold\">Defender Result</div>\n          <div class=\"col text-right noPad\">{{defenderResult}}</div>\n        </div>\n      </div>\n    </div>\n    <button class=\"btn btn-block btn-outline-success text-center font-weight-bold\"  (click)=\"submit()\" style=\"background:white\">Submit</button>\n    <button class=\"btn btn-block btn-outline-danger text-center font-weight-bold\"  (click)=\"cancel()\" style=\"background:white\">Cancel</button>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ 347:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <div class=\"col-sm-12\">Recent Plays</div>\n    </div>\n    <div class=\"row\" *ngFor=\"let play of getPlays() | reverse\" style=\"background-color: white; padding: 10px; border:1px solid black; margin-bottom:5px;\">\n\n\n      <div class=\"col-sm-12\">Offense: {{play.receiver_teams}}</div>\n      <div class=\"col-sm-12\">Quarterback: {{play.quarterbacks}}</div>\n      <div class=\"col-sm-12\">Receiver: {{play.receivers}}</div>\n      <div class=\"col-sm-12\">Results: {{play.receiver_results}}</div>\n        <div class=\"col-sm-12\">Defense: {{play.defender_teams}}</div>\n      <div class=\"col-sm-12\">Defender: {{play.defenders}}</div>\n      <div class=\"col-sm-12\">Result: {{play.defender_results}}</div>\n\n    </div>\n</div>\n"
+
+/***/ }),
+
+/***/ 348:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container-fluid\">\n  <div class=\"row text-center\">\n    <div class=\"col-md-4\">\n      <div class=\"btn-group\">\n        <div\n          class=\"btn btn-primary\"\n          mwlCalendarPreviousView\n          [view]=\"view\"\n          [(viewDate)]=\"viewDate\">\n          Previous\n        </div>\n        <div\n          class=\"btn btn-secondary\"\n          mwlCalendarToday\n          [(viewDate)]=\"viewDate\">\n          Today\n        </div>\n        <div\n          class=\"btn btn-primary\"\n          mwlCalendarNextView\n          [view]=\"view\"\n          [(viewDate)]=\"viewDate\">\n          Next\n        </div>\n      </div>\n    </div>\n    <div class=\"col-md-4\">\n      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>\n    </div>\n    <div class=\"col-md-4\">\n      <div class=\"btn-group\">\n        <div\n          class=\"btn btn-primary\"\n          (click)=\"view = 'month'\"\n          [class.active]=\"view === 'month'\">\n          Month\n        </div>\n        <div\n          class=\"btn btn-primary\"\n          (click)=\"view = 'week'\"\n          [class.active]=\"view === 'week'\">\n          Week\n        </div>\n        <div\n          class=\"btn btn-primary\"\n          (click)=\"view = 'day'\"\n          [class.active]=\"view === 'day'\">\n          Day\n        </div>\n      </div>\n    </div>\n  </div>\n  <div [ngSwitch]=\"view\">\n    <mwl-calendar-month-view\n      *ngSwitchCase=\"'month'\"\n      [viewDate]=\"viewDate\"\n      [activeDayIsOpen]=\"showEvents\" (handleEvent)=\"handleEventClick($event.event)\"\n      [events]=\"getCalendarEvents()\" (dayClicked)=\"dateClicked($event)\" [refresh]=\"refresh\">\n    </mwl-calendar-month-view>\n    <mwl-calendar-week-view\n      *ngSwitchCase=\"'week'\"\n      [viewDate]=\"viewDate\"\n      [events]=\"getCalendarEvents()\"\n      [refresh]=\"refresh\"\n      (eventClicked)=\"handleEvent('Clicked', $event.event)\">\n    </mwl-calendar-week-view>\n    <mwl-calendar-day-view\n      *ngSwitchCase=\"'day'\"\n      [viewDate]=\"viewDate\"\n      [events]=\"getCalendarEvents()\"\n      [refresh]=\"refresh\"\n      (eventClicked)=\"handleEvent('Clicked', $event.event)\">\n    </mwl-calendar-day-view>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ 349:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card\">\n  <div class=\"card-header text-center\">\n    Stats\n  </div>\n  <img class=\"card-img-top\" src=\"http://community.mis.temple.edu/peeradvisors/files/2013/09/stats.jpg\"\n       alt=\"Card image cap\">\n\n  <div class=\"card-block\">\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <div class=\"col-3\">\n          <label class=\"form-control-label\">Stat Type</label>\n          <select class=\"form-control\" [(ngModel)]=\"statType\" (change)=\"setDefaultSort(statType);\">\n            <option>Receiver</option>\n            <option>Defender</option>\n            <option>Quarterback</option>\n          </select>\n        </div>\n        <div class=\"col-3\">\n          <label class=\"form-control-label\">Season</label>\n          <select class=\"form-control\">\n            <option>Spring 2017</option>\n          </select>\n        </div>\n        <div class=\"col-3\">\n          <label class=\"form-control-label\">Team</label>\n          <select class=\"form-control\" [(ngModel)]=\"teamFilter\">\n            <option value=\"All\">All</option>\n            <option *ngFor=\"let team of getTeamNames()\" [value]=\"team.team_names\">{{team.team_names}}</option>\n          </select>\n        </div>\n        <div class=\"col-3\">\n          <label class=\"form-control-label\">Find Player</label>\n          <input class=\"form-control\" [(ngModel)]=\"nameFilter\">\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"card-block\">\n    <table class=\"table table-sm\">\n      <thead>\n      <tr>\n        <th></th>\n        <th>Player</th>\n        <th *ngFor=\"let stat of getApplicableStats()\">\n          <div (click)=\"sortStat = stat\" style=\"cursor:pointer; display:inline;\">{{stat}}</div>\n         <div  [hidden]=\"sortStat != stat \" style=\"display:inline;\"> <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"16\" viewBox=\"0 0 12 16\"><path fill-rule=\"evenodd\" d=\"M0 5l6 6 6-6z\"/></svg></div>\n        </th>\n\n      </tr>\n      </thead>\n      <tbody>\n      <tr *ngFor=\"let player of getPlayers()\">\n        <td scope=\"row\"><img src=\"../../assets/profile.jpg\" height=\"20px\" width=\"20px\"></td>\n        <td>{{player.full_names}}</td>\n        <td *ngFor=\"let stat of getApplicableStats()\">{{getComputedStat(stat, player)}}</td>\n\n      </tr>\n      </tbody>\n    </table>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ 35:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1356,6 +1623,13 @@ var ScheduleService = (function () {
 
 /***/ }),
 
+/***/ 350:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card\">\n  <div class=\"card-header text-center\">\n    TEAMS\n  </div>\n  <div class=\"card-header\">\n    <ul class=\"nav nav-tabs card-header-tabs\">\n      <li class=\"nav-item\" *ngFor=\"let team of getTeams()\" (click)=\"setSelectedTeam(team)\">\n        <a class=\"nav-link\" [ngClass]=\"{'active':isSelectedTeam(team)}\" style=\"cursor:pointer\">{{team.team_names}}</a>\n      </li>\n    </ul>\n  </div>\n  <div class=\"card-block\">\n      <div *ngFor=\"let player of getPlayers()\">\n        <div style=\"padding:10px; border:1px solid black; margin-top:5px;\" *ngIf=\"isPlayerOnTeam(player)\">\n            <app-player-header [player]=\"player\"></app-player-header>\n        </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
 /***/ 49:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1374,13 +1648,69 @@ var BaseDao = (function () {
 
 /***/ }),
 
-/***/ 598:
+/***/ 603:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(193);
+module.exports = __webpack_require__(194);
 
+
+/***/ }),
+
+/***/ 70:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BaseDao__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_services_plays_service__ = __webpack_require__(34);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlaysDao; });
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var PlaysDao = (function (_super) {
+    __extends(PlaysDao, _super);
+    function PlaysDao(http, playsService) {
+        _super.call(this);
+        this.http = http;
+        this.playsService = playsService;
+        this.path = '/plays';
+    }
+    PlaysDao.prototype.init = function () {
+        var _this = this;
+        this.http.get(this.base + this.path).map(this.extractData).subscribe(function (success) {
+            _this.playsService.plays = success;
+        }, function (err) {
+        });
+    };
+    PlaysDao.prototype.post = function (play) {
+        return this.http.post(this.base + this.path, { defender_teams: play.defender_teams, defenders: play.defenders, quarterbacks: play.quarterbacks, receiver_results: play.receiver_results, receiver_teams: play.receiver_teams, receivers: play.receivers, schedules: play.schedules, defender_results: play.defender_results }).map(this.extractData);
+    };
+    PlaysDao = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__app_services_plays_service__["a" /* PlaysService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__app_services_plays_service__["a" /* PlaysService */]) === 'function' && _b) || Object])
+    ], PlaysDao);
+    return PlaysDao;
+    var _a, _b;
+}(__WEBPACK_IMPORTED_MODULE_0__BaseDao__["a" /* BaseDao */]));
+//# sourceMappingURL=PlaysDao.js.map
 
 /***/ })
 
-},[598]);
+},[603]);
 //# sourceMappingURL=main.bundle.js.map
