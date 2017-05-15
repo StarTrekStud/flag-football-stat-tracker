@@ -363,7 +363,7 @@ var StatsComponent = (function () {
         this.sortStat = 'Touchdowns';
         this.teamFilter = 'All';
         this.nameFilter = '';
-        this.Receiver = ['Touchdowns', '2 Points', '1 Points', 'Catches', 'Drops'];
+        this.Receiver = ['Touchdowns', '2 Points', '1 Points', 'Catches', 'Drops', 'Targets'];
         this.Defender = ['Tackles', 'Sacks', 'Safeties', 'Pick 1', 'Pick 2', 'Pick 6'];
         this.Quarterback = ['Completions', 'Throws', 'Misses', 'Interceptions'];
     }
@@ -399,6 +399,16 @@ var StatsComponent = (function () {
                     break;
                 case 'Drops':
                     if (play.receiver_results == 'Drop' && play.receivers == player.full_names) {
+                        count++;
+                    }
+                    break;
+                case 'Targets':
+                    if ((play.receiver_results == 'Catch' && play.receivers == player.full_names)
+                        || (play.receiver_results == 'Drop' && play.receivers == player.full_names)
+                        || (play.receiver_results == 'Miss' && play.receivers == player.full_names)
+                        || (play.receiver_results == 'Touchdown' && play.receivers == player.full_names)
+                        || (play.receiver_results == '2 Point' && play.receivers == player.full_names)
+                        || (play.receiver_results == '1 Point' && play.receivers == player.full_names)) {
                         count++;
                     }
                     break;
@@ -486,16 +496,22 @@ var StatsComponent = (function () {
         for (var _i = 0, _a = this.playerService.players; _i < _a.length; _i++) {
             var player = _a[_i];
             if (this.nameFilter.trim() == '' && this.teamFilter == 'All') {
-                arr.push(player);
+                if (player.full_names != 'Unknown') {
+                    arr.push(player);
+                }
             }
             else if (this.nameFilter.trim() == '') {
                 if (player.team_names == this.teamFilter) {
-                    arr.push(player);
+                    if (player.full_names != 'Unknown') {
+                        arr.push(player);
+                    }
                 }
             }
             else {
                 if (player.full_names.indexOf(this.nameFilter) != -1) {
-                    arr.push(player);
+                    if (player.full_names != 'Unknown') {
+                        arr.push(player);
+                    }
                 }
             }
         }
@@ -1144,7 +1160,7 @@ PlayerComponent = __decorate([
 var ScheduleEvent = (function () {
     function ScheduleEvent(schedule, color, color2) {
         this.start = new Date(schedule.dates);
-        this.title = schedule.seasons + " " + schedule.aways + " vs " + schedule.homes;
+        this.title = schedule.locations + ", " + schedule.times + "pm - " + schedule.aways + " @ " + schedule.homes;
         this.color = new __WEBPACK_IMPORTED_MODULE_0__ScheduleEventTeamColor__["a" /* ScheduleEventTeamColor */]("#00b1fd", "#00b1fd");
     }
     return ScheduleEvent;
